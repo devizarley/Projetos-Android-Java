@@ -1,14 +1,13 @@
 plugins {
     id 'com.android.application'
-    id 'com.google.gms.google-services'
 }
 
 android {
-    namespace 'izarleydev.com.organizze'
+    namespace 'izarleydev.com.slider'
     compileSdk 32
 
     defaultConfig {
-        applicationId "izarleydev.com.organizze"
+        applicationId "izarleydev.com.slider"
         minSdk 21
         targetSdk 32
         versionCode 1
@@ -27,6 +26,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    dataBinding{
+        enable = true
+    }
 }
 
 dependencies {
@@ -37,9 +39,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    implementation platform('com.google.firebase:firebase-bom:31.1.1')
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.google.firebase:firebase-database'
-    implementation 'com.google.firebase:firebase-auth'
     implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
+
 }
