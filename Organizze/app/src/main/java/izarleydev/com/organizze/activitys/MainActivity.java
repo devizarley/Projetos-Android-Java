@@ -51,8 +51,16 @@ public class MainActivity extends IntroActivity {
                 .background(R.color.white)
                 .fragment(R.layout.intro_cadastro)
                 .build());
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Cadastro_Activity.class);
+                startActivity(intent);
+            }
+        });
 
     }
+
 }
 
 
