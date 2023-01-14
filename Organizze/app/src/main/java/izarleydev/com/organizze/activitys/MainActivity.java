@@ -58,17 +58,18 @@ public class MainActivity extends IntroActivity {
                 startActivity(intent);
             }
         });*/
-        teste();
+        
+        //teste();
 
     }
-    public void teste (){
+    /*public void teste (){
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Cadastro_Activity.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
 }
