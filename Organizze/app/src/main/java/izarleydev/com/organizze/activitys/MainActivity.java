@@ -28,8 +28,8 @@ public class MainActivity extends IntroActivity {
         //setContentView(R.layout.activity_main);
 
 
-        //setButtonBackVisible(false);
-        //setButtonNextVisible(false);
+        setButtonBackVisible(false);
+        setButtonNextVisible(false);
 
         addSlide(new FragmentSlide.Builder()
                 .background(R.color.white)
@@ -51,11 +51,17 @@ public class MainActivity extends IntroActivity {
                 .background(R.color.white)
                 .fragment(R.layout.intro_cadastro)
                 .build());
-        button.setOnClickListener(new View.OnClickListener() {
+        /*button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Cadastro_Activity.class);
                 startActivity(intent);
+            }
+        });*/
+        texto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
             }
         });
 
