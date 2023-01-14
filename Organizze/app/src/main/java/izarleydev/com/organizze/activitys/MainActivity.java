@@ -58,7 +58,7 @@ public class MainActivity extends IntroActivity {
                 startActivity(intent);
             }
         });*/
-        
+
         //teste();
 
     }
