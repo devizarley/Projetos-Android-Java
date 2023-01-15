@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
+import com.heinrichreimersoftware.materialintro.app.SlideFragment;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 
 import izarleydev.com.organizze.R;
@@ -59,10 +60,11 @@ public class MainActivity extends IntroActivity {
             }
         });*/
 
-        teste();
+        //teste();
 
     }
-    public void teste (){
+
+    /*public void teste (){
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +72,7 @@ public class MainActivity extends IntroActivity {
                 startActivity(intent);
             }
         });
-    }
+    }*/
 }
 
 
