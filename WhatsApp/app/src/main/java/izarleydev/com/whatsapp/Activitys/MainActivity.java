@@ -19,5 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void setbutton (View view) {
         startActivity(new Intent(this, Cadastro.class));
+    }public void setbutton (View view) {
+        startActivity(new Intent(this, Cadastro.class));
     }
 }
