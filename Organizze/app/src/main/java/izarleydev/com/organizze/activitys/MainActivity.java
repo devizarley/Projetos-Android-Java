@@ -63,6 +63,12 @@ public class MainActivity extends IntroActivity {
         //teste();
 
     }
+    public void btCadastrar(View view) {
+        startActivity(new Intent(this, Cadastro_Activity.class));
+    }
+    public void btEntrar(View view) {
+        startActivity(new Intent(this, Login_Activity.class));
+    }
 
     /*public void teste (){
         button.setOnClickListener(new View.OnClickListener() {
