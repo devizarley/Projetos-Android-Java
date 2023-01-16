@@ -1,10 +1,13 @@
-package izarleydev.com.whatsapp;
+package izarleydev.com.whatsapp.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import izarleydev.com.whatsapp.R;
+
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

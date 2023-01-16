@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "224547170163",
+    "project_id": "whatsapp-2020a",
+    "storage_bucket": "whatsapp-2020a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224547170163:android:9c14bef268f7fc726ac706",
+        "android_client_info": {
+          "package_name": "izarleydev.com.whatsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224547170163-192jbpdcbj9cig31t0ga0ja7kfsbv1lo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "izarleydev.com.whatsapp",
+            "certificate_hash": "552e4c389ba0e49cc1a0f04fed642ae780e6fece"
+          }
+        },
+        {
+          "client_id": "224547170163-mu5vkplfl11l5g8pe9p1ic1vbo9584od.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-7coiGnoqi-5DzstdcVQvAjekAZXPj-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224547170163-mu5vkplfl11l5g8pe9p1ic1vbo9584od.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
