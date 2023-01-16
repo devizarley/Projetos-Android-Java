@@ -8,6 +8,8 @@ import izarleydev.com.whatsapp.R;
 
 public class Cadastro extends AppCompatActivity {
 
+    /*Toda a configuração de cadastro de usuarios*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
