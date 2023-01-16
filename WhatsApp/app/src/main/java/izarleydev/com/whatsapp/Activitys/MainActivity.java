@@ -8,6 +8,7 @@ import izarleydev.com.whatsapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    /*Toda configuração geral*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
