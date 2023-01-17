@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/usuario" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/aa"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -33,14 +33,18 @@
         app:hintTextColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3">
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.337">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"
             android:hint="Digite seu email"
+            android:inputType="textWebEmailAddress|textEmailAddress"
             android:textColor="#000000"
             android:textColorHint="#000000" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -56,13 +60,14 @@
         android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/inputEmail">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"
             android:hint="Digite sua senha"
+            android:inputType="textPassword|textWebPassword"
             android:textColor="#000000"
             android:textColorHint="#000000" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -96,6 +101,7 @@
         android:layout_marginTop="16dp"
         android:background="#56096A63"
         android:backgroundTint="#096A63"
+        android:onClick="buttonCadastro"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
