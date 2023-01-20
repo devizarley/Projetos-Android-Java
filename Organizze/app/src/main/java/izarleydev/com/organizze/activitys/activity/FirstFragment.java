@@ -9,7 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import izarleydev.com.organizze.activitys.activity.databinding.FragmentFirstBinding;
+import izarleydev.com.organizze.R;
+import izarleydev.com.organizze.databinding.FragmentFirstBinding;
 
 public class FirstFragment extends Fragment {
 

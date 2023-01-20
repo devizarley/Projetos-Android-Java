@@ -13,14 +13,9 @@
         android:theme="@style/Theme.Organizze"
         tools:targetApi="31">
         <activity
-            android:name=".PrincipalActivity"
+            android:name=".activitys.activity.PrincipalActivity"
             android:exported="false"
             android:label="@string/title_activity_principal"
-            android:theme="@style/Theme.Organizze.NoActionBar" />
-        <activity
-            android:name=".aaaaa"
-            android:exported="false"
-            android:label="@string/title_activity_aaaaa"
             android:theme="@style/Theme.Organizze.NoActionBar" />
         <activity
             android:name=".activitys.activity.Cadastro_Activity"

@@ -7,6 +7,12 @@ android {
     namespace 'izarleydev.com.organizze'
     compileSdk 32
 
+    configurations {
+        all {
+            exclude group: 'androidx.lifecycle', module: 'lifecycle-viewmodel-ktx'
+        }
+    }
+
     defaultConfig {
         applicationId "izarleydev.com.organizze"
         minSdk 21
@@ -51,4 +57,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
+
 }
