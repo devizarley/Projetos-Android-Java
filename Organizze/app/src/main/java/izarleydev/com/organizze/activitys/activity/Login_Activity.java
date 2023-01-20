@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -73,7 +74,7 @@ public class Login_Activity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-
+                    openActivityPrincipal();
                 }else {
 
                     String exception = "";
@@ -94,5 +95,9 @@ public class Login_Activity extends AppCompatActivity {
                 }
             }
         });
+    }
+    public void openActivityPrincipal (){
+        startActivity(new Intent(this, PrincipalActivity.class));
+        finish();
     }
 }
