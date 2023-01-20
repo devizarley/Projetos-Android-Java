@@ -1,19 +1,12 @@
-package izarleydev.com.organizze.activitys;
-
-import static izarleydev.com.organizze.R.layout.activity_cadastro;
-import static izarleydev.com.organizze.R.layout.activity_login;
-
-import androidx.appcompat.app.AppCompatActivity;
+package izarleydev.com.organizze.activitys.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.transition.Slide;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
-import com.heinrichreimersoftware.materialintro.app.SlideFragment;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 
 import izarleydev.com.organizze.R;
