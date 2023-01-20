@@ -45,33 +45,15 @@ public class MainActivity extends IntroActivity {
                 .background(R.color.white)
                 .fragment(R.layout.intro_cadastro)
                 .build());
-        /*button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Cadastro_Activity.class);
-                startActivity(intent);
-            }
-        });*/
-
-        //teste();
 
     }
+
     public void btCadastrar(View view) {
         startActivity(new Intent(this, Cadastro_Activity.class));
     }
     public void btEntrar(View view) {
         startActivity(new Intent(this, Login_Activity.class));
     }
-
-    /*public void teste (){
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Cadastro_Activity.class);
-                startActivity(intent);
-            }
-        });
-    }*/
 }
 
 

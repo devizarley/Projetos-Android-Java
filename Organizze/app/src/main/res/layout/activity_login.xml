@@ -16,7 +16,7 @@
         android:text="Acesse sua conta"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName8"
+        app:layout_constraintBottom_toTopOf="@+id/inputLoginEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName8"
+        android:id="@+id/inputLoginEmail"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -36,14 +36,14 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName9"
+        app:layout_constraintBottom_toTopOf="@+id/inputLoginSenha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName9"
+        android:id="@+id/inputLoginSenha"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -55,14 +55,14 @@
         android:hint="Senha"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLoginSubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName8" />
+        app:layout_constraintTop_toBottomOf="@+id/inputLoginEmail" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/buttonLoginSubmit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
@@ -72,5 +72,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName9" />
+        app:layout_constraintTop_toBottomOf="@+id/inputLoginSenha" />
 </androidx.constraintlayout.widget.ConstraintLayout>
