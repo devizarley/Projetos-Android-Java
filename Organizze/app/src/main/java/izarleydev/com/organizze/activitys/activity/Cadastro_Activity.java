@@ -78,6 +78,8 @@ public class Cadastro_Activity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
 
+                    finish();
+
                 }else {
 
                     String exception = "";
