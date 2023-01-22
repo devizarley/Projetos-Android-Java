@@ -25,8 +25,6 @@ public class MainActivity extends IntroActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
 
-        verificarUsuarioLogado();
-
         setButtonBackVisible(false);
         setButtonNextVisible(false);
 
@@ -65,6 +63,13 @@ public class MainActivity extends IntroActivity {
         if (auth.getCurrentUser() != null ){
             openActivityPrincipal();
         }
+    }
+
+
+    //utilizado para ao cadastrar, ir direto para o conteudo principal.
+    public void onStart(){
+        super.onStart();
+        verificarUsuarioLogado();
     }
 
     public void openActivityPrincipal (){
