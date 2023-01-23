@@ -10,48 +10,36 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.github.clans.fab.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import izarleydev.com.organizze.R;
 import izarleydev.com.organizze.databinding.ActivityPrincipalBinding;
 
 public class PrincipalActivity extends AppCompatActivity {
-
-    private AppBarConfiguration appBarConfiguration;
+    private FloatingActionButton fabDespesa;
+    private FloatingActionButton fabReceita;
     private ActivityPrincipalBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_principal);
 
-        binding = ActivityPrincipalBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        fabDespesa = findViewById(R.id.fab);
+        fabReceita = findViewById(R.id.fab2);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        fabDespesa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PrincipalActivity.this, Cadastro_Activity.class));
+            }
+        });
+        fabReceita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(PrincipalActivity.this, Login_Activity.class));
             }
         });
-        binding.fab2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_principal);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
-    public void adicionarDespesa (){
-
-    }
-    public void adicionarReceita (){
-
     }
 }
