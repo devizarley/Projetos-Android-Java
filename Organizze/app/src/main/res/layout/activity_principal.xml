@@ -72,6 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/add"
+            fab:fab_colorNormal="@color/colorPrimaryDespesa"
             fab:fab_label="Despesas"
             fab:fab_size="mini" />
         <com.github.clans.fab.FloatingActionButton
@@ -79,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/add"
-            color
+            fab:fab_colorNormal="@color/colorPrimaryRe"
             fab:fab_label="Receitas"
             fab:fab_size="mini" />
 
