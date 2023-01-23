@@ -1,5 +1,6 @@
 package izarleydev.com.organizze.activitys.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -33,6 +34,12 @@ public class PrincipalActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PrincipalActivity.this, Login_Activity.class));
+            }
+        });
+        binding.fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
