@@ -80,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/add"
-            fab:fab_colorNormal="@color/colorPrimaryRe"
+            fab:fab_colorNormal="@color/colorPrimaryReceita"
             fab:fab_label="Receitas"
             fab:fab_size="mini" />
 
