@@ -38,7 +38,7 @@ public class PrincipalActivity extends AppCompatActivity {
         fabReceita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PrincipalActivity.this, Login_Activity.class));
+                startActivity(new Intent(PrincipalActivity.this, FirstFragment.class));
             }
         });
     }

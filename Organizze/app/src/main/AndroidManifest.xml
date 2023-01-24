@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Organizze"
         tools:targetApi="31">
         <activity
+            android:name=".DespesasActivity"
+            android:exported="false" />
+        <activity
             android:name=".activitys.activity.PrincipalActivity"
             android:exported="false"
             android:label="@string/title_activity_principal"
