@@ -32,13 +32,13 @@ public class PrincipalActivity extends AppCompatActivity {
         fabDespesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PrincipalActivity.this, Cadastro_Activity.class));
+                startActivity(new Intent(PrincipalActivity.this, DespesasActivity.class));
             }
         });
         fabReceita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PrincipalActivity.this, FirstFragment.class));
+                startActivity(new Intent(PrincipalActivity.this, ReceitasActivity.class));
             }
         });
     }
