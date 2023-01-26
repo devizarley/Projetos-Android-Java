@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/editValor"
+            android:id="@+id/editValorD"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editCategoria"
+            android:id="@+id/editCategoriaD"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="Categoria" />
@@ -82,14 +82,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editDescricao"
+            android:id="@+id/editDescricaoD"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="Descrição" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabSalvar"
+        android:id="@+id/fabSalvarD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="68dp"

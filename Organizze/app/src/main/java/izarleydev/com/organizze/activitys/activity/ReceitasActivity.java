@@ -2,13 +2,13 @@ package izarleydev.com.organizze.activitys.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.github.clans.fab.FloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import izarleydev.com.organizze.R;
@@ -22,6 +22,7 @@ public class ReceitasActivity extends AppCompatActivity {
     private FloatingActionButton buttonSubmitReceita;
     private Usuario usuario;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +30,9 @@ public class ReceitasActivity extends AppCompatActivity {
 
         campoData = findViewById(R.id.editData);
         campoCategoria = findViewById(R.id.editCategoria);
-        campoDescricao = findViewById(R.id.editDescricao);
-        campoValor = findViewById(R.id.editValor);
-        buttonSubmitReceita = findViewById(R.id.fabSalvar);
+        campoDescricao = findViewById(R.id.editDescricaoR);
+        campoValor = findViewById(R.id.editValorR);
+        buttonSubmitReceita = findViewById(R.id.fabSalvarR);
 
         campoData.setText(DateCustom.dataAtual());
 

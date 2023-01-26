@@ -2,6 +2,7 @@ package izarleydev.com.organizze.activitys.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.EditText;
 
@@ -15,6 +16,7 @@ public class DespesasActivity extends AppCompatActivity {
     private TextInputEditText campoData, campoCategoria, campoDescricao;
     private EditText  campoValor;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +24,8 @@ public class DespesasActivity extends AppCompatActivity {
 
         campoData = findViewById(R.id.editData);
         campoCategoria = findViewById(R.id.editCategoria);
-        campoDescricao = findViewById(R.id.editDescricao);
-        campoValor = findViewById(R.id.editValor);
+        campoDescricao = findViewById(R.id.editDescricaoR);
+        campoValor = findViewById(R.id.editValorR);
 
         campoData.setText(DateCustom.dataAtual());
     }
