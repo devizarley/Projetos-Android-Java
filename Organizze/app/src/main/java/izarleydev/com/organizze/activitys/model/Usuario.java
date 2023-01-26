@@ -10,15 +10,28 @@ public class Usuario {
     private String email;
     private String senha;
     private String idUsuario;
+    private Double receitaTotal = 0.00;
+    private Double despesaTotal = 0.00;
 
     public Usuario() {
     }
-
     public void salvar(){
         DatabaseReference reference = ConfigFirebase.getFirebaseDatabase();
         reference.child("usuarios")
                 .child(this.idUsuario)
                 .setValue(this);
+    }
+    public Double getReceitaTotal() {
+        return receitaTotal;
+    }
+    public void setReceitaTotal(Double receitaTotal) {
+        this.receitaTotal = receitaTotal;
+    }
+    public Double getDespesaTotal() {
+        return despesaTotal;
+    }
+    public void setDespesaTotal(Double despesaTotal) {
+        this.despesaTotal = despesaTotal;
     }
     @Exclude
     public String getIdUsuario() {
