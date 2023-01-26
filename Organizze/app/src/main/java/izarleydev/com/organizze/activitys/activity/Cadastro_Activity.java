@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +17,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import izarleydev.com.organizze.R;
+import izarleydev.com.organizze.activitys.Helper.Base64Custom;
 import izarleydev.com.organizze.activitys.config.ConfigFirebase;
 import izarleydev.com.organizze.activitys.model.Usuario;
 
@@ -28,6 +35,7 @@ public class Cadastro_Activity extends AppCompatActivity {
     private EditText cInputName, cInputEmail, cInputSenha;
     private Button cButtonSubmit;
     private Usuario usuario;
+    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,7 @@ public class Cadastro_Activity extends AppCompatActivity {
         cButtonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String textname = cInputName.getText().toString();
                 String textemail = cInputEmail.getText().toString();
                 String textsenha = cInputSenha.getText().toString();
@@ -66,6 +75,9 @@ public class Cadastro_Activity extends AppCompatActivity {
                     Toast.makeText(Cadastro_Activity.this, "Preencha o campo de Nome.", Toast.LENGTH_SHORT).show();
                 }
 
+
+
+
             }
         });
     }
@@ -77,6 +89,10 @@ public class Cadastro_Activity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+
+                    String idUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+                    usuario.setIdUsuario(idUsuario);
+                    usuario.salvar();
 
                     finish();
 

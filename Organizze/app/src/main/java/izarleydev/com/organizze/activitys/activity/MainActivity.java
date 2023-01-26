@@ -48,7 +48,6 @@ public class MainActivity extends IntroActivity {
                 .background(R.color.white)
                 .fragment(R.layout.intro_cadastro)
                 .build());
-
     }
 
     public void btCadastrar(View view) {
