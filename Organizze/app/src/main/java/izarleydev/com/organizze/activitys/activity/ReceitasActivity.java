@@ -26,5 +26,7 @@ public class ReceitasActivity extends AppCompatActivity {
         campoValor = findViewById(R.id.editValor);
 
         campoData.setText(DateCustom.dataAtual());
+
+
     }
 }
