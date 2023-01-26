@@ -12,6 +12,8 @@ public class Usuario {
     private String idUsuario;
     private Double receitaTotal = 0.00;
     private Double despesaTotal = 0.00;
+    private String categoria;
+    private String descricao;
 
     public Usuario() {
     }
@@ -21,6 +23,23 @@ public class Usuario {
                 .child(this.idUsuario)
                 .setValue(this);
     }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public Double getReceitaTotal() {
         return receitaTotal;
     }
