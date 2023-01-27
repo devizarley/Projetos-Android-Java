@@ -44,7 +44,6 @@ public class DespesasActivity extends AppCompatActivity {
         campoValor = (EditText)findViewById(R.id.editValorD);
 
         campoData.setText(DateCustom.dataAtual());
-
         recuperarDespesaTotal();
 
     }
@@ -101,14 +100,15 @@ public class DespesasActivity extends AppCompatActivity {
     }
 
     public void recuperarDespesaTotal(){
-        String idUsuario = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        DatabaseReference usuarioRef = referenceDb.child("usuarios")
-                .child(idUsuario);
+        String emailUsuario = auth.getCurrentUser().getEmail();
+        String idUsuario = Base64Custom.codificarBase64(emailUsuario);
+        DatabaseReference usuarioRef = referenceDb.child("usuarios").child(idUsuario);
         usuarioRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Usuario usuario = snapshot.getValue(Usuario.class);
                 despesaTotal = usuario.getDespesaTotal();
+                // despesaTotal = usuario.getDespesaTotal();
             }
 
             @Override
@@ -118,7 +118,8 @@ public class DespesasActivity extends AppCompatActivity {
         });
     }
     public void atualizarDespesa(Double despesa){
-        String idUsuario = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
+        String emailUsuario = auth.getCurrentUser().getEmail();
+        String idUsuario = Base64Custom.codificarBase64(emailUsuario);
         DatabaseReference usuarioRef = referenceDb.child("usuarios")
                 .child(idUsuario);
 
