@@ -32,7 +32,6 @@ public class DespesasActivity extends AppCompatActivity {
     private FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
     private Double despesaTotal;
     private Double despesaGerada;
-    private Double despesaAtualizada;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -57,7 +56,7 @@ public class DespesasActivity extends AppCompatActivity {
             movimentacao = new Movimentacao();
 
             String data = campoData.getText().toString();
-            Double valorRecuperado = Double.parseDouble(campoValor.getText().toString())
+            Double valorRecuperado = Double.parseDouble(campoValor.getText().toString());
             movimentacao.setValor(valorRecuperado);
             movimentacao.setCategoria(campoCategoria.getText().toString());
             movimentacao.setDescricao(campoDescricao.getText().toString());
@@ -65,7 +64,8 @@ public class DespesasActivity extends AppCompatActivity {
             movimentacao.setTipo("d");
 
             despesaGerada = valorRecuperado;
-            despesaAtualizada = despesaTotal + despesaGerada;
+            Double despesaAtualizada = despesaTotal + despesaGerada;
+            atualizarDespesa(despesaAtualizada);
 
             movimentacao.salvar(data);
 
@@ -118,7 +118,13 @@ public class DespesasActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public void atualizarDespesa(Double despesa){
+        String idUsuario = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
+        DatabaseReference usuarioRef = referenceDb.child("usuarios")
+                .child(idUsuario);
 
+        usuarioRef.child("despesaTotal").setValue(despesa);
 
     }
 }
