@@ -22,7 +22,7 @@ public class Movimentacao {
         String idUsuario = Base64Custom.codificarBase64( auth.getCurrentUser().getEmail() );
         String mesAno = DateCustom.mesAnoDataEscolhida(dataEscolhida);
 
-        reference.child("Movimentacao")
+        reference.child("movimentacao")
                 .child(idUsuario)
                 .child(mesAno)
                 .push()

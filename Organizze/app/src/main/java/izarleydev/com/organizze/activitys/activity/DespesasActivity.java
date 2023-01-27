@@ -1,5 +1,6 @@
 package izarleydev.com.organizze.activitys.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -8,11 +9,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import izarleydev.com.organizze.R;
+import izarleydev.com.organizze.activitys.Helper.Base64Custom;
 import izarleydev.com.organizze.activitys.Helper.DateCustom;
+import izarleydev.com.organizze.activitys.config.ConfigFirebase;
 import izarleydev.com.organizze.activitys.model.Movimentacao;
 import izarleydev.com.organizze.activitys.model.Usuario;
 
@@ -21,6 +28,11 @@ public class DespesasActivity extends AppCompatActivity {
     private TextInputEditText campoData, campoCategoria, campoDescricao;
     private EditText  campoValor;
     private Movimentacao movimentacao;
+    private DatabaseReference referenceDb = ConfigFirebase.getFirebaseDatabase();
+    private FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
+    private Double despesaTotal;
+    private Double despesaGerada;
+    private Double despesaAtualizada;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -35,6 +47,8 @@ public class DespesasActivity extends AppCompatActivity {
 
         campoData.setText(DateCustom.dataAtual());
 
+        recuperarDespesaTotal();
+
     }
 
     public void salvarDespesa (View view){
@@ -43,11 +57,16 @@ public class DespesasActivity extends AppCompatActivity {
             movimentacao = new Movimentacao();
 
             String data = campoData.getText().toString();
-            movimentacao.setValor(Double.parseDouble(campoValor.getText().toString()));
+            Double valorRecuperado = Double.parseDouble(campoValor.getText().toString())
+            movimentacao.setValor(valorRecuperado);
             movimentacao.setCategoria(campoCategoria.getText().toString());
             movimentacao.setDescricao(campoDescricao.getText().toString());
             movimentacao.setData(data);
             movimentacao.setTipo("d");
+
+            despesaGerada = valorRecuperado;
+            despesaAtualizada = despesaTotal + despesaGerada;
+
             movimentacao.salvar(data);
 
         }
@@ -81,5 +100,25 @@ public class DespesasActivity extends AppCompatActivity {
             Toast.makeText(DespesasActivity.this, "Preencha o campo de Valor.", Toast.LENGTH_SHORT).show();
             return false;
         }
+    }
+
+    public void recuperarDespesaTotal(){
+        String idUsuario = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
+        DatabaseReference usuarioRef = referenceDb.child("usuarios")
+                .child(idUsuario);
+        usuarioRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Usuario usuario = snapshot.getValue(Usuario.class);
+                despesaTotal = usuario.getDespesaTotal();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
     }
 }
