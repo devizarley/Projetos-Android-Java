@@ -24,9 +24,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:ems="10"
+            android:hint="R$ 00,00"
             android:inputType="number"
             android:padding="30dp"
-            android:text="R$ 00,00"
             android:textAlignment="textEnd"
             android:textColor="#9E000000"
             android:textSize="34sp" />
