@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:padding="30dp"
             android:text="R$ 00,00"
             android:textAlignment="textEnd"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editData"
+            android:id="@+id/editDataD"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="Data" />
@@ -94,6 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="68dp"
         android:clickable="true"
+        android:onClick="salvarDespesa"
         app:backgroundTint="@color/colorAccentDespesa"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

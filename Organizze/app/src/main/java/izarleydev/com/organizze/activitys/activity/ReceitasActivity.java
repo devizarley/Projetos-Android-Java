@@ -28,15 +28,15 @@ public class ReceitasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receitas);
 
-        campoData = findViewById(R.id.editData);
-        campoCategoria = findViewById(R.id.editCategoria);
+        campoData = findViewById(R.id.editDataR);
+        campoCategoria = findViewById(R.id.editCategoriaR);
         campoDescricao = findViewById(R.id.editDescricaoR);
         campoValor = findViewById(R.id.editValorR);
         buttonSubmitReceita = findViewById(R.id.fabSalvarR);
 
         campoData.setText(DateCustom.dataAtual());
 
-        buttonSubmitReceita.setOnClickListener(new View.OnClickListener() {
+        /*buttonSubmitReceita.setOnClickListener(new View.OnClickListener() {
 
             String textValor = campoValor.getText().toString();
             String textCategoria = campoCategoria.getText().toString();
@@ -67,7 +67,7 @@ public class ReceitasActivity extends AppCompatActivity {
                     Toast.makeText(ReceitasActivity.this, "Preencha o campo de Valor.", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
 
 
 
