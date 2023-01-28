@@ -74,10 +74,6 @@ public class Cadastro_Activity extends AppCompatActivity {
                 }else {
                     Toast.makeText(Cadastro_Activity.this, "Preencha o campo de Nome.", Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
             }
         });
     }
