@@ -121,8 +121,6 @@ public class DespesasActivity extends AppCompatActivity {
         String idUsuario = Base64Custom.codificarBase64(emailUsuario);
         DatabaseReference usuarioRef = referenceDb.child("usuarios")
                 .child(idUsuario);
-
         usuarioRef.child("despesaTotal").setValue(despesa);
-
     }
 }
