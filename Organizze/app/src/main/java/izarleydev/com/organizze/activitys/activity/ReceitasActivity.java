@@ -35,41 +35,5 @@ public class ReceitasActivity extends AppCompatActivity {
         buttonSubmitReceita = findViewById(R.id.fabSalvarR);
 
         campoData.setText(DateCustom.dataAtual());
-
-        /*buttonSubmitReceita.setOnClickListener(new View.OnClickListener() {
-
-            String textValor = campoValor.getText().toString();
-            String textCategoria = campoCategoria.getText().toString();
-            String textData = campoData.getText().toString();
-            String textDescricao = campoDescricao.getText().toString();
-
-            @Override
-            public void onClick(View view) {
-                if ( !textValor.isEmpty() ) {
-                    if ( !textData.isEmpty() ) {
-                        if ( !textCategoria.isEmpty() ) {
-                            if ( !textDescricao.isEmpty() ) {
-
-                                usuario = new Usuario();
-                                usuario.setCategoria(textCategoria);
-                                usuario.setDescricao(textDescricao);
-
-                            }else {
-                                Toast.makeText(ReceitasActivity.this, "Preencha o campo de Descrição.", Toast.LENGTH_SHORT).show();
-                            }
-                        }else {
-                            Toast.makeText(ReceitasActivity.this, "Preencha o campo de Categoria.", Toast.LENGTH_SHORT).show();
-                        }
-                    }else {
-                        Toast.makeText(ReceitasActivity.this, "Preencha o campo de Data.", Toast.LENGTH_SHORT).show();
-                    }
-                }else {
-                    Toast.makeText(ReceitasActivity.this, "Preencha o campo de Valor.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });*/
-
-
-
     }
 }
