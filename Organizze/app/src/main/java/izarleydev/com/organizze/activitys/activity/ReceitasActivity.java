@@ -20,7 +20,6 @@ public class ReceitasActivity extends AppCompatActivity {
     private TextInputEditText campoData, campoCategoria, campoDescricao;
     private EditText campoValor;
     private FloatingActionButton buttonSubmitReceita;
-    private Usuario usuario;
 
     @SuppressLint("MissingInflatedId")
     @Override
