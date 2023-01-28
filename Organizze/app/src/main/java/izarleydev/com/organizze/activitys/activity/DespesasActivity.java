@@ -45,7 +45,6 @@ public class DespesasActivity extends AppCompatActivity {
 
         campoData.setText(DateCustom.dataAtual());
         recuperarDespesaTotal();
-
     }
 
     public void salvarDespesa (View view){
@@ -66,7 +65,6 @@ public class DespesasActivity extends AppCompatActivity {
 
             movimentacao.salvar(data);
             finish();
-
         }
     }
 
