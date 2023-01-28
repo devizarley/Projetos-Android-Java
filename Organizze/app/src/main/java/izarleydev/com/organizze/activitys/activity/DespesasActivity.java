@@ -38,10 +38,10 @@ public class DespesasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_despesas);
 
-        campoData = (TextInputEditText)findViewById(R.id.editDataD);
-        campoCategoria = (TextInputEditText)findViewById(R.id.editCategoriaD);
-        campoDescricao = (TextInputEditText)findViewById(R.id.editDescricaoD);
-        campoValor = (EditText)findViewById(R.id.editValorD);
+        campoData = findViewById(R.id.editDataD);
+        campoCategoria = findViewById(R.id.editCategoriaD);
+        campoDescricao = findViewById(R.id.editDescricaoD);
+        campoValor = findViewById(R.id.editValorD);
 
         campoData.setText(DateCustom.dataAtual());
         recuperarDespesaTotal();
@@ -65,6 +65,7 @@ public class DespesasActivity extends AppCompatActivity {
             atualizarDespesa(despesaAtualizada);
 
             movimentacao.salvar(data);
+            finish();
 
         }
     }
@@ -108,7 +109,6 @@ public class DespesasActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Usuario usuario = snapshot.getValue(Usuario.class);
                 despesaTotal = usuario.getDespesaTotal();
-                // despesaTotal = usuario.getDespesaTotal();
             }
 
             @Override
