@@ -66,7 +66,6 @@ public class DespesasActivity extends AppCompatActivity {
 
             movimentacao.salvar(data);
             //retornar a home ao fazer o registro
-            finish();
         }
     }
 
