@@ -65,6 +65,7 @@ public class DespesasActivity extends AppCompatActivity {
             atualizarDespesa(despesaAtualizada);
 
             movimentacao.salvar(data);
+            finish();
         }
     }
 
@@ -122,6 +123,6 @@ public class DespesasActivity extends AppCompatActivity {
                 .child(idUsuario);
 
         usuarioRef.child("despesaTotal").setValue(despesa);
-        
+
     }
 }
