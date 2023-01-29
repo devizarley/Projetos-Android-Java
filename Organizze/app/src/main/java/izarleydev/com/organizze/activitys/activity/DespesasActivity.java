@@ -122,5 +122,6 @@ public class DespesasActivity extends AppCompatActivity {
                 .child(idUsuario);
 
         usuarioRef.child("despesaTotal").setValue(despesa);
+        
     }
 }
