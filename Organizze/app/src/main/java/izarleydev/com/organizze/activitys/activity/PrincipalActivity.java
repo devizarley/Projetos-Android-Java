@@ -22,8 +22,6 @@ import izarleydev.com.organizze.databinding.ActivityPrincipalBinding;
 public class PrincipalActivity extends AppCompatActivity {
     private FloatingActionButton fabDespesa;
     private FloatingActionButton fabReceita;
-    private ActivityPrincipalBinding binding;
-    private Button buttonSignOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,16 +30,8 @@ public class PrincipalActivity extends AppCompatActivity {
 
         fabDespesa = findViewById(R.id.fab);
         fabReceita = findViewById(R.id.fab2);
-        buttonSignOut = findViewById(R.id.signOut);
 
         FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
-        buttonSignOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                auth.signOut();
-                finish();
-            }
-        });
 
         fabDespesa.setOnClickListener(new View.OnClickListener() {
             @Override
