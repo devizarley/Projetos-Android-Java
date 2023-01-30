@@ -25,9 +25,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:ems="10"
+            android:hint="R$ 00,00"
             android:inputType="textPersonName"
             android:padding="30dp"
-            android:text="R$ 00,00"
             android:textAlignment="textEnd"
             android:textColor="#9E000000"
             android:textSize="34sp" />
@@ -96,6 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="68dp"
         android:clickable="true"
+        android:onClick="salvarReceita"
         app:backgroundTint="@color/colorAccentReceita"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
