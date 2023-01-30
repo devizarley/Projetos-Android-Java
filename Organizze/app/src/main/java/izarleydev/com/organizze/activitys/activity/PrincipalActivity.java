@@ -52,7 +52,7 @@ public class PrincipalActivity extends AppCompatActivity {
         fabReceita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PrincipalActivity.this, ReceitasActivity.class));
+                startActivity(new Intent(PrincipalActivity.this, ReceitaActivity.class));
             }
         });
     }

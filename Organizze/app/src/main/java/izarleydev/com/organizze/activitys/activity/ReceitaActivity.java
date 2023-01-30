@@ -58,7 +58,7 @@ public class ReceitaActivity extends AppCompatActivity {
             movimentacao.setCategoria(campoCategoria.getText().toString());
             movimentacao.setDescricao(campoDescricao.getText().toString());
             movimentacao.setData(data);
-            movimentacao.setTipo("d");
+            movimentacao.setTipo("r");
 
             Double despesaAtualizada = receitaTotal + valorRecuperado;
             atualizarReceita(despesaAtualizada);
