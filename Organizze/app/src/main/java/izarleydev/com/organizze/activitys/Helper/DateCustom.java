@@ -12,7 +12,6 @@ public class DateCustom {
         String dataString = simpleDateFormat.format(date);
         return dataString;
     }
-
     public static String mesAnoDataEscolhida (String data) {
         String retornoData[] = data.split("/");
         String dia = retornoData[0];
