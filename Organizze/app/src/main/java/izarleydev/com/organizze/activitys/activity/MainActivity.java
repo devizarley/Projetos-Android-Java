@@ -61,7 +61,6 @@ public class MainActivity extends IntroActivity {
             openActivityPrincipal();
         }
     }
-    
     //utilizado para ao cadastrar, ir direto para o conteudo principal.
     public void onStart(){
         super.onStart();
