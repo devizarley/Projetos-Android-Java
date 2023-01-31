@@ -32,7 +32,6 @@ public class PrincipalActivity extends AppCompatActivity {
         fabReceita = findViewById(R.id.fab2);
 
         FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
-
         fabDespesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
