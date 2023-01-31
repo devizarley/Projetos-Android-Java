@@ -49,22 +49,19 @@ public class MainActivity extends IntroActivity {
                 .fragment(R.layout.intro_cadastro)
                 .build());
     }
-
     public void btCadastrar(View view) {
         startActivity(new Intent(this, Cadastro_Activity.class));
     }
     public void btEntrar(View view) {
         startActivity(new Intent(this, Login_Activity.class));
     }
-
     public void verificarUsuarioLogado () {
         auth = ConfigFirebase.getFirebaseAuth();
         if (auth.getCurrentUser() != null ){
             openActivityPrincipal();
         }
     }
-
-
+    
     //utilizado para ao cadastrar, ir direto para o conteudo principal.
     public void onStart(){
         super.onStart();
