@@ -59,9 +59,6 @@ public class Login_Activity extends AppCompatActivity {
                 }else {
                     Toast.makeText(Login_Activity.this, "Preencha o campo de Email.", Toast.LENGTH_SHORT).show();
                 }
-
-
-
             }
         });
     }
