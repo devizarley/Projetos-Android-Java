@@ -24,7 +24,6 @@ import izarleydev.com.organizze.activitys.model.Movimentacao;
 import izarleydev.com.organizze.activitys.model.Usuario;
 
 public class ReceitaActivity extends AppCompatActivity {
-
     private TextInputEditText campoData, campoCategoria, campoDescricao;
     private EditText campoValor;
     private Movimentacao movimentacao;
