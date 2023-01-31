@@ -47,7 +47,6 @@ public class DespesasActivity extends AppCompatActivity {
         campoData.setText(DateCustom.dataAtual());
         recuperarReceitaTotal();
     }
-
     public void salvarDespesa (View view){
 
         if (validarCamposDespesa()){
@@ -109,7 +108,6 @@ public class DespesasActivity extends AppCompatActivity {
                 Usuario usuario = snapshot.getValue(Usuario.class);
                 receitaTotal = usuario.getDespesaTotal();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
