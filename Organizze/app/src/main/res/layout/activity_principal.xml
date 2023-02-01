@@ -44,13 +44,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="234dp"
+        android:layout_height="256dp"
         android:orientation="vertical">
 
-        <CalendarView
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
-            android:layout_height="255dp" />
+            android:layout_height="wrap_content"
+            app:mcv_showOtherDates="all"
+            app:mcv_selectionColor="#00F"
+            />
     </LinearLayout>
 
     <LinearLayout
