@@ -8,19 +8,39 @@
     android:orientation="vertical"
     tools:context=".activitys.activity.PrincipalActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="201dp"
+        android:layout_height="224dp"
         android:background="@color/colorPrimary"
-        android:theme="@style/Theme.Organizze.AppBarOverlay">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="AAAAAAAAAAAAAAAAAAAAA"
-            android:textColor="#000000" />
-    </com.google.android.material.appbar.AppBarLayout>
+            android:text="Carregando..."
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="R$ 0"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saldo geral"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
