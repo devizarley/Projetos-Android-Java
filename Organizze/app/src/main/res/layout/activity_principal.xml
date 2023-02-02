@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/textMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Carregando..."
@@ -29,7 +29,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/textSaldo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="R$ 0"
@@ -67,6 +67,7 @@
             app:mcv_tileSize="50dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerMovimentos"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
