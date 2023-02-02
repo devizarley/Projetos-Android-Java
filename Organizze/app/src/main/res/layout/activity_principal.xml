@@ -65,6 +65,10 @@
             fab:mcv_showOtherDates="all"
             android:layout_height="50dp"
             app:mcv_tileSize="50dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <com.github.clans.fab.FloatingActionMenu
