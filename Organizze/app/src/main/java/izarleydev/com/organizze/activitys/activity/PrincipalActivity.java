@@ -15,6 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 
@@ -35,6 +36,8 @@ public class PrincipalActivity extends AppCompatActivity {
         fabDespesa = findViewById(R.id.fab);
         fabReceita = findViewById(R.id.fab2);
         calendarView = findViewById(R.id.calendarView);
+
+        configuraCalendarView();
 
         fabDespesa.setOnClickListener(new View.OnClickListener() {
             @Override
