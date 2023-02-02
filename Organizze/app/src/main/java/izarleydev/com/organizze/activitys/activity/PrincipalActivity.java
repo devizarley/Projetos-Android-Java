@@ -53,8 +53,6 @@ public class PrincipalActivity extends AppCompatActivity {
         });
     }
     public void configuraCalendarView() {
-        MonthArrayTitleFormatter monthArrayTitleFormatter;
         CharSequence meses[] = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
-        monthArrayTitleFormatter = new MonthArrayTitleFormatter(meses);
     }
 }
