@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activitys.activity.PrincipalActivity">
+    tools:context=".activitys.activity.PrincipalActivity"
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,12 +43,13 @@
     </LinearLayout>
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:baselineAligned="false"
-        fab:mcv_selectionColor="#00F"
-        fab:mcv_showOtherDates="all" />
+        android:layout_height="wrap_content"
+        app:mcv_showOtherDates="all"
+        app:mcv_selectionColor="#00F"
+        />
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/menu"
