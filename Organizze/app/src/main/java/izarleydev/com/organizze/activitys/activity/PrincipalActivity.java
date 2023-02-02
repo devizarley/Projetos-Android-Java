@@ -32,8 +32,8 @@ public class PrincipalActivity extends AppCompatActivity {
 
         fabDespesa = findViewById(R.id.fab);
         fabReceita = findViewById(R.id.fab2);
+        calendarView = findViewById(R.id.calendarView);
 
-        FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
         fabDespesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,5 +46,9 @@ public class PrincipalActivity extends AppCompatActivity {
                 startActivity(new Intent(PrincipalActivity.this, ReceitaActivity.class));
             }
         });
+    }
+    public void configuraCalendarView(){
+        CharSequence meses[] = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+        calendarView.setTi
     }
 }
