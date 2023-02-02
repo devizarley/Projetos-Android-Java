@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -22,6 +23,7 @@ import izarleydev.com.organizze.databinding.ActivityPrincipalBinding;
 public class PrincipalActivity extends AppCompatActivity {
     private FloatingActionButton fabDespesa;
     private FloatingActionButton fabReceita;
+    private CalendarView calendarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
