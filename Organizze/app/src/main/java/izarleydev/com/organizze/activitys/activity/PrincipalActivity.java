@@ -15,9 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
-import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 
 import izarleydev.com.organizze.R;
 import izarleydev.com.organizze.activitys.config.ConfigFirebase;
