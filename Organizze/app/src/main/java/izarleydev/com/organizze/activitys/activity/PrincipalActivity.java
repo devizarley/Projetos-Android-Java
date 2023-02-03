@@ -52,5 +52,8 @@ public class PrincipalActivity extends AppCompatActivity {
     }
     public void configuraCalendarView() {
         CharSequence meses[] = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+        calendarView.setTitleMonths(meses);
+
+        calendarView.
     }
 }
