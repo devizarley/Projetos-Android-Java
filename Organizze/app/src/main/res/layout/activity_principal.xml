@@ -49,7 +49,7 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="501dp"
+        android:layout_height="50dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
@@ -61,15 +61,14 @@
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             fab:mcv_selectionColor="#00F"
-            fab:mcv_showOtherDates="all"
-            android:layout_height="50dp"
-            app:mcv_tileSize="50dp"/>
+            fab:mcv_showOtherDates="all" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerMovimentos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="450dp" />
     </LinearLayout>
 
     <com.github.clans.fab.FloatingActionMenu
