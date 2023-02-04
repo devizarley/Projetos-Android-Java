@@ -97,7 +97,6 @@ public class DespesasActivity extends AppCompatActivity {
             return false;
         }
     }
-
     public void recuperarReceitaTotal(){
         String emailUsuario = auth.getCurrentUser().getEmail();
         String idUsuario = Base64Custom.codificarBase64(emailUsuario);
