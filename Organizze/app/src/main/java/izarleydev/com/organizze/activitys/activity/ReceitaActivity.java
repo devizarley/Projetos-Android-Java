@@ -119,6 +119,5 @@ public class ReceitaActivity extends AppCompatActivity {
                 .child(idUsuario);
 
         usuarioRef.child("receitaTotal").setValue(despesa);
-
     }
 }
