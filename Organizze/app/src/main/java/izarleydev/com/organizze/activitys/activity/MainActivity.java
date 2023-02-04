@@ -66,7 +66,6 @@ public class MainActivity extends IntroActivity {
         super.onStart();
         verificarUsuarioLogado();
     }
-
     public void openActivityPrincipal (){
         startActivity(new Intent(this, PrincipalActivity.class));
     }
