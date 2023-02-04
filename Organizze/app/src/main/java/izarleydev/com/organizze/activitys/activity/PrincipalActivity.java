@@ -43,7 +43,7 @@ public class PrincipalActivity extends AppCompatActivity {
         binding.toolbar.setTitle("");
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
-        
+
         fabDespesa = findViewById(R.id.fab);
         fabReceita = findViewById(R.id.fab2);
         calendarView = findViewById(R.id.calendarView);
@@ -63,13 +63,11 @@ public class PrincipalActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_principal, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
