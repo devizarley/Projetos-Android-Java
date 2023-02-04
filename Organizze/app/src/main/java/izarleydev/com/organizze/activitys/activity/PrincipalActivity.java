@@ -43,9 +43,7 @@ public class PrincipalActivity extends AppCompatActivity {
         binding.toolbar.setTitle("");
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
-
-
-
+        
         fabDespesa = findViewById(R.id.fab);
         fabReceita = findViewById(R.id.fab2);
         calendarView = findViewById(R.id.calendarView);
