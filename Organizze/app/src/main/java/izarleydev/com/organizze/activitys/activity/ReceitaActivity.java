@@ -106,7 +106,6 @@ public class ReceitaActivity extends AppCompatActivity {
                 Usuario usuario = snapshot.getValue(Usuario.class);
                 receitaTotal = usuario.getDespesaTotal();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
