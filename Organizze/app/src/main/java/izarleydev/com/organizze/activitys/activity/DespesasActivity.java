@@ -48,7 +48,6 @@ public class DespesasActivity extends AppCompatActivity {
         recuperarReceitaTotal();
     }
     public void salvarDespesa (View view){
-
         if (validarCamposDespesa()){
             movimentacao = new Movimentacao();
 
