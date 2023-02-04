@@ -25,7 +25,6 @@ import izarleydev.com.organizze.activitys.config.ConfigFirebase;
 import izarleydev.com.organizze.activitys.model.Usuario;
 
 public class Login_Activity extends AppCompatActivity {
-
     private EditText inputEmail, inputSenha;
     private Button buttonSubmit;
     private Usuario usuario;
