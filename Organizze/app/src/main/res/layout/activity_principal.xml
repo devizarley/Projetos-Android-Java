@@ -8,14 +8,36 @@
     android:orientation="vertical"
     tools:context=".activitys.activity.PrincipalActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:theme="@style/Theme.Organizze.AppBarOverlay"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/Theme.Organizze.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="224dp"
+        android:layout_width="0dp"
+        android:layout_height="146dp"
+        android:layout_marginTop="56dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -45,7 +67,6 @@
             android:textAlignment="center"
             android:textColor="#FFFFFF" />
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="0dp"

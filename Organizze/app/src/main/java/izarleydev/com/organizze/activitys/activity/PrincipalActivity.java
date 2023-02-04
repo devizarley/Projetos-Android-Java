@@ -2,10 +2,14 @@ package izarleydev.com.organizze.activitys.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.Toolbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -27,11 +31,20 @@ public class PrincipalActivity extends AppCompatActivity {
     private FloatingActionButton fabDespesa;
     private FloatingActionButton fabReceita;
     private MaterialCalendarView calendarView;
+    private ActivityPrincipalBinding binding;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+
+        binding = ActivityPrincipalBinding.inflate(getLayoutInflater());
+        binding.toolbar.setTitle("");
+        setContentView(binding.getRoot());
+        setSupportActionBar(binding.toolbar);
+
+
 
         fabDespesa = findViewById(R.id.fab);
         fabReceita = findViewById(R.id.fab2);
@@ -52,6 +65,26 @@ public class PrincipalActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_principal, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menuSair:
+                auth = ConfigFirebase.getFirebaseAuth();
+                auth.signOut();
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void configuraCalendarView() {
         CharSequence meses[] = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
         calendarView.setTitleMonths(meses);
