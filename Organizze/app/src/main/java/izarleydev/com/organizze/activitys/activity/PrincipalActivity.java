@@ -114,7 +114,6 @@ public class PrincipalActivity extends AppCompatActivity {
     }
 
     public void setarInfos(){
-
         String emailUsuario = auth.getCurrentUser().getEmail();
         String idUsuario = Base64Custom.codificarBase64(emailUsuario);
         DatabaseReference usuarioRef = referenceDb.child("usuarios").child(idUsuario);
@@ -133,7 +132,6 @@ public class PrincipalActivity extends AppCompatActivity {
                 textIntro.setText("Olá, " + usuario.getNome() + "!");
                 textSaldo.setText("R$ " + resultadoFormatado);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
