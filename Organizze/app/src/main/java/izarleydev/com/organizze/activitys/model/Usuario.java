@@ -14,6 +14,7 @@ public class Usuario {
     private Double despesaTotal = 0.00;
     private String categoria;
     private String descricao;
+    private Double saldoGeral;
 
     public Usuario() {
     }
@@ -22,6 +23,14 @@ public class Usuario {
         reference.child("usuarios")
                 .child(this.idUsuario)
                 .setValue(this);
+    }
+
+    public Double getSaldoGeral() {
+        return saldoGeral;
+    }
+
+    public void setSaldoGeral(Double saldoGeral) {
+        this.saldoGeral = saldoGeral;
     }
 
     public String getCategoria() {
@@ -78,4 +87,5 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
 }
