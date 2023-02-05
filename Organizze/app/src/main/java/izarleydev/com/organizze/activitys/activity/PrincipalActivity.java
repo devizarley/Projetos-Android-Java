@@ -22,7 +22,10 @@ import androidx.navigation.ui.NavigationUI;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
@@ -38,7 +41,7 @@ public class PrincipalActivity extends AppCompatActivity {
     private FloatingActionButton fabReceita;
     private MaterialCalendarView calendarView;
     private ActivityPrincipalBinding binding;
-    private FirebaseAuth auth;
+    private FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
     private TextView textIntro, textSaldo;
     private DatabaseReference referenceDb = ConfigFirebase.getFirebaseDatabase();
     private Double saldoTotal;
@@ -107,24 +110,22 @@ public class PrincipalActivity extends AppCompatActivity {
     }
 
     public void setarInfos(){
-        auth = ConfigFirebase.getFirebaseAuth();
-        Usuario usuario = new Usuario();
-        Double despesaTotal = usuario.getDespesaTotal();
-        Double receitaTotal = usuario.getReceitaTotal();
-        saldoTotal = usuario.getSaldoGeral();
 
-        if (despesaTotal < receitaTotal) {
-            saldoTotal = despesaTotal - receitaTotal;
-            return;
-        }else {
-            Toast.makeText(this, "NÃO FOI POSSIVEL", Toast.LENGTH_SHORT).show();
-        }
-
-        saldoTotal = usuario.setSaldoGeral();
         String emailUsuario = auth.getCurrentUser().getEmail();
         String idUsuario = Base64Custom.codificarBase64(emailUsuario);
-        DatabaseReference usuarioRef = referenceDb.child("usuarios")
-                .child(idUsuario);
-        usuarioRef.child("saldoTotal").setValue(saldoTotal);
+        DatabaseReference usuarioRef = referenceDb.child("usuarios").child(idUsuario);
+        usuarioRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Usuario usuario = snapshot.getValue(Usuario.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        })
+
+        textIntro.setText("Olá, "+ usuario.getNome());
     }
 }
