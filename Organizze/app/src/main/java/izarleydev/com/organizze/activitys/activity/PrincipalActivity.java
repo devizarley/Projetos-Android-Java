@@ -92,7 +92,6 @@ public class PrincipalActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.menuSair:
-                auth = ConfigFirebase.getFirebaseAuth();
                 auth.signOut();
                 startActivity(new Intent(this, MainActivity.class));
                 finish();
