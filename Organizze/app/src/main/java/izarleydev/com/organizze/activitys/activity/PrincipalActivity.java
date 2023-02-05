@@ -30,6 +30,8 @@ import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
+import java.text.DecimalFormat;
+
 import izarleydev.com.organizze.R;
 import izarleydev.com.organizze.activitys.Helper.Base64Custom;
 import izarleydev.com.organizze.activitys.config.ConfigFirebase;
@@ -44,7 +46,9 @@ public class PrincipalActivity extends AppCompatActivity {
     private FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
     private TextView textIntro, textSaldo;
     private DatabaseReference referenceDb = ConfigFirebase.getFirebaseDatabase();
-    private Double saldoTotal;
+    private Double saldoTotal = 0.0;
+    private Double receitaTotal = 0.0;
+    private Double despesaTotal = 0.0;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -118,14 +122,22 @@ public class PrincipalActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Usuario usuario = snapshot.getValue(Usuario.class);
+
+                despesaTotal = usuario.getDespesaTotal();
+                receitaTotal = usuario.getReceitaTotal();
+                saldoTotal =  receitaTotal - despesaTotal;
+
+                DecimalFormat decimalFormat = new DecimalFormat("0.##");
+                String resultadoFormatado = decimalFormat.format(saldoTotal);
+
+                textIntro.setText("Olá " + usuario.getNome()"!");
+                textSaldo.setText("R$ " + resultadoFormatado);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        })
-
-        textIntro.setText("Olá, "+ usuario.getNome());
+        });
     }
 }
