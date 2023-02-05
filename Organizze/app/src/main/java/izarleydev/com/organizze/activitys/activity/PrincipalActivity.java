@@ -130,7 +130,7 @@ public class PrincipalActivity extends AppCompatActivity {
                 DecimalFormat decimalFormat = new DecimalFormat("0.##");
                 String resultadoFormatado = decimalFormat.format(saldoTotal);
 
-                textIntro.setText("Olá " + usuario.getNome() + "!");
+                textIntro.setText("Olá, " + usuario.getNome() + "!");
                 textSaldo.setText("R$ " + resultadoFormatado);
             }
 
