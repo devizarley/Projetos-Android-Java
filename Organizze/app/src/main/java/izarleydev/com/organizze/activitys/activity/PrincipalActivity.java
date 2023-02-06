@@ -18,6 +18,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -51,6 +53,7 @@ public class PrincipalActivity extends AppCompatActivity {
     private Double saldoTotal = 0.0;
     private Double receitaTotal = 0.0;
     private Double despesaTotal = 0.0;
+    private RecyclerView recyclerView;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -68,8 +71,17 @@ public class PrincipalActivity extends AppCompatActivity {
         calendarView = findViewById(R.id.calendarView);
         textIntro = findViewById(R.id.textIntro);
         textSaldo = findViewById(R.id.textSaldo);
+        recyclerView = findViewById(R.id.recyclerMovimentos);
 
         configuraCalendarView();
+
+        //Configurar adapter
+
+        //Configurar RecyclerView
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
 
 
         fabDespesa.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +103,6 @@ public class PrincipalActivity extends AppCompatActivity {
         super.onStart();
         setarInfos();
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_principal, menu);
