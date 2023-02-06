@@ -33,10 +33,14 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import izarleydev.com.organizze.R;
 import izarleydev.com.organizze.activitys.Helper.Base64Custom;
+import izarleydev.com.organizze.activitys.adapter.AdapterMovimentacao;
 import izarleydev.com.organizze.activitys.config.ConfigFirebase;
+import izarleydev.com.organizze.activitys.model.Movimentacao;
 import izarleydev.com.organizze.activitys.model.Usuario;
 import izarleydev.com.organizze.databinding.ActivityPrincipalBinding;
 
@@ -54,6 +58,9 @@ public class PrincipalActivity extends AppCompatActivity {
     private Double receitaTotal = 0.0;
     private Double despesaTotal = 0.0;
     private RecyclerView recyclerView;
+    private AdapterMovimentacao adapterMovimentacao;
+    private List<Movimentacao> movimentacoes = new ArrayList<>();
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -76,11 +83,13 @@ public class PrincipalActivity extends AppCompatActivity {
         configuraCalendarView();
 
         //Configurar adapter
+        adapterMovimentacao = new AdapterMovimentacao(movimentacoes, this);
 
         //Configurar RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapterMovimentacao);
 
 
 
