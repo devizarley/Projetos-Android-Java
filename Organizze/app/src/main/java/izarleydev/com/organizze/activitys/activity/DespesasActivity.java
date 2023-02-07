@@ -31,7 +31,7 @@ public class DespesasActivity extends AppCompatActivity {
     private Movimentacao movimentacao;
     private DatabaseReference referenceDb = ConfigFirebase.getFirebaseDatabase();
     private FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
-    private Double receitaTotal;
+    private Double despesaTotal;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -59,7 +59,7 @@ public class DespesasActivity extends AppCompatActivity {
             movimentacao.setData(data);
             movimentacao.setTipo("d");
 
-            Double despesaAtualizada = receitaTotal + valorRecuperado;
+            Double despesaAtualizada = despesaTotal + valorRecuperado;
             atualizarDespesa(despesaAtualizada);
 
             movimentacao.salvar(data);
@@ -104,7 +104,7 @@ public class DespesasActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Usuario usuario = snapshot.getValue(Usuario.class);
-                receitaTotal = usuario.getDespesaTotal();
+                despesaTotal = usuario.getDespesaTotal();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
