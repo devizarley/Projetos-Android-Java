@@ -43,6 +43,7 @@ public class ReceitaActivity extends AppCompatActivity {
         campoValor = findViewById(R.id.editValorR);
 
         campoData.setText(DateCustom.dataAtual());
+        auth.signOut();
 
         recuperarReceitaTotal();
     }
@@ -59,8 +60,8 @@ public class ReceitaActivity extends AppCompatActivity {
             movimentacao.setData(data);
             movimentacao.setTipo("r");
 
-            Double despesaAtualizada = receitaTotal + valorRecuperado;
-            atualizarReceita(despesaAtualizada);
+            Double receitaAtualizada = receitaTotal + valorRecuperado;
+            atualizarReceita(receitaAtualizada);
 
             movimentacao.salvar(data);
             finish();
@@ -104,7 +105,7 @@ public class ReceitaActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Usuario usuario = snapshot.getValue(Usuario.class);
-                receitaTotal = usuario.getDespesaTotal();
+                receitaTotal = usuario.getReceitaTotal();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -112,12 +113,12 @@ public class ReceitaActivity extends AppCompatActivity {
             }
         });
     }
-    public void atualizarReceita(Double despesa){
+    public void atualizarReceita(Double receita){
         String emailUsuario = auth.getCurrentUser().getEmail();
         String idUsuario = Base64Custom.codificarBase64(emailUsuario);
         DatabaseReference usuarioRef = referenceDb.child("usuarios")
                 .child(idUsuario);
 
-        usuarioRef.child("receitaTotal").setValue(despesa);
+        usuarioRef.child("receitaTotal").setValue(receita);
     }
 }
