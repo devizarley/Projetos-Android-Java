@@ -166,6 +166,10 @@ public class PrincipalActivity extends AppCompatActivity {
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
                 String mesSelecionado = String.format("%02d", (date.getMonth() + 1));
                 mesAnoSelecionado = String.valueOf(mesSelecionado + "" + date.getYear());
+
+
+                movimentacaoRef.removeEventListener(valueEventListenerMovimentacoes);
+                recuperarMovimentacoes();
             }
         });
     }
