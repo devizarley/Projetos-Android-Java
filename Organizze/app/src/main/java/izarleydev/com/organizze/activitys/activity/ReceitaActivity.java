@@ -43,7 +43,6 @@ public class ReceitaActivity extends AppCompatActivity {
         campoValor = findViewById(R.id.editValorR);
 
         campoData.setText(DateCustom.dataAtual());
-        auth.signOut();
 
         recuperarReceitaTotal();
     }
