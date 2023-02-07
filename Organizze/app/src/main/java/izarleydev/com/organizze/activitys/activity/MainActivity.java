@@ -15,7 +15,7 @@ import izarleydev.com.organizze.activitys.config.ConfigFirebase;
 
 public class MainActivity extends IntroActivity {
 
-    private FirebaseAuth auth;
+    private FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
 
     Button button;
     TextView texto;
@@ -49,6 +49,7 @@ public class MainActivity extends IntroActivity {
                 .fragment(R.layout.intro_cadastro)
                 .build());
     }
+
     public void btCadastrar(View view) {
         startActivity(new Intent(this, Cadastro_Activity.class));
     }
