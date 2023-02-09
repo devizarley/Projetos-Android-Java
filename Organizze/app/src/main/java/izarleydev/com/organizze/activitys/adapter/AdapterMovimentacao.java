@@ -49,7 +49,6 @@ public class AdapterMovimentacao extends RecyclerView.Adapter<AdapterMovimentaca
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-
         TextView titulo, valor, categoria;
 
         public MyViewHolder(View itemView) {
