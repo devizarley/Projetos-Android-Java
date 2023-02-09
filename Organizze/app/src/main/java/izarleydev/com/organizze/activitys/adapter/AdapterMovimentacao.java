@@ -17,7 +17,6 @@ public class AdapterMovimentacao extends RecyclerView.Adapter<AdapterMovimentaca
 
     List<Movimentacao> movimentacoes;
     Context context;
-
     public AdapterMovimentacao(List<Movimentacao> movimentacoes, Context context) {
         this.movimentacoes = movimentacoes;
         this.context = context;
@@ -28,7 +27,6 @@ public class AdapterMovimentacao extends RecyclerView.Adapter<AdapterMovimentaca
         View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_movimentacao, parent, false);
         return new MyViewHolder(itemLista);
     }
-
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
@@ -43,8 +41,7 @@ public class AdapterMovimentacao extends RecyclerView.Adapter<AdapterMovimentaca
             holder.valor.setText("-" + movimentacao.getValor());
         }
     }
-
-
+    
     @Override
     public int getItemCount() {
         return movimentacoes.size();
