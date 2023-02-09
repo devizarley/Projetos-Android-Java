@@ -11,13 +11,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="54dp"
-        android:layout_marginBottom="252dp"
+        android:layout_marginBottom="308dp"
         android:background="#00dbe9"
         android:onClick="btCadastrar"
         android:text="CADASTRE-SE"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
