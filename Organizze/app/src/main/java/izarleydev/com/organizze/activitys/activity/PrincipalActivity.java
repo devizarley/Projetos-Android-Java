@@ -192,7 +192,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
                     Movimentacao movimentacao = dados.getValue(Movimentacao.class);
                     movimentacao.setKey(dados.getKey());
-                    
+
                     movimentacoes.add(movimentacao);
 
                 }
@@ -239,6 +239,13 @@ public class PrincipalActivity extends AppCompatActivity {
                 int position = viewHolder.getAdapterPosition();
                 movimentacao = movimentacoes.get(position);
 
+                String emailUsuario = auth.getCurrentUser().getEmail();
+                String idUsuario = Base64Custom.codificarBase64(emailUsuario);
+                movimentacaoRef = referenceDb.child("movimentacao")
+                        .child(idUsuario)
+                        .child(mesAnoSelecionado);
+                movimentacaoRef.child(movimentacao.getKey()).removeValue();
+                adapterMovimentacao.notifyItemRemoved(position);
             }
         });
         alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
