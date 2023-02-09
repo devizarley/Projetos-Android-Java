@@ -246,18 +246,34 @@ public class PrincipalActivity extends AppCompatActivity {
                         .child(mesAnoSelecionado);
                 movimentacaoRef.child(movimentacao.getKey()).removeValue();
                 adapterMovimentacao.notifyItemRemoved(position);
+                atualizarSaldo();
             }
         });
         alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(PrincipalActivity.this,
-                        "Cancelado",
-                        Toast.LENGTH_SHORT).show();
+                adapterMovimentacao.notifyDataSetChanged();
             }
         });
         AlertDialog alert = alertDialog.create();
         alert.show();
+    }
+    public void atualizarSaldo(){
+        String emailUsuario = auth.getCurrentUser().getEmail();
+        String idUsuario = Base64Custom.codificarBase64(emailUsuario);
+        usuarioRef = referenceDb.child("usuarios").child(idUsuario);
+
+        if(movimentacao.getTipo().equals("r")){
+            receitaTotal = receitaTotal - movimentacao.getValor();
+            usuarioRef.child("receitaTotal").setValue(receitaTotal);
+        }
+
+        if(movimentacao.getTipo().equals("d")){
+
+            despesaTotal = despesaTotal - movimentacao.getValor();
+            usuarioRef.child("despesaTotal").setValue(despesaTotal);
+
+        }
     }
     @Override
     protected void onStart() {
