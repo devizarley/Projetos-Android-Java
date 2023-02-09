@@ -58,6 +58,5 @@ public class AdapterMovimentacao extends RecyclerView.Adapter<AdapterMovimentaca
             valor = itemView.findViewById(R.id.textAdapterValor);
             categoria = itemView.findViewById(R.id.textAdapterCategoria);
         }
-
     }
 }
