@@ -1,6 +1,7 @@
 package izarleydev.com.organizze.activitys.activity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -63,6 +65,7 @@ public class PrincipalActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterMovimentacao adapterMovimentacao;
     private List<Movimentacao> movimentacoes = new ArrayList<>();
+    private Movimentacao movimentacao;
     private DatabaseReference movimentacaoRef;
     private String mesAnoSelecionado;
 
@@ -186,7 +189,10 @@ public class PrincipalActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 movimentacoes.clear();
                 for (DataSnapshot dados: snapshot.getChildren()){
+
                     Movimentacao movimentacao = dados.getValue(Movimentacao.class);
+                    movimentacao.setKey(dados.getKey());
+                    
                     movimentacoes.add(movimentacao);
 
                 }
@@ -215,10 +221,36 @@ public class PrincipalActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                Log.i("swipe", "Item foi arrastado");
+                 excluirMovimentacao(viewHolder);
             }
         };
         new ItemTouchHelper(itemTouch).attachToRecyclerView(recyclerView);
+    }
+    public void excluirMovimentacao(RecyclerView.ViewHolder viewHolder){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+
+        alertDialog.setTitle("Excluir movimentação da Conta");
+        alertDialog.setMessage("Você tem certeza que deseja realmente excluir essa movimentação?");
+        alertDialog.setCancelable(false);
+
+        alertDialog.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                int position = viewHolder.getAdapterPosition();
+                movimentacao = movimentacoes.get(position);
+
+            }
+        });
+        alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(PrincipalActivity.this,
+                        "Cancelado",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        AlertDialog alert = alertDialog.create();
+        alert.show();
     }
     @Override
     protected void onStart() {
