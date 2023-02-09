@@ -60,5 +60,4 @@ public class AdapterMovimentacao extends RecyclerView.Adapter<AdapterMovimentaca
         }
 
     }
-
 }
