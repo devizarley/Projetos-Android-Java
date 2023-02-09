@@ -19,6 +19,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -85,6 +86,7 @@ public class PrincipalActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerMovimentos);
 
         configuraCalendarView();
+        swipe();
 
         //Configurar adapter
         adapterMovimentacao = new AdapterMovimentacao(movimentacoes, this);
@@ -196,6 +198,24 @@ public class PrincipalActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public void swipe(){
+        ItemTouchHelper.Callback itemTouch = new ItemTouchHelper.Callback() {
+            @Override
+            public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
+                return 0;
+            }
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+            }
+        };
     }
     @Override
     protected void onStart() {
