@@ -45,7 +45,7 @@ public class DespesasActivity extends AppCompatActivity {
         campoValor = findViewById(R.id.editValorD);
 
         campoData.setText(DateCustom.dataAtual());
-        recuperarReceitaTotal();
+        recuperarDespesaTotal();
     }
     public void salvarDespesa (View view){
         if (validarCamposDespesa()){
@@ -96,7 +96,7 @@ public class DespesasActivity extends AppCompatActivity {
             return false;
         }
     }
-    public void recuperarReceitaTotal(){
+    public void recuperarDespesaTotal(){
         String emailUsuario = auth.getCurrentUser().getEmail();
         String idUsuario = Base64Custom.codificarBase64(emailUsuario);
         DatabaseReference usuarioRef = referenceDb.child("usuarios").child(idUsuario);
