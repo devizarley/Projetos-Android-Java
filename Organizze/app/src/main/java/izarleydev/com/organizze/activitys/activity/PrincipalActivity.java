@@ -269,7 +269,6 @@ public class PrincipalActivity extends AppCompatActivity {
         }
 
         if(movimentacao.getTipo().equals("d")){
-
             despesaTotal = despesaTotal - movimentacao.getValor();
             usuarioRef.child("despesaTotal").setValue(despesaTotal);
 
