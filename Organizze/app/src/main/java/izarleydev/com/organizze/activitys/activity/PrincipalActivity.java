@@ -198,7 +198,6 @@ public class PrincipalActivity extends AppCompatActivity {
                 }
                 adapterMovimentacao.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
