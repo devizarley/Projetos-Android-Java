@@ -22,7 +22,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputEmail"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:hint="Digite seu email:" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -40,7 +40,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputSenha"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="match_parent"
             android:hint="Digite sua senha:" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,7 +58,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputSenhaC"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:hint="Confirme sua senha:" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,7 +66,7 @@
         android:id="@+id/imageView3"
         android:layout_width="183dp"
         android:layout_height="120dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="172dp"
         android:background="#00AA2828"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
