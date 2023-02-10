@@ -10,9 +10,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.core.view.View;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import izarleydev.com.whatsapp.R;
 
@@ -22,7 +22,7 @@ public class Cadastro extends AppCompatActivity {
     TextInputEditText inputEmail;
     TextInputEditText inputSenha;
     TextInputEditText inputSenhaC;
-    private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+    private DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     private FirebaseAuth usuario = FirebaseAuth.getInstance();
 
 
