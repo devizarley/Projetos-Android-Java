@@ -81,7 +81,7 @@
         android:background="#56096A63"
         android:backgroundTint="#096A63"
         android:onClick="buttonCadastro"
-        android:text="Button"
+        android:text="Cadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
