@@ -20,10 +20,10 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputEmail"
+            android:id="@+id/inputName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Digite seu email:" />
+            android:hint="Digite seu nome:" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -38,10 +38,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputSenha"
+            android:id="@+id/inputEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Digite sua senha:" />
+            android:hint="Digite seu email:" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -56,10 +56,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputSenhaC"
+            android:id="@+id/inputSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Confirme sua senha:" />
+            android:hint="Digite sua senha:" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
