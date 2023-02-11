@@ -1,7 +1,6 @@
 package izarleydev.com.whatsapp.Activitys.activitys;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -35,8 +34,8 @@ public class Cadastro extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
         inputName = findViewById(R.id.inputName);
-        inputEmail = findViewById(R.id.inputEmail);
-        inputSenha = findViewById(R.id.inputSenha);
+        inputEmail = findViewById(R.id.inputLoginEmail);
+        inputSenha = findViewById(R.id.inputLoginSenha);
 
     }
 

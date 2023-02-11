@@ -13,7 +13,7 @@
         android:theme="@style/Theme.WhatsApp"
         tools:targetApi="31">
         <activity
-            android:name=".Login"
+            android:name=".Activitys.activitys.Login"
             android:exported="false" />
         <activity
             android:name=".Activitys.activitys.Cadastro"
