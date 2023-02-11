@@ -3,6 +3,7 @@ package izarleydev.com.whatsapp.Activitys.activitys;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -14,6 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.core.view.View;
 
+import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
 import izarleydev.com.whatsapp.R;
 
 public class Cadastro extends AppCompatActivity {
@@ -22,8 +24,8 @@ public class Cadastro extends AppCompatActivity {
     TextInputEditText inputEmail;
     TextInputEditText inputSenha;
     TextInputEditText inputSenhaC;
-    private DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-    private FirebaseAuth usuario = FirebaseAuth.getInstance();
+    private DatabaseReference ref = ConfigFirebase.getFirebaseDatabase();
+    private FirebaseAuth auth = ConfigFirebase.getAuth();
 
 
 
@@ -40,7 +42,18 @@ public class Cadastro extends AppCompatActivity {
     }
     public void buttonCadastro (View view) {
 
-        usuario.createUserWithEmailAndPassword(inputEmail.toString(), inputSenha.toString())
+        String valueInputEmail = inputEmail.getText().toString();
+        String valueInputSenha = inputSenha.getText().toString();
+        String valueInputSenhaC= inputSenhaC.getText().toString();
+
+        if (valueInputEmail.isEmpty()){
+
+        }else {
+            
+        }
+
+
+        auth.createUserWithEmailAndPassword(valueInputEmail, valueInputSenha)
                         .addOnCompleteListener(Cadastro.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
