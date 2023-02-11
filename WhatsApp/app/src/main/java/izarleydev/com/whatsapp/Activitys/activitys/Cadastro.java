@@ -1,6 +1,7 @@
 package izarleydev.com.whatsapp.Activitys.activitys;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -45,7 +46,7 @@ public class Cadastro extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
 
-                    
+                    finish();
 
                 }else {
                     String excecao = "";
@@ -61,6 +62,7 @@ public class Cadastro extends AppCompatActivity {
                         excecao = "Erro ao cadastrar usuário:" + e.getMessage();
                         e.printStackTrace();
                     }
+                    Toast.makeText(Cadastro.this, excecao, Toast.LENGTH_SHORT).show();
                 }
             }
         });

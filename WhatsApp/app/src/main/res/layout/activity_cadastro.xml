@@ -41,7 +41,8 @@
             android:id="@+id/inputEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Digite seu email:" />
+            android:hint="Digite seu email:"
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -59,7 +60,8 @@
             android:id="@+id/inputSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Digite sua senha:" />
+            android:hint="Digite sua senha:"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
