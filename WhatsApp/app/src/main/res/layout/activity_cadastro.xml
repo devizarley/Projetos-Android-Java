@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#096A63"
-    tools:context=".Activitys.activitys.Cadastro">
+    tools:context=".Activitys.activitys.aaaa">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout4"
@@ -74,13 +74,13 @@
         app:srcCompat="@drawable/usuario" />
 
     <Button
-        android:id="@+id/LOGIN3"
+        android:id="@+id/cadastro"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="#56096A63"
         android:backgroundTint="#096A63"
-        android:onClick="buttonCadastro"
+        android:onClick="validarCadastro"
         android:text="Cadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.475"

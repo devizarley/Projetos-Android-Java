@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnavegar (View view) {
-        startActivity(new Intent(MainActivity.this, Cadastro.class));
+        startActivity(new Intent(MainActivity.this, aaaa.class));
     }
 
 }
