@@ -5,13 +5,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.DatabaseReference;
 
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
+import izarleydev.com.whatsapp.Activitys.model.Usuario;
 import izarleydev.com.whatsapp.R;
 
 public class Cadastro extends AppCompatActivity {
@@ -31,7 +39,31 @@ public class Cadastro extends AppCompatActivity {
 
     }
 
-    public void cadastrarUsuario (View view) {
+    public void cadastrarUsuario (Usuario usuario) {
+        auth.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+
+                    
+
+                }else {
+                    String excecao = "";
+                    try {
+                        throw task.getException();
+                    }catch (FirebaseAuthWeakPasswordException e){
+                        excecao = "Digite uma senha mais forte!";
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
+                        excecao = "Por favor, digite um e-mail válido";
+                    }catch (FirebaseAuthUserCollisionException e ){
+                        excecao = "Esta conta já foi cadastrada";
+                    }catch (Exception e ){
+                        excecao = "Erro ao cadastrar usuário:" + e.getMessage();
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
 
     }
     public void validarCadastro (View view) {
@@ -44,7 +76,12 @@ public class Cadastro extends AppCompatActivity {
             if (!valueinputEmail.isEmpty()){
                 if (!valueinputSenha.isEmpty()){
 
+                    Usuario usuario = new Usuario();
+                    usuario.setNome(valueinputName);
+                    usuario.setEmail(valueinputEmail);
+                    usuario.setSenha(valueinputSenha);
 
+                    cadastrarUsuario(usuario);
 
                 }else {
                     Toast.makeText(this, "Preencha a senha!", Toast.LENGTH_SHORT).show();
