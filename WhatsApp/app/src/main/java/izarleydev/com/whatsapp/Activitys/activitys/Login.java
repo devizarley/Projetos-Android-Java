@@ -13,6 +13,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
 import izarleydev.com.whatsapp.Activitys.model.Usuario;
@@ -41,7 +43,18 @@ public class Login extends AppCompatActivity {
                     startActivity(new Intent(Login.this, MainActivity.class));
 
                 }else {
-                    Toast.makeText(Login.this, "Erro ao autenticar usuario!", Toast.LENGTH_SHORT).show();
+                    String excecao = "";
+                    try {
+                        throw task.getException();
+                    }catch (FirebaseAuthInvalidUserException e){
+                        excecao = "Usuario não está cadastrado.";
+                    }catch (FirebaseAuthInvalidCredentialsException e) {
+                        excecao = "E-mail e senha não correspondem à uma conta cadastrada.";
+                    }catch (Exception e) {
+                        excecao = "Erro ao logar usuário" + e.getMessage();
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(Login.this, excecao, Toast.LENGTH_SHORT).show();
                 }
             }
         });
