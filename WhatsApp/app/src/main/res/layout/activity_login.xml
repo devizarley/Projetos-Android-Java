@@ -67,7 +67,7 @@
         android:layout_marginEnd="32dp"
         android:background="#5C096A63"
         android:backgroundTint="#115B54"
-        android:onClick="loginUser"
+        android:onClick="validateFildUser"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
