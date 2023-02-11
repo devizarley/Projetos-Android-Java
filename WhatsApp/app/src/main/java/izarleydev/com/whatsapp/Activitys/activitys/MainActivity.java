@@ -1,4 +1,4 @@
-package izarleydev.com.whatsapp.Activitys;
+package izarleydev.com.whatsapp.Activitys.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import com.google.android.material.textfield.TextInputEditText;
 
 import izarleydev.com.whatsapp.R;
 

@@ -13,10 +13,10 @@
         android:theme="@style/Theme.WhatsApp"
         tools:targetApi="31">
         <activity
-            android:name=".Activitys.Cadastro"
+            android:name=".Activitys.activitys.Cadastro"
             android:exported="false" />
         <activity
-            android:name=".Activitys.MainActivity"
+            android:name=".Activitys.activitys.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

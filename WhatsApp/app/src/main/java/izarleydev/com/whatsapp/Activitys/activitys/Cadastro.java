@@ -1,4 +1,4 @@
-package izarleydev.com.whatsapp.Activitys;
+package izarleydev.com.whatsapp.Activitys.activitys;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
