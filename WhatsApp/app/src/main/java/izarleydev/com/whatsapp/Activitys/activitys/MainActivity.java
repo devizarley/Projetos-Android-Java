@@ -17,6 +17,5 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("WhatsApp");
         setSupportActionBar(toolbar);
 
-        
     }
 }
