@@ -16,5 +16,7 @@ public class Configuracoes extends AppCompatActivity {
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Configurações");
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
