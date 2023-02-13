@@ -74,6 +74,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:text="Esse não é o seu nome de usuário nem sua senha. Esse nome ficará visível para seus contatos do WhatsApp."
+        android:textAlignment="center"
+        android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
