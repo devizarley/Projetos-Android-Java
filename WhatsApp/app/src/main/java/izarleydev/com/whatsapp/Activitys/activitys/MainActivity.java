@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -64,8 +65,14 @@ public class MainActivity extends AppCompatActivity {
                 singOut();
                 finish();
                 break;
+            case R.id.menuConfiguracoes:
+                openConfig();
+                break;
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void openConfig (){
+        startActivity(new Intent(this, Configuracoes.class));
     }
     public void singOut (){
         try {
