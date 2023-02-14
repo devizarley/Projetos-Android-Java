@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
                         .add("Contato", ContatosFragment.class)
                         .create()
         );
-
         ViewPager viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(adapter);
 
@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
