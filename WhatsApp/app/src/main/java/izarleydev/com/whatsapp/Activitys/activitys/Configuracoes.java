@@ -5,10 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.os.Bundle;
 
+import izarleydev.com.whatsapp.Activitys.helper.Permissao;
 import izarleydev.com.whatsapp.R;
 
 public class Configuracoes extends AppCompatActivity {
-    
+
     private String[] permissions = new String[]{
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA
@@ -24,5 +25,8 @@ public class Configuracoes extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //Validar permissões
+        Permissao.validarPermissoes(permissions, this, 1);
     }
 }
