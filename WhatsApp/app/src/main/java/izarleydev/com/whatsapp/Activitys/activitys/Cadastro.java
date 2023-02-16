@@ -53,7 +53,6 @@ public class Cadastro extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     finish();
-
                 }else {
                     String excecao = "";
                     try {
