@@ -89,7 +89,6 @@ public class Cadastro extends AppCompatActivity {
                     usuario.setSenha(valueinputSenha);
 
                     cadastrarUsuario(usuario);
-
                 }else {
                     Toast.makeText(this, "Preencha a senha!", Toast.LENGTH_SHORT).show();
                 }
