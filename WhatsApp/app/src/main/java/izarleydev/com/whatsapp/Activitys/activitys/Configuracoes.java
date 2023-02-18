@@ -47,9 +47,10 @@ public class Configuracoes extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(intent, SELECAO_CAMERA);
-                }
+
+                startActivityForResult(intent, SELECAO_CAMERA);
+                //if (intent.resolveActivity(getPackageManager()) != null) {
+               // }
 
             }
 
