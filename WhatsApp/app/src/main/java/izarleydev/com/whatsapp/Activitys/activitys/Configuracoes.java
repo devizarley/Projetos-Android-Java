@@ -48,9 +48,9 @@ public class Configuracoes extends AppCompatActivity {
 
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-                startActivityForResult(intent, SELECAO_CAMERA);
-                //if (intent.resolveActivity(getPackageManager()) != null) {
-               // }
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(intent, SELECAO_CAMERA);
+                }else {}
 
             }
 
