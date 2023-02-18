@@ -50,7 +50,9 @@ public class Configuracoes extends AppCompatActivity {
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(intent, SELECAO_CAMERA);
                 }
+                
             }
+
         });
 
         //Validar permissões
