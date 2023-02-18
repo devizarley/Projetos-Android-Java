@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".Activitys.activitys.aaaa">
+    tools:context=".Activitys.activitys.Cadastro">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout4"
+        style="@style/Theme.WhatsApp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -16,6 +17,12 @@
         android:layout_marginEnd="32dp"
         android:textColorHint="@color/white"
         app:boxBackgroundColor="@color/colorPrimary"
+        app:boxStrokeColor="@color/white"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="1dp"
+        app:counterTextColor="@color/white"
+        app:hintTextAppearance="@style/Theme.WhatsApp"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,11 +33,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Digite seu nome:"
+            android:textColor="@color/white"
             android:textColorHint="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
+        style="@style/Theme.WhatsApp"
+        app:boxStrokeColor="@color/white"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -59,6 +69,7 @@
         android:layout_marginEnd="32dp"
         android:textColorHint="@color/white"
         app:boxBackgroundColor="@color/colorPrimary"
+        app:boxStrokeColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
