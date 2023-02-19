@@ -71,10 +71,11 @@ public class Cadastro extends AppCompatActivity {
                     Toast.makeText(Cadastro.this, excecao, Toast.LENGTH_SHORT).show();
                 }
             }
-            
+
         });
 
     }
+    
     public void validarCadastro (View view) {
 
         String valueinputName = inputName.getText().toString();
