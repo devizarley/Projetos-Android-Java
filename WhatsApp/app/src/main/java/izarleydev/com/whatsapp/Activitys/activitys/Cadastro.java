@@ -42,6 +42,7 @@ public class Cadastro extends AppCompatActivity {
 
     public void cadastrarUsuario (Usuario usuario) {
         auth.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
@@ -70,6 +71,7 @@ public class Cadastro extends AppCompatActivity {
                     Toast.makeText(Cadastro.this, excecao, Toast.LENGTH_SHORT).show();
                 }
             }
+            
         });
 
     }
@@ -98,6 +100,6 @@ public class Cadastro extends AppCompatActivity {
         }else {
             Toast.makeText(this, "Preencha o nome!", Toast.LENGTH_SHORT).show();
         }
-        
+
     }
 }
