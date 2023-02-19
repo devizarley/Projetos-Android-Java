@@ -98,5 +98,6 @@ public class Cadastro extends AppCompatActivity {
         }else {
             Toast.makeText(this, "Preencha o nome!", Toast.LENGTH_SHORT).show();
         }
+        
     }
 }
