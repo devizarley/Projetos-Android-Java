@@ -26,7 +26,6 @@ import izarleydev.com.whatsapp.R;
 public class Cadastro extends AppCompatActivity {
 
     TextInputEditText inputEmail, inputName, inputSenha;
-    private DatabaseReference ref = ConfigFirebase.getFirebaseDatabase();
     private FirebaseAuth auth = ConfigFirebase.getAuth();
 
     @Override
@@ -75,7 +74,7 @@ public class Cadastro extends AppCompatActivity {
         });
 
     }
-    
+
     public void validarCadastro (View view) {
 
         String valueinputName = inputName.getText().toString();
