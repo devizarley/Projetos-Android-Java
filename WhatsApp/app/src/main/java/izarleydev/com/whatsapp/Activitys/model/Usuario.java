@@ -10,14 +10,17 @@ public class Usuario {
     private String email;
     private String senha;
     private String id;
+
     public Usuario() {
     }
+
     public void Salvar(){
         DatabaseReference databaseReference = ConfigFirebase.getFirebaseDatabase();
         DatabaseReference usuario = databaseReference.child("usuarios").child(getId());
 
         usuario.setValue(this);
     }
+    
     @Exclude
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
