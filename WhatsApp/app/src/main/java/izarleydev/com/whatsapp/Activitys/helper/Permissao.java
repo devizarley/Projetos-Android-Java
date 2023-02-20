@@ -26,13 +26,11 @@ public class Permissao {
                 Boolean temPermissao = ContextCompat.checkSelfPermission(activity, permissao) == PackageManager.PERMISSION_GRANTED;
                 if (!temPermissao) listPermissions.add(permissao);
             }
-
             //Caso a lista esteja vazia, não é necessário solicitar permissão
             if ( listPermissions.isEmpty()) return true;
 
             String[] novasPermissçoes = new String[listPermissions.size()];
             listPermissions.toArray(novasPermissçoes);
-
             //solicita permissão
             ActivityCompat.requestPermissions(activity, novasPermissçoes, requestCode );
 
