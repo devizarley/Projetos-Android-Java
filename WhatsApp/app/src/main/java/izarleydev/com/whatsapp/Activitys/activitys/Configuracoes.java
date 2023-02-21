@@ -51,11 +51,20 @@ public class Configuracoes extends AppCompatActivity {
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(intent, SELECAO_CAMERA);
                 }else {}
-
             }
-
         });
+        imageButtonGaleria.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("QueryPermissionsNeeded")
+            @Override
+            public void onClick(View view) {
 
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(intent, SELECAO_GALERIA);
+                }else {}
+            }
+        });
         //Validar permissões
         Permissao.validarPermissoes(permissions, this, 1);
     }
