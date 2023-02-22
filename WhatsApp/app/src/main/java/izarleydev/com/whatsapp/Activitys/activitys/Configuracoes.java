@@ -1,6 +1,7 @@
 package izarleydev.com.whatsapp.Activitys.activitys;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,11 +10,16 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.google.firebase.database.Exclude;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import izarleydev.com.whatsapp.Activitys.helper.Permissao;
 import izarleydev.com.whatsapp.R;
 
@@ -26,6 +32,7 @@ public class Configuracoes extends AppCompatActivity {
     private ImageButton imageButtonCamera, imageButtonGaleria;
     private static final int SELECAO_CAMERA = 100;
     private static final int SELECAO_GALERIA = 200;
+    private CircleImageView imageConfig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,7 @@ public class Configuracoes extends AppCompatActivity {
 
         imageButtonCamera = findViewById(R.id.imageButtonCamera);
         imageButtonGaleria = findViewById(R.id.imageButtonGallery);
+        imageConfig = findViewById(R.id.circleImageView);
 
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Configurações");
@@ -67,6 +75,34 @@ public class Configuracoes extends AppCompatActivity {
         });
         //Validar permissões
         Permissao.validarPermissoes(permissions, this, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if ( resultCode == RESULT_OK ) {
+            Bitmap imagem = null;
+            try {
+
+                switch (requestCode){
+                    case SELECAO_CAMERA:
+                        imagem = (Bitmap) data.getExtras().get("data");
+                        break;
+                    case SELECAO_GALERIA:
+                        Uri localImage = data.getData();
+                        imagem = MediaStore.Images.Media.getBitmap(getContentResolver(), localImage);
+                        break;
+                }
+                if (imagem != null){
+                    imageConfig.setImageBitmap(imagem);
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
     }
 
     @Override
