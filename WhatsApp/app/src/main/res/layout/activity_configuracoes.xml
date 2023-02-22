@@ -19,8 +19,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
         android:src="@drawable/padrao"
         app:civ_border_color="#ffffffff"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
