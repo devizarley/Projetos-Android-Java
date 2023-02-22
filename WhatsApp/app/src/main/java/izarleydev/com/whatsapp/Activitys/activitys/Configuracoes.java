@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -62,6 +63,9 @@ public class Configuracoes extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //Recuperar dados do usuario
+        FirebaseUser user = UsuarioFirebase.getUsuarioAtual();
+
         imageButtonCamera.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("QueryPermissionsNeeded")
             @Override
@@ -74,6 +78,7 @@ public class Configuracoes extends AppCompatActivity {
                 }else {}
             }
         });
+
         imageButtonGaleria.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("QueryPermissionsNeeded")
             @Override
@@ -86,6 +91,7 @@ public class Configuracoes extends AppCompatActivity {
                 }else {}
             }
         });
+
         //Validar permissões
         Permissao.validarPermissoes(permissions, this, 1);
     }
@@ -158,6 +164,7 @@ public class Configuracoes extends AppCompatActivity {
         }
 
     }
+
     private void alertaValidacaoPermissao(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

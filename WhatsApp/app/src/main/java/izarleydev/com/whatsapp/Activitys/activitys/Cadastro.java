@@ -52,6 +52,7 @@ public class Cadastro extends AppCompatActivity {
                     }catch (Exception e) {
                         e.printStackTrace();
                     }
+                    usuario.Salvar();
                     finish();
                 }else {
                     String excecao = "";

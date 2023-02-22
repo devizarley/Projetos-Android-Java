@@ -15,6 +15,7 @@ public class Usuario {
     }
 
     public void Salvar(){
+
         DatabaseReference databaseReference = ConfigFirebase.getFirebaseDatabase();
         DatabaseReference usuario = databaseReference.child("usuarios").child(getId());
 
