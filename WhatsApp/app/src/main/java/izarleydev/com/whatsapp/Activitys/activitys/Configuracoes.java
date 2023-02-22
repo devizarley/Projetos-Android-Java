@@ -18,8 +18,11 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.Exclude;
@@ -65,6 +68,17 @@ public class Configuracoes extends AppCompatActivity {
 
         //Recuperar dados do usuario
         FirebaseUser user = UsuarioFirebase.getUsuarioAtual();
+        Uri url = user.getPhotoUrl();
+
+        if (url != null) {
+
+            Glide.with(Configuracoes.this)
+                    .load(url)
+                    .into(imageConfig);
+
+        }else{
+             imageConfig.setImageResource(R.drawable.padrao);
+        }
 
         imageButtonCamera.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("QueryPermissionsNeeded")
@@ -124,11 +138,13 @@ public class Configuracoes extends AppCompatActivity {
 
 
                     //Salvar imagem no firebase
-                    StorageReference imagemRef = storageReference
+                     StorageReference imagens = storageReference
                             .child("imagens")
                             .child("perfil")
                             .child(idUser)
                             .child("perfil.jpeg");
+
+                    final StorageReference imagemRef = imagens.child("perfil.jpeg");
 
                     UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
                     uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -140,7 +156,14 @@ public class Configuracoes extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                            Toast.makeText(Configuracoes.this, "Sucesso ao fazer upload da imagem", Toast.LENGTH_SHORT).show();
+                            imagemRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    Uri url = task.getResult();
+                                    atualizaFotoUsuario(url);
+                                }
+
+                            });
 
                         }
                     });
@@ -150,7 +173,10 @@ public class Configuracoes extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
 
+    public void atualizaFotoUsuario (Uri url){
+        UsuarioFirebase.atualizarFotoUsuario(url);
     }
 
     @Override
