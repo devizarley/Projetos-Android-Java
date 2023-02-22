@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
 import izarleydev.com.whatsapp.Activitys.helper.Base64;
+import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
 import izarleydev.com.whatsapp.Activitys.model.Usuario;
 import izarleydev.com.whatsapp.R;
 
@@ -51,6 +52,7 @@ public class Cadastro extends AppCompatActivity {
                     String idUsuario = Base64.codBase64(usuario.getEmail());
                     usuario.setId(idUsuario);
                     usuario.Salvar();
+                    UsuarioFirebase.atualizarNomeUsuario(usuario.getNome());
 
                     finish();
                 }else {

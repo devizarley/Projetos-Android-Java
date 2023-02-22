@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -23,9 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.Exclude;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -33,7 +32,6 @@ import java.io.ByteArrayOutputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
-import izarleydev.com.whatsapp.Activitys.helper.Base64;
 import izarleydev.com.whatsapp.Activitys.helper.Permissao;
 import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
 import izarleydev.com.whatsapp.R;
@@ -48,6 +46,7 @@ public class Configuracoes extends AppCompatActivity {
     private static final int SELECAO_CAMERA = 100;
     private static final int SELECAO_GALERIA = 200;
     private CircleImageView imageConfig;
+    private EditText editName;
     private StorageReference storageReference = ConfigFirebase.getFirebaseStorage();
     private String idUser = UsuarioFirebase.getIndentificadorUsuario();
 
@@ -59,6 +58,7 @@ public class Configuracoes extends AppCompatActivity {
         imageButtonCamera = findViewById(R.id.imageButtonCamera);
         imageButtonGaleria = findViewById(R.id.imageButtonGallery);
         imageConfig = findViewById(R.id.circleImageView);
+        editName = findViewById(R.id.editPerfilName);
 
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Configurações");
@@ -79,6 +79,8 @@ public class Configuracoes extends AppCompatActivity {
         }else{
              imageConfig.setImageResource(R.drawable.padrao);
         }
+
+        editName.setText(user.getDisplayName());
 
         imageButtonCamera.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("QueryPermissionsNeeded")
