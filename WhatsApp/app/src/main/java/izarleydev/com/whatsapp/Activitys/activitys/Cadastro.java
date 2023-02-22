@@ -40,19 +40,18 @@ public class Cadastro extends AppCompatActivity {
     }
 
     public void cadastrarUsuario (Usuario usuario) {
-        auth.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(
+                usuario.getEmail(),
+                usuario.getSenha()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
 
-                    try {
-                        String idUsuario = Base64.codBase64(usuario.getEmail());
-                        usuario.setId(idUsuario);
-                    }catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    String idUsuario = Base64.codBase64(usuario.getEmail());
+                    usuario.setId(idUsuario);
                     usuario.Salvar();
+
                     finish();
                 }else {
                     String excecao = "";
