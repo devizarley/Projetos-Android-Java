@@ -25,7 +25,7 @@
         app:civ_border_color="#ffffffff"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include"
         app:layout_constraintVertical_bias="0.5"
@@ -99,18 +99,19 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/circleImageView"
-        app:layout_constraintVertical_bias="0.897"
+        app:layout_constraintVertical_bias="0.887"
         app:srcCompat="@drawable/camera" />
 
     <ImageButton
         android:id="@+id/imageButtonGallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageButtonCamera"
         app:layout_constraintTop_toTopOf="@+id/circleImageView"
-        app:layout_constraintVertical_bias="0.905"
+        app:layout_constraintVertical_bias="0.882"
         app:srcCompat="@drawable/photo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
