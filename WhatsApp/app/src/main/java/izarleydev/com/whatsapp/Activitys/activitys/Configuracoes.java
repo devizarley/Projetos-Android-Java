@@ -180,11 +180,12 @@ public class Configuracoes extends AppCompatActivity {
         }
     }
 
-    //Objeto
+    //Objeto criado para atualizar foto do Usuario.
     public void atualizaFotoUsuario (Uri url){
         UsuarioFirebase.atualizarFotoUsuario(url);
     }
 
+    //Objeto para recuperar resultado da validação
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -197,6 +198,7 @@ public class Configuracoes extends AppCompatActivity {
 
     }
 
+    //Alerta de Permissao ao abrir Camera/Galeria
     private void alertaValidacaoPermissao(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
