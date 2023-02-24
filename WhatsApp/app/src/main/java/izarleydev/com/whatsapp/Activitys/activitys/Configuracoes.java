@@ -113,6 +113,8 @@ public class Configuracoes extends AppCompatActivity {
         Permissao.validarPermissoes(permissions, this, 1);
     }
 
+
+    //Atualizar foto na activity "Configurações"
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -178,6 +180,7 @@ public class Configuracoes extends AppCompatActivity {
         }
     }
 
+    //Objeto
     public void atualizaFotoUsuario (Uri url){
         UsuarioFirebase.atualizarFotoUsuario(url);
     }
