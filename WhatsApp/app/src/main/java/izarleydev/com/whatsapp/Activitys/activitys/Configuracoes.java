@@ -80,6 +80,7 @@ public class Configuracoes extends AppCompatActivity {
              imageConfig.setImageResource(R.drawable.padrao);
         }
 
+        //Seta o nome configurado no banco de dados.
         editName.setText(user.getDisplayName());
 
         imageButtonCamera.setOnClickListener(new View.OnClickListener() {
