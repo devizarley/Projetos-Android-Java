@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
+import izarleydev.com.whatsapp.Activitys.model.Usuario;
 
 public class UsuarioFirebase {
 
@@ -76,6 +77,20 @@ public class UsuarioFirebase {
         }catch(Exception e){
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public static Usuario getDadosUsuarioLogado(){
+        FirebaseUser user = getUsuarioAtual();
+
+        Usuario dadosUser = new Usuario();
+        dadosUser.setEmail(user.getEmail());
+        dadosUser.setNome(user.getDisplayName());
+
+        if ( user.getPhotoUrl() == null){
+            dadosUser.setPhoto("");
+        }else {
+            dadosUser.setPhoto(user.getPhotoUrl().toString());
         }
     }
 }

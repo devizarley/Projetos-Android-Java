@@ -36,6 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
 import izarleydev.com.whatsapp.Activitys.helper.Permissao;
 import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
+import izarleydev.com.whatsapp.Activitys.model.Usuario;
 import izarleydev.com.whatsapp.R;
 
 public class Configuracoes extends AppCompatActivity {
@@ -53,6 +54,7 @@ public class Configuracoes extends AppCompatActivity {
     private String idUser = UsuarioFirebase.getIndentificadorUsuario();
     private DatabaseReference ref = ConfigFirebase.getFirebaseDatabase();
     private ImageButton attName;
+    private Usuario userLogado;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -123,9 +125,8 @@ public class Configuracoes extends AppCompatActivity {
                 boolean r = UsuarioFirebase.atualizarNomeUsuario(nome);
                 if (r){
 
-                    ref.child("usuarios")
-                            .child(idUser)
-                            .child("nome").setValue(nome);
+                    userLogado.setNome(nome);
+                    userLogado.atualizar();
 
                     Toast.makeText(Configuracoes.this, "Nome alterado com sucesso!", Toast.LENGTH_SHORT).show();
 
