@@ -23,7 +23,7 @@ public class UsuarioFirebase {
 
         return id;
     }
-    
+
     //Objeto para retornar dados do usuario
     public static FirebaseUser getUsuarioAtual(){
 
