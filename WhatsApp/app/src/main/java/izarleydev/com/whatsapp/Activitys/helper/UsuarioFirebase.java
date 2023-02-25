@@ -80,6 +80,7 @@ public class UsuarioFirebase {
         }
     }
 
+    //Objeto para atualizar dados do usuario logado
     public static Usuario getDadosUsuarioLogado(){
         FirebaseUser user = getUsuarioAtual();
 
