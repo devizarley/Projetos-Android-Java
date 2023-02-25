@@ -62,6 +62,12 @@ public class Configuracoes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracoes);
 
+        //Validar permissões
+        Permissao.validarPermissoes(permissions, this, 1);
+
+        //Configurações iniciais
+        userLogado = UsuarioFirebase.getDadosUsuarioLogado();
+
         imageButtonCamera = findViewById(R.id.imageButtonCamera);
         imageButtonGaleria = findViewById(R.id.imageButtonGallery);
         imageConfig = findViewById(R.id.circleImageView);
@@ -114,6 +120,7 @@ public class Configuracoes extends AppCompatActivity {
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(intent, SELECAO_GALERIA);
                 }else {}
+
             }
         });
 
@@ -131,12 +138,8 @@ public class Configuracoes extends AppCompatActivity {
                     Toast.makeText(Configuracoes.this, "Nome alterado com sucesso!", Toast.LENGTH_SHORT).show();
 
                 }
-
             }
         });
-
-        //Validar permissões
-        Permissao.validarPermissoes(permissions, this, 1);
     }
 
 
@@ -209,6 +212,10 @@ public class Configuracoes extends AppCompatActivity {
     //Objeto criado para atualizar foto do Usuario.
     public void atualizaFotoUsuario (Uri url){
         UsuarioFirebase.atualizarFotoUsuario(url);
+
+        userLogado.setPhoto(url.toString());
+        userLogado.atualizar();
+
     }
 
     //Objeto para recuperar resultado da validação

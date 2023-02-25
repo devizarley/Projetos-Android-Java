@@ -92,5 +92,7 @@ public class UsuarioFirebase {
         }else {
             dadosUser.setPhoto(user.getPhotoUrl().toString());
         }
+
+        return dadosUser;
     }
 }
