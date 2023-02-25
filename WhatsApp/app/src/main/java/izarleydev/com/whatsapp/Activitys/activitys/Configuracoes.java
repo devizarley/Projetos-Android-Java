@@ -24,7 +24,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -49,7 +51,10 @@ public class Configuracoes extends AppCompatActivity {
     private EditText editName;
     private StorageReference storageReference = ConfigFirebase.getFirebaseStorage();
     private String idUser = UsuarioFirebase.getIndentificadorUsuario();
+    private DatabaseReference ref = ConfigFirebase.getFirebaseDatabase();
+    private ImageButton attName;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +64,7 @@ public class Configuracoes extends AppCompatActivity {
         imageButtonGaleria = findViewById(R.id.imageButtonGallery);
         imageConfig = findViewById(R.id.circleImageView);
         editName = findViewById(R.id.editPerfilName);
+        attName = findViewById(R.id.atualizarNome);
 
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Configurações");
@@ -106,6 +112,25 @@ public class Configuracoes extends AppCompatActivity {
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(intent, SELECAO_GALERIA);
                 }else {}
+            }
+        });
+
+        attName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String nome = editName.getText().toString();
+                boolean r = UsuarioFirebase.atualizarNomeUsuario(nome);
+                if (r){
+
+                    ref.child("usuarios")
+                            .child(idUser)
+                            .child("nome").setValue(nome);
+
+                    Toast.makeText(Configuracoes.this, "Nome alterado com sucesso!", Toast.LENGTH_SHORT).show();
+
+                }
+
             }
         });
 

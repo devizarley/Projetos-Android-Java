@@ -62,12 +62,15 @@
             android:textColor="@color/black"
             android:textColorHint="@color/black" />
 
-        <ImageView
-            android:id="@+id/imageView2"
+        <ImageButton
+            android:id="@+id/atualizarNome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
             app:srcCompat="@drawable/editar_verde" />
+
     </LinearLayout>
 
     <TextView
