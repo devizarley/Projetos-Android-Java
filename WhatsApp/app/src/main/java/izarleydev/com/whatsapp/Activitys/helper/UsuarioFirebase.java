@@ -15,6 +15,7 @@ import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
 
 public class UsuarioFirebase {
 
+    //Retorna email do usuario criptografado
     public static String getIndentificadorUsuario () {
         FirebaseAuth usuario = ConfigFirebase.getAuth();
         String email = usuario.getCurrentUser().getEmail();
@@ -22,7 +23,8 @@ public class UsuarioFirebase {
 
         return id;
     }
-
+    
+    //Objeto para retornar dados do usuario
     public static FirebaseUser getUsuarioAtual(){
 
         FirebaseAuth usuario = ConfigFirebase.getAuth();
