@@ -30,6 +30,8 @@ public class UsuarioFirebase {
 
     }
 
+
+    //objeto para atualizar o nome
     public static boolean atualizarNomeUsuario(String nome) {
         try{
             FirebaseUser user = getUsuarioAtual();
@@ -52,6 +54,7 @@ public class UsuarioFirebase {
         }
     }
 
+    //Atualiza a foto do usuario
     public static boolean atualizarFotoUsuario(Uri url) {
         try{
             FirebaseUser user = getUsuarioAtual();
@@ -73,5 +76,4 @@ public class UsuarioFirebase {
             return false;
         }
     }
-
 }
