@@ -40,6 +40,7 @@ public class ContatosFragment extends Fragment {
     private ContatosAdapter adapter;
     private ArrayList<Usuario> listContatos = new ArrayList<>();
     private DatabaseReference ref;
+    private ValueEventListener valueEventListenerContatos;
 
     public ContatosFragment() {
         // Required empty public constructor
@@ -86,8 +87,20 @@ public class ContatosFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        recContatos();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ref.removeEventListener(valueEventListenerContatos);
+    }
+
     public void recContatos (){
-        ref.addValueEventListener(new ValueEventListener() {
+        valueEventListenerContatos = ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
