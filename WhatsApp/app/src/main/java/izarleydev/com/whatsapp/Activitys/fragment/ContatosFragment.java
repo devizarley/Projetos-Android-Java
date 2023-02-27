@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -32,6 +34,7 @@ public class ContatosFragment extends Fragment {
     private String mParam2;
     private ContatosAdapter adapter;
     private ArrayList<Usuario> listContatos = new ArrayList<>();
+    private DatabaseReference ref = 
 
     public ContatosFragment() {
         // Required empty public constructor
