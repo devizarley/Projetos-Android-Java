@@ -2,6 +2,7 @@ package izarleydev.com.whatsapp.Activitys.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,12 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import izarleydev.com.whatsapp.Activitys.adapter.ContatosAdapter;
+import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
 import izarleydev.com.whatsapp.Activitys.model.Usuario;
 import izarleydev.com.whatsapp.R;
 
@@ -34,7 +39,7 @@ public class ContatosFragment extends Fragment {
     private String mParam2;
     private ContatosAdapter adapter;
     private ArrayList<Usuario> listContatos = new ArrayList<>();
-    private DatabaseReference ref = 
+    private DatabaseReference ref;
 
     public ContatosFragment() {
         // Required empty public constructor
@@ -66,6 +71,7 @@ public class ContatosFragment extends Fragment {
 
         //Configurações iniciais
         recyclerViewListContatos = view.findViewById(R.id.listContatos);
+        ref = ConfigFirebase.getFirebaseDatabase().child("usuarios");
 
         //Configurar adapter
 
@@ -78,5 +84,26 @@ public class ContatosFragment extends Fragment {
         recyclerViewListContatos.setAdapter(adapter);
 
         return view;
+    }
+
+    public void recContatos (){
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for ( DataSnapshot dados: snapshot.getChildren() ){
+                    Usuario usuario = dados.getValue(Usuario.class);
+                    listContatos.add(usuario);
+                }
+
+                adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
