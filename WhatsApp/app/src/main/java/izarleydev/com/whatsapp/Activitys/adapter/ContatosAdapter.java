@@ -67,11 +67,9 @@ public class ContatosAdapter extends RecyclerView.Adapter<ContatosAdapter.MyView
 
             super(itemView);
 
-            profile = itemView.findViewById(R.id.circleImageView);
+            profile = itemView.findViewById(R.id.imageViewContato);
             nome = itemView.findViewById(R.id.textNomeContato);
             email = itemView.findViewById(R.id.textEmailContato);
         }
     }
-
-
 }
