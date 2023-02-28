@@ -141,7 +141,7 @@ public class Configuracoes extends AppCompatActivity {
             }
         });
     }
-    
+
     //Atualizar foto na activity "Configurações"
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -200,7 +200,6 @@ public class Configuracoes extends AppCompatActivity {
 
                         }
                     });
-
                 }
             }catch (Exception e){
                 e.printStackTrace();
