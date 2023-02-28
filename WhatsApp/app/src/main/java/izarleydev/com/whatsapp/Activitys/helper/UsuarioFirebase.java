@@ -32,8 +32,7 @@ public class UsuarioFirebase {
         return usuario.getCurrentUser();
 
     }
-
-
+    
     //objeto para atualizar o nome
     public static boolean atualizarNomeUsuario(String nome) {
         try{
