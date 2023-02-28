@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 
 import izarleydev.com.whatsapp.Activitys.adapter.ContatosAdapter;
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
+import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
 import izarleydev.com.whatsapp.Activitys.model.Usuario;
 import izarleydev.com.whatsapp.R;
 
@@ -41,6 +43,8 @@ public class ContatosFragment extends Fragment {
     private ArrayList<Usuario> listContatos = new ArrayList<>();
     private DatabaseReference ref;
     private ValueEventListener valueEventListenerContatos;
+    private FirebaseUser currentUser = UsuarioFirebase.getUsuarioAtual();
+
 
     public ContatosFragment() {
         // Required empty public constructor
@@ -105,7 +109,16 @@ public class ContatosFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for ( DataSnapshot dados: snapshot.getChildren() ){
+                    //Lista todos os usuarios do banco de dados
                     Usuario usuario = dados.getValue(Usuario.class);
+
+                    String emailCurrentUser = currentUser.getEmail();
+
+                    if (emailCurrentUser.equals(usuario.getEmail())){
+
+                    }
+
+
                     listContatos.add(usuario);
                 }
 
