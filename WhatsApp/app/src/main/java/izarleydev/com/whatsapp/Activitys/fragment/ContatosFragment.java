@@ -112,14 +112,13 @@ public class ContatosFragment extends Fragment {
                     //Lista todos os usuarios do banco de dados
                     Usuario usuario = dados.getValue(Usuario.class);
 
+                    //recupera usuario logado
                     String emailCurrentUser = currentUser.getEmail();
+                    if (!emailCurrentUser.equals(usuario.getEmail())){
 
-                    if (emailCurrentUser.equals(usuario.getEmail())){
+                        listContatos.add(usuario);
 
                     }
-
-
-                    listContatos.add(usuario);
                 }
 
                 adapter.notifyDataSetChanged();
