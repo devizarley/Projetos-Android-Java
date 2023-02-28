@@ -1,5 +1,6 @@
 package izarleydev.com.whatsapp.Activitys.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import izarleydev.com.whatsapp.Activitys.activitys.ChatAtivity;
 import izarleydev.com.whatsapp.Activitys.adapter.ContatosAdapter;
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
 import izarleydev.com.whatsapp.Activitys.helper.RecyclerItemClickListener;
@@ -98,7 +100,8 @@ public class ContatosFragment extends Fragment {
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                
+                                Intent i = new Intent(getActivity(), ChatAtivity.class);
+                                startActivity(i);
                             }
 
                             @Override
