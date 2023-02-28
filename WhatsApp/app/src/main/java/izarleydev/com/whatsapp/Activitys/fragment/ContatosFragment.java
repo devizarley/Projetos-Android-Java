@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 
 import izarleydev.com.whatsapp.Activitys.adapter.ContatosAdapter;
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
+import izarleydev.com.whatsapp.Activitys.helper.RecyclerItemClickListener;
 import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
 import izarleydev.com.whatsapp.Activitys.model.Usuario;
 import izarleydev.com.whatsapp.R;
@@ -88,6 +90,30 @@ public class ContatosFragment extends Fragment {
         recyclerViewListContatos.setHasFixedSize(true);
         recyclerViewListContatos.setAdapter(adapter);
 
+        //configura evento de clique no recyclerview
+        recyclerViewListContatos.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        getActivity(),
+                        recyclerViewListContatos,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            }
+                        }
+                )
+        );
+
         return view;
     }
 
@@ -114,11 +140,11 @@ public class ContatosFragment extends Fragment {
 
                     //recupera usuario logado
                     String emailCurrentUser = currentUser.getEmail();
+                    //verificação se o email do usuario logado é igual à algum do banco de dados
                     if (!emailCurrentUser.equals(usuario.getEmail())){
-
                         listContatos.add(usuario);
-
                     }
+
                 }
 
                 adapter.notifyDataSetChanged();
