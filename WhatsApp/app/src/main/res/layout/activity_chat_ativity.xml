@@ -24,7 +24,9 @@
                 android:src="@drawable/padrao"/>
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height=""
+                android:layout_height="wrap_content"
+                android:text="Izarley Rodrigues"
+                android:textStyle="Bold"/>
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
