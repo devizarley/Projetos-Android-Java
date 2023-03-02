@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".Activitys.activitys.ChatAtivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -16,13 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.WhatsApp.PopupOverlay" >
+            app:popupTheme="@style/Theme.WhatsApp.PopupOverlay">
+
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleImageChat"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="16dp"
-                android:id="@+id/circleImageChat"
-                android:src="@drawable/padrao"/>
+                android:src="@drawable/padrao" />
 
             <TextView
                 android:id="@+id/textViewTextChat"
@@ -37,4 +39,19 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"></LinearLayout>
+
+</LinearLayout>
