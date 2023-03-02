@@ -12,7 +12,7 @@
         android:theme="@style/Theme.WhatsApp.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbarChat"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -20,13 +20,13 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginRight="16dp"
                 android:id="@+id/circleImageChat"
                 android:src="@drawable/padrao"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
                 android:text="Izarley Rodrigues"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
