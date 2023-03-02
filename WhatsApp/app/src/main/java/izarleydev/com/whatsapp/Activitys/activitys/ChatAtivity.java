@@ -24,12 +24,9 @@ public class ChatAtivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityChatAtivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         setSupportActionBar(binding.toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
