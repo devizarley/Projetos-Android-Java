@@ -22,11 +22,16 @@
                 android:layout_height="40dp"
                 android:id="@+id/circleImageChat"
                 android:src="@drawable/padrao"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
                 android:text="Izarley Rodrigues"
-                android:textStyle="Bold"/>
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
