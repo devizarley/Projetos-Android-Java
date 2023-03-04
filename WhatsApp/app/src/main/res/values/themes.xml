@@ -4,6 +4,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        //Item utilizado para modificar as cores do "Not night"
+        <item name="android:textColorTertiary">@color/black</item>
+
     </style>
 
     <style name="Toolbar" parent="Theme.AppCompat.NoActionBar" />

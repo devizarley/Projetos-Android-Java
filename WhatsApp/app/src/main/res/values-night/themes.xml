@@ -3,6 +3,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        //Item utilizado para modificiar cores no night
+        <item name="android:textColorTertiaryInverse">#ffffff</item>
     </style>
     <style parent="Theme.AppCompat.NoActionBar" name="Toolbar"/>
 </resources>
