@@ -28,7 +28,7 @@
                 android:src="@drawable/padrao" />
 
             <TextView
-                android:id="@+id/textViewTextChat"
+                android:id="@+id/textNameChat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Izarley Rodrigues"

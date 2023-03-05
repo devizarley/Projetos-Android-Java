@@ -3,13 +3,14 @@ package izarleydev.com.whatsapp.Activitys.model;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
 import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
 
-public class Usuario {
+public class Usuario implements Serializable {
     private String nome;
     private String email;
     private String senha;
