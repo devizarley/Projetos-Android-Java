@@ -2,7 +2,7 @@
     <style name="Theme.WhatsApp" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimaryDarkMode</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkMode</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimaryDarkMode</item>
 
         //Item utilizado para modificiar cores no night
         <item name="android:textColorTertiaryInverse">@color/white</item>

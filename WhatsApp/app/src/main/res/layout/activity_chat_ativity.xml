@@ -91,9 +91,11 @@
             android:layout_gravity="center_vertical"
             android:clickable="true"
             android:onClick="submitMsg"
+            app:borderWidth="0dp"
             app:fabCustomSize="46dp"
             app:fabSize="mini"
-            app:maxImageSize="20dp"
+            app:maxImageSize="21dp"
+            app:rippleColor="#00FF0000"
             app:srcCompat="@drawable/send_white" />
 
     </LinearLayout>
