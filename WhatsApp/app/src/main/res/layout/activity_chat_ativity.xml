@@ -68,7 +68,7 @@
             android:paddingRight="16dp">
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/inputContentMsg"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_weight="1"
@@ -86,12 +86,13 @@
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingAction"
+            android:id="@+id/buttonSubmitMsg"
             style="@style/ThemeOverlay.Material3.ExtendedFloatingActionButton.Primary"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:clickable="true"
+            android:onClick="submitMsg"
             app:backgroundTint="@color/colorPrimary"
             app:fabSize="mini"
             app:srcCompat="@drawable/send_white" />

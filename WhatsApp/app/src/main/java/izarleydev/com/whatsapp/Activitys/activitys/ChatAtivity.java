@@ -1,8 +1,12 @@
 package izarleydev.com.whatsapp.Activitys.activitys;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,8 +14,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DatabaseReference;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
+import izarleydev.com.whatsapp.Activitys.helper.Base64;
+import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
+import izarleydev.com.whatsapp.Activitys.model.Mensagem;
 import izarleydev.com.whatsapp.Activitys.model.Usuario;
 import izarleydev.com.whatsapp.R;
 import izarleydev.com.whatsapp.databinding.ActivityChatAtivityBinding;
@@ -23,6 +34,12 @@ public class ChatAtivity extends AppCompatActivity {
     private TextView textNameChat;
     private CircleImageView circleImageView;
     private Usuario usuarioDestinatario;
+    private FloatingActionButton fabSubmit;
+    private EditText inputContentMsg;
+
+    //identificador usuarios remetende e destinatario
+    private String idUsuarioRemetente;
+    private String idUsuarioDestinatario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +54,11 @@ public class ChatAtivity extends AppCompatActivity {
         //Configurações iniciais
         textNameChat = findViewById(R.id.textNameChat);
         circleImageView = findViewById(R.id.circleImageChat);
+        fabSubmit = findViewById(R.id.buttonSubmitMsg);
+        inputContentMsg = findViewById(R.id.inputContentMsg);
+
+        //dados usuario remetente
+        idUsuarioRemetente = UsuarioFirebase.getIndentificadorUsuario();
 
         //Recupera dados do usuario destinatario
         Bundle bundle = getIntent().getExtras();
@@ -56,7 +78,37 @@ public class ChatAtivity extends AppCompatActivity {
             }else {
                 circleImageView.setImageResource(R.drawable.padrao);
             }
-
+            //recuperar dados usuario destinatario
+            idUsuarioDestinatario = Base64.codBase64(usuarioDestinatario.getEmail());
         }
+
+    }
+    //objeto para salvar a mensagem no firebase
+    public void submitMsg(View view) {
+        //recupera conteudo dentro do input
+        String textMsg = inputContentMsg.getText().toString();
+
+        if (!textMsg.isEmpty()) {
+            Mensagem mensagem = new Mensagem();
+            mensagem.setIdUser(idUsuarioRemetente);
+            mensagem.setMensage(textMsg);
+
+            //Salvar mensagem
+            sendMsg(idUsuarioRemetente, idUsuarioDestinatario, mensagem);
+
+            //limpar texto
+            inputContentMsg.setText("");
+
+        }else {
+            Toast.makeText(this, "Digite uma mensagem para enviar!", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void sendMsg(String idRemetente, String idDestinatario, Mensagem mensagem){
+
+        DatabaseReference database = ConfigFirebase.getFirebaseDatabase();
+        DatabaseReference msgRef = database.child("mensagens");
+
+        msgRef.child(idRemetente).child(idDestinatario).push().setValue(mensagem);
+
     }
 }
