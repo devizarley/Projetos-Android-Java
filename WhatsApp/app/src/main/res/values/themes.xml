@@ -8,7 +8,7 @@
         //Item utilizado para modificar as cores do "Not night"
         <item name="android:textColorTertiary">@color/black</item>
 
-
+        
         <item name="color">#ffffff</item>
     </style>
 
@@ -19,7 +19,11 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.WhatsApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="background_chat">
+        <item name="android:background">@drawable/bg_chat</item>
+    </style>
+
+    <style name="Theme.WhatsApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <style name="Theme.WhatsApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -7,5 +7,10 @@
         //Item utilizado para modificiar cores no night
         <item name="android:textColorTertiaryInverse">@color/white</item>
     </style>
+
     <style parent="Theme.AppCompat.NoActionBar" name="Toolbar"/>
+
+    <style name="background_chat">
+        <item name="android:background">@drawable/bg_chat_night</item>
+    </style>
 </resources>
