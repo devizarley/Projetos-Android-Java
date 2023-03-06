@@ -68,12 +68,13 @@
 
             <EditText
                 android:id="@+id/inputContentMsg"
+                style="@style/container_inputText"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                style="@style/container_inputText"/>
+                android:textColorHighlight="#14665a" />
 
             <ImageView
                 android:id="@+id/imageView2"

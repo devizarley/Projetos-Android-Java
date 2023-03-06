@@ -4,26 +4,35 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
-        //Item utilizado para modificar as cores do "Not night"
-        <item name="android:textColorTertiary">@color/black</item>
-
-        
-        <item name="color">#ffffff</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 
-    <style name="Toolbar" parent="Theme.AppCompat.NoActionBar" />
+    <style name="Toolbar" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
 
     <style name="Theme.WhatsApp.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    //tema claro chat
+    //tema claro
+    <style name="SelectionColor">
+        <item name="colorControlActivated">#00ff00</item>
+        <item name="android:textColorHighlight">#00ff00</item>
+    </style>
+    <style name="text">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="viewPager">
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="viewPagerTab">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
     <style name="icons">
         <item name="android:tint">@color/colorIconsDarkMode</item>
     </style>
-
     <style name="fab_submit">
         <item name="backgroundTint">@color/colorPrimary</item>
         <item name="android:tint">@color/white</item>
@@ -36,6 +45,5 @@
     </style>
 
     <style name="Theme.WhatsApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
     <style name="Theme.WhatsApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

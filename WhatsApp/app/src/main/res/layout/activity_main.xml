@@ -13,7 +13,6 @@
         android:id="@+id/viewPagerTab"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@color/colorPrimary"
         app:stl_clickable="true"
         app:stl_defaultTabTextAllCaps="true"
         app:stl_defaultTabTextColor="@color/white"
@@ -37,12 +36,14 @@
         app:stl_overlineThickness="0dp"
         app:stl_titleOffset="24dp"
         app:stl_underlineColor="#4D000000"
-        app:stl_underlineThickness="1dp" />
+        app:stl_underlineThickness="1dp"
+        style="@style/viewPagerTab"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/viewPagerTab" />
+        android:layout_below="@id/viewPagerTab"
+        style="@style/viewPager"/>
 
 </LinearLayout>

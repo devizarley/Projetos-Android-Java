@@ -4,17 +4,24 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDarkMode</item>
         <item name="colorAccent">@color/colorPrimaryDarkMode</item>
 
-        //Item utilizado para modificiar cores no night
-        <item name="android:textColorTertiaryInverse">@color/white</item>
+        //pingo input
+        <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 
-    <style parent="Theme.AppCompat.NoActionBar" name="Toolbar"/>
+    <style name="Toolbar" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">@color/colorPrimaryDarkMode</item>
+    </style>
 
-    //tema escuro chat
+    //tema escuro
+    <style name="text">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="viewPagerTab">
+        <item name="android:background">@color/colorPrimaryDarkMode</item>
+    </style>
     <style name="icons">
         <item name="android:tint">@color/colorIconsDarkMode</item>
     </style>
-
     <style name="fab_submit">
         <item name="backgroundTint">@color/colorPrimaryDarkMode</item>
         <item name="android:tint">@color/colorIconsDarkMode</item>
