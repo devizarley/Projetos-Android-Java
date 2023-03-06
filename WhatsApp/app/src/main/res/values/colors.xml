@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#075e54</color>
-    <color name="colorPrimaryDark">#075e54</color>
+    <color name="colorPrimary">#03a784</color>
+    <color name="colorPrimaryDark">#03a784</color>
     <color name="colorAccent">#25d366</color>
 
     <color name="white">#ffffff</color>
     <color name="cinza_claro">#EEEEEEEE</color>
     <color name="black">#000000</color>
+
+    /*cores dark*/
+    <color name="colorPrimaryDarkMode">#1f2c34</color>
+    <color name="colorIconsDarkMode">#76838b</color>
 </resources>

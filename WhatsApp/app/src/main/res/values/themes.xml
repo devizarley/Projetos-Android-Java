@@ -19,6 +19,18 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    //tema claro chat
+    <style name="icons">
+        <item name="android:tint">@color/colorIconsDarkMode</item>
+    </style>
+
+    <style name="fab_submit">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:tint">@color/white</item>
+    </style>
+    <style name="container_inputText">
+        <item name="android:background">@drawable/bottom_field_msg</item>
+    </style>
     <style name="background_chat">
         <item name="android:background">@drawable/bg_chat</item>
     </style>
