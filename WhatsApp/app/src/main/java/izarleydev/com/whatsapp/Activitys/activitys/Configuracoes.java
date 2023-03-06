@@ -98,7 +98,6 @@ public class Configuracoes extends AppCompatActivity {
         editName.setText(user.getDisplayName());
 
         imageButtonCamera.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("QueryPermissionsNeeded")
             @Override
             public void onClick(View view) {
 
@@ -106,12 +105,11 @@ public class Configuracoes extends AppCompatActivity {
 
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(intent, SELECAO_CAMERA);
-                }else {}
+                }
             }
         });
 
         imageButtonGaleria.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("QueryPermissionsNeeded")
             @Override
             public void onClick(View view) {
 
@@ -119,8 +117,7 @@ public class Configuracoes extends AppCompatActivity {
 
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(intent, SELECAO_GALERIA);
-                }else {}
-
+                }
             }
         });
 
@@ -228,6 +225,7 @@ public class Configuracoes extends AppCompatActivity {
         }
 
     }
+
 
     //Alerta de Permissao ao abrir Camera/Galeria
     private void alertaValidacaoPermissao(){

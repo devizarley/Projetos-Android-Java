@@ -43,6 +43,9 @@
     <style name="background_chat">
         <item name="android:background">@drawable/bg_chat</item>
     </style>
+    <style name="background">
+        <item name="android:background">@color/white</item>
+    </style>
 
     <style name="Theme.WhatsApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="Theme.WhatsApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

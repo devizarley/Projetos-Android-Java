@@ -29,14 +29,14 @@ public class Permissao {
             //Caso a lista esteja vazia, não é necessário solicitar permissão
             if ( listPermissions.isEmpty()) return true;
 
-            String[] novasPermissçoes = new String[listPermissions.size()];
-            listPermissions.toArray(novasPermissçoes);
+            String[] novasPermissoes = new String[listPermissions.size()];
+            listPermissions.toArray(novasPermissoes);
             //solicita permissão
-            ActivityCompat.requestPermissions(activity, novasPermissçoes, requestCode );
+            ActivityCompat.requestPermissions(activity, novasPermissoes, requestCode );
 
         }
 
         return true;
-    };
+    }
 
 }

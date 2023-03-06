@@ -32,4 +32,7 @@
     <style name="background_chat">
         <item name="android:background">@drawable/bg_chat_night</item>
     </style>
+    <style name="background">
+        <item name="android:background">@color/colorPrimaryDarkMode</item>
+    </style>
 </resources>

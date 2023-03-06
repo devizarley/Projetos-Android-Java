@@ -17,7 +17,8 @@
             android:id="@+id/toolbarChat"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/Theme.WhatsApp.PopupOverlay">
+            app:popupTheme="@style/Theme.WhatsApp.PopupOverlay"
+            app:titleMargin="0dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/circleImageChat"
@@ -73,8 +74,7 @@
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:textColorHighlight="#14665a" />
+                android:inputType="textPersonName" />
 
             <ImageView
                 android:id="@+id/imageView2"
