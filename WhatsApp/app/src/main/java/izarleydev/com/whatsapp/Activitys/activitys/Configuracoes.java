@@ -225,8 +225,6 @@ public class Configuracoes extends AppCompatActivity {
         }
 
     }
-
-
     //Alerta de Permissao ao abrir Camera/Galeria
     private void alertaValidacaoPermissao(){
 
