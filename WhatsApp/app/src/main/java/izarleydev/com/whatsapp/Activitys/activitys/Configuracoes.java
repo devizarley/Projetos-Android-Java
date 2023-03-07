@@ -42,12 +42,12 @@ import izarleydev.com.whatsapp.R;
 public class Configuracoes extends AppCompatActivity {
 
     private String[] permissions = new String[]{
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.CAMERA
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE
     };
     private ImageButton imageButtonCamera, imageButtonGaleria;
-    private static final int SELECAO_CAMERA = 100;
-    private static final int SELECAO_GALERIA = 200;
+    private static final int SELECAO_CAMERA = 1;
+    private static final int SELECAO_GALERIA = 2;
     private CircleImageView imageConfig;
     private EditText editName;
     private StorageReference storageReference = ConfigFirebase.getFirebaseStorage();
@@ -219,7 +219,7 @@ public class Configuracoes extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         for (int permissaoResultado : grantResults){
-            if (permissaoResultado == PackageManager.PERMISSION_DENIED){
+            if (permissaoResultado != PackageManager.PERMISSION_DENIED){
                 alertaValidacaoPermissao();
             };
         }
@@ -230,7 +230,7 @@ public class Configuracoes extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Permissões Negadas");
-        builder.setMessage("Para utilizar o app é necessário aceitas as permissões");
+        builder.setMessage("Para utilizar o app é necessário aceitar as permissões");
         builder.setCancelable(false);
 
         builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {

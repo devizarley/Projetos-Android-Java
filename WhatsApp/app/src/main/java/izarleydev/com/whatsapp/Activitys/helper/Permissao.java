@@ -27,7 +27,7 @@ public class Permissao {
                 if (!temPermissao) listPermissions.add(permissao);
             }
             //Caso a lista esteja vazia, não é necessário solicitar permissão
-            if ( listPermissions.isEmpty()) return true;
+            //if ( listPermissions.isEmpty()) return true;
 
             String[] novasPermissoes = new String[listPermissions.size()];
             listPermissions.toArray(novasPermissoes);
