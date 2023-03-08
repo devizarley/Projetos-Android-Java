@@ -1,6 +1,7 @@
 package izarleydev.com.whatsapp.Activitys.activitys;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -12,13 +13,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
+import izarleydev.com.whatsapp.Activitys.adapter.MensageAdapter;
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
 import izarleydev.com.whatsapp.Activitys.helper.Base64;
 import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
@@ -41,6 +48,11 @@ public class ChatAtivity extends AppCompatActivity {
     private String idUsuarioRemetente;
     private String idUsuarioDestinatario;
 
+    //RecyclerView
+    private RecyclerView recyclerMensage;
+    private MensageAdapter mensageAdapter;
+    private List<Mensagem> mensagens = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +68,17 @@ public class ChatAtivity extends AppCompatActivity {
         circleImageView = findViewById(R.id.circleImageChat);
         fabSubmit = findViewById(R.id.buttonSubmitMsg);
         inputContentMsg = findViewById(R.id.inputContentMsg);
+
+        //Configurações RecyclerView
+        recyclerMensage = findViewById(R.id.recyclerMensage);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerMensage.setLayoutManager(layoutManager);
+        recyclerMensage.setHasFixedSize(true);
+
+        ///Configuração Adapter
+        mensageAdapter = new MensageAdapter(mensagens, getApplicationContext());
+        recyclerMensage.setAdapter(mensageAdapter);
 
         //dados usuario remetente
         idUsuarioRemetente = UsuarioFirebase.getIndentificadorUsuario();
