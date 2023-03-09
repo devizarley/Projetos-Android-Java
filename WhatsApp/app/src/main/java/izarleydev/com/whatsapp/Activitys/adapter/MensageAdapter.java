@@ -1,17 +1,23 @@
 package izarleydev.com.whatsapp.Activitys.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
 import izarleydev.com.whatsapp.Activitys.model.Mensagem;
+import izarleydev.com.whatsapp.R;
 
 public class MensageAdapter extends RecyclerView.Adapter<MensageAdapter.MyViewHolder> {
 
@@ -29,18 +35,35 @@ public class MensageAdapter extends RecyclerView.Adapter<MensageAdapter.MyViewHo
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
+        View item = null;
+
         if (viewType == TIPO_REMETENTE){
 
-            View item = LayoutInflater.from(parent.getContext()).inflate();
+            item = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_mensagem_remetente, parent, false);
 
         } else if (viewType == TIPO_DESTINATARIO) {
 
+            item = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_mensagem_destinatario, parent, false);
+
         }
+        return new MyViewHolder(item);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
+        Mensagem mensagem = mensagens.get(position);
+        String msg = mensagem.getMensage();
+        String image = mensagem.getImage();
+
+        if (image != null){
+            Uri url = Uri.parse(image);
+            Glide.with(context).load(url).into(holder.imagem);
+        }else {
+            holder.textMensagem.setText(msg);
+        }
+
 
     }
 
@@ -63,8 +86,15 @@ public class MensageAdapter extends RecyclerView.Adapter<MensageAdapter.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+
+        TextView textMensagem;
+        ImageView imagem;
+
         public MyViewHolder(View view){
             super(view);
+
+            textMensagem = view.findViewById(R.id.textMsg);
+            imagem = view.findViewById(R.id.imageMsg);
         }
     }
 
