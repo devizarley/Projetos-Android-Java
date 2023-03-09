@@ -69,7 +69,7 @@ public class MensageAdapter extends RecyclerView.Adapter<MensageAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mensagens.size();
     }
 
     @Override

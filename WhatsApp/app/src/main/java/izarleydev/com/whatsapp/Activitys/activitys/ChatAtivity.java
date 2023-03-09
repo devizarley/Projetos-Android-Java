@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.widget.Toolbar;
@@ -19,6 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
@@ -43,6 +48,9 @@ public class ChatAtivity extends AppCompatActivity {
     private Usuario usuarioDestinatario;
     private FloatingActionButton fabSubmit;
     private EditText inputContentMsg;
+    private DatabaseReference databaseReference;
+    private  DatabaseReference mensagensRef;
+    private ChildEventListener childEventListenerMensagens;
 
     //identificador usuarios remetende e destinatario
     private String idUsuarioRemetente;
@@ -104,6 +112,11 @@ public class ChatAtivity extends AppCompatActivity {
             //recuperar dados usuario destinatario
             idUsuarioDestinatario = Base64.codBase64(usuarioDestinatario.getEmail());
         }
+        //configs listar mensagens
+        databaseReference = ConfigFirebase.getFirebaseDatabase();
+        mensagensRef = databaseReference.child("mensagens")
+                .child(idUsuarioRemetente)
+                .child(idUsuarioDestinatario);
 
     }
     //objeto para salvar a mensagem no firebase
@@ -129,9 +142,53 @@ public class ChatAtivity extends AppCompatActivity {
     private void sendMsg(String idRemetente, String idDestinatario, Mensagem mensagem){
 
         DatabaseReference database = ConfigFirebase.getFirebaseDatabase();
-        DatabaseReference msgRef = database.child("mensagens");
+        mensagensRef = database.child("mensagens");
+        mensagensRef.child(idRemetente).child(idDestinatario).push().setValue(mensagem);
 
-        msgRef.child(idRemetente).child(idDestinatario).push().setValue(mensagem);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        recuperarMensagens();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mensagensRef.removeEventListener(childEventListenerMensagens);
+    }
+
+    private void recuperarMensagens(){
+
+        childEventListenerMensagens = mensagensRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Mensagem mensagem = snapshot.getValue(Mensagem.class);
+                mensagens.add( mensagem );
+                mensageAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 }
