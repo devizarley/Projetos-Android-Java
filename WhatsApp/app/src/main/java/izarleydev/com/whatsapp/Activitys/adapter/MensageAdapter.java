@@ -60,8 +60,13 @@ public class MensageAdapter extends RecyclerView.Adapter<MensageAdapter.MyViewHo
         if (image != null){
             Uri url = Uri.parse(image);
             Glide.with(context).load(url).into(holder.imagem);
+
+            //Esconder o texto
+            holder.textMensagem.setVisibility(View.GONE);
         }else {
             holder.textMensagem.setText(msg);
+            //Esconder a imagem
+            holder.imagem.setVisibility(View.GONE);
         }
 
 
