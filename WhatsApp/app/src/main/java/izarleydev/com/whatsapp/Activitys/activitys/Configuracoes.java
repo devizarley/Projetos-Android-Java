@@ -225,7 +225,7 @@ public class Configuracoes extends AppCompatActivity {
         }
 
     }
-    //Alerta de Permissao ao abrir Camera/Galeria
+    //Alerta ao negar permissão Camera/Galeria
     private void alertaValidacaoPermissao(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
