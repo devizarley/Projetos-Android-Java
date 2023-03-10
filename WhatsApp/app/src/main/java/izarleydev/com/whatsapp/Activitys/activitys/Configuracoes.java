@@ -219,7 +219,7 @@ public class Configuracoes extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         for (int permissaoResultado : grantResults){
-            if (permissaoResultado != PackageManager.PERMISSION_DENIED){
+            if (permissaoResultado == PackageManager.PERMISSION_DENIED){
                 alertaValidacaoPermissao();
             };
         }
