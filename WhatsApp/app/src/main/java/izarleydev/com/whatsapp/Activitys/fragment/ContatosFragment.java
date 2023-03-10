@@ -148,6 +148,7 @@ public class ContatosFragment extends Fragment {
 
                     //recupera usuario logado
                     String emailCurrentUser = currentUser.getEmail();
+                    
                     //verificação se o email do usuario logado é igual à algum do banco de dados
                     if (!emailCurrentUser.equals(usuario.getEmail())){
                         listContatos.add(usuario);
