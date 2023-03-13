@@ -52,7 +52,6 @@ public class Configuracoes extends AppCompatActivity {
     private EditText editName;
     private StorageReference storageReference = ConfigFirebase.getFirebaseStorage();
     private String idUser = UsuarioFirebase.getIndentificadorUsuario();
-    private DatabaseReference ref = ConfigFirebase.getFirebaseDatabase();
     private ImageButton attName;
     private Usuario userLogado;
 
