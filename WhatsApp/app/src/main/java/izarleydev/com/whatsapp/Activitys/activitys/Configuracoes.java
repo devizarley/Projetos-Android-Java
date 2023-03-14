@@ -60,7 +60,7 @@ public class Configuracoes extends AppCompatActivity {
         setContentView(R.layout.activity_configuracoes);
 
         //teste
-        if (Build.VERSION.SDK_INT > 21) {
+        if (Build.VERSION.SDK_INT > 32) {
             permissions = new String[]{
                     Manifest.permission.CAMERA,
                     Manifest.permission.READ_MEDIA_IMAGES
