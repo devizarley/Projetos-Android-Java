@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -41,10 +42,7 @@ import izarleydev.com.whatsapp.R;
 
 public class Configuracoes extends AppCompatActivity {
 
-    private String[] permissions = new String[]{
-            Manifest.permission.CAMERA,
-            Manifest.permission.READ_EXTERNAL_STORAGE
-    };
+    private String[] permissions;
     private ImageButton imageButtonCamera, imageButtonGaleria;
     private static final int SELECAO_CAMERA = 1;
     private static final int SELECAO_GALERIA = 2;
@@ -60,6 +58,19 @@ public class Configuracoes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracoes);
+
+        //teste
+        if (Build.VERSION.SDK_INT > 21) {
+            permissions = new String[]{
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.READ_MEDIA_IMAGES
+            };
+        }else{
+            permissions = new String[]{
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+            };
+        }
 
         //Validar permissões
         Permissao.validarPermissoes(permissions, this, 1);
