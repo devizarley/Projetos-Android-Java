@@ -2,10 +2,13 @@ package izarleydev.com.whatsapp.Activitys.activitys;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +54,8 @@ public class ChatAtivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private  DatabaseReference mensagensRef;
     private ChildEventListener childEventListenerMensagens;
+    private ImageView camInputChat;
+    private static final int SELECAO_CAMERA = 1;
 
     //identificador usuarios remetende e destinatario
     private String idUsuarioRemetente;
@@ -76,6 +81,7 @@ public class ChatAtivity extends AppCompatActivity {
         circleImageView = findViewById(R.id.circleImageChat);
         fabSubmit = findViewById(R.id.buttonSubmitMsg);
         inputContentMsg = findViewById(R.id.inputContentMsg);
+        camInputChat = findViewById(R.id.iconInputCamera);
 
         //Configurações RecyclerView
         recyclerMensage = findViewById(R.id.recyclerMensage);
@@ -117,6 +123,19 @@ public class ChatAtivity extends AppCompatActivity {
         mensagensRef = databaseReference.child("mensagens")
                 .child(idUsuarioRemetente)
                 .child(idUsuarioDestinatario);
+
+        //Cam input
+
+        camInputChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(intent, SELECAO_CAMERA);
+                }
+            }
+        });
 
     }
     //objeto para salvar a mensagem no firebase

@@ -78,7 +78,7 @@
                 android:inputType="textPersonName" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/iconInputCamera"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/camera_cinza_escuro"
