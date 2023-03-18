@@ -1,7 +1,5 @@
 package izarleydev.com.whatsapp.Activitys.activitys;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -17,8 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.appcompat.widget.Toolbar;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,13 +23,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -47,6 +40,7 @@ import izarleydev.com.whatsapp.Activitys.adapter.MensageAdapter;
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
 import izarleydev.com.whatsapp.Activitys.helper.Base64;
 import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
+import izarleydev.com.whatsapp.Activitys.model.Conversas;
 import izarleydev.com.whatsapp.Activitys.model.Mensagem;
 import izarleydev.com.whatsapp.Activitys.model.Usuario;
 import izarleydev.com.whatsapp.R;
@@ -54,12 +48,10 @@ import izarleydev.com.whatsapp.databinding.ActivityChatAtivityBinding;
 
 public class ChatAtivity extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
     private ActivityChatAtivityBinding binding;
     private TextView textNameChat;
     private CircleImageView circleImageView;
     private Usuario usuarioDestinatario;
-    private FloatingActionButton fabSubmit;
     private EditText inputContentMsg;
     private ChildEventListener childEventListenerMensagens;
     private ImageView camInputChat;
@@ -77,8 +69,10 @@ public class ChatAtivity extends AppCompatActivity {
     //firebase
 
     private StorageReference storageReference = ConfigFirebase.getFirebaseStorage();
-    private DatabaseReference databaseReference;
-    private  DatabaseReference mensagensRef;
+    private DatabaseReference databaseReference = ConfigFirebase.getFirebaseDatabase();;
+    private DatabaseReference mensagensRef;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +86,6 @@ public class ChatAtivity extends AppCompatActivity {
         //Configurações iniciais
         textNameChat = findViewById(R.id.textNameChat);
         circleImageView = findViewById(R.id.circleImageChat);
-        fabSubmit = findViewById(R.id.buttonSubmitMsg);
         inputContentMsg = findViewById(R.id.inputContentMsg);
         camInputChat = findViewById(R.id.iconInputCamera);
 
@@ -132,13 +125,11 @@ public class ChatAtivity extends AppCompatActivity {
             idUsuarioDestinatario = Base64.codBase64(usuarioDestinatario.getEmail());
         }
         //configs listar mensagens
-        databaseReference = ConfigFirebase.getFirebaseDatabase();
         mensagensRef = databaseReference.child("mensagens")
                 .child(idUsuarioRemetente)
                 .child(idUsuarioDestinatario);
 
-        //Cam input
-
+        //Camera input
         camInputChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -152,7 +143,7 @@ public class ChatAtivity extends AppCompatActivity {
 
     }
 
-    //resultado cam
+    //resultado camera
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -244,10 +235,27 @@ public class ChatAtivity extends AppCompatActivity {
             //limpar texto
             inputContentMsg.setText("");
 
+            //salvar conversa
+            saveChat(mensagem);
+
         }else {
             Toast.makeText(this, "Digite uma mensagem para enviar!", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void saveChat(Mensagem mensagem) {
+
+        Conversas conversaRemetente = new Conversas();
+
+        //seta valores nos contrutures
+        conversaRemetente.setIdRemetente(idUsuarioRemetente);
+        conversaRemetente.setIdDestinatario(idUsuarioDestinatario);
+        conversaRemetente.setUltimaMensagem(mensagem.getMensage());
+        conversaRemetente.setUsuarioExibicao( usuarioDestinatario );
+
+        conversaRemetente.salvar();
+    }
+
     private void sendMsg(String idRemetente, String idDestinatario, Mensagem mensagem){
 
         DatabaseReference database = ConfigFirebase.getFirebaseDatabase();
