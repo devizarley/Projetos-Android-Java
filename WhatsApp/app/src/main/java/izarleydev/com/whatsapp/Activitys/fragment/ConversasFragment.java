@@ -1,5 +1,6 @@
 package izarleydev.com.whatsapp.Activitys.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -20,9 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import izarleydev.com.whatsapp.Activitys.activitys.ChatAtivity;
 import izarleydev.com.whatsapp.Activitys.adapter.ContatosAdapter;
 import izarleydev.com.whatsapp.Activitys.adapter.ConversasAdapter;
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
+import izarleydev.com.whatsapp.Activitys.helper.RecyclerItemClickListener;
 import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
 import izarleydev.com.whatsapp.Activitys.model.Conversas;
 import izarleydev.com.whatsapp.Activitys.model.Usuario;
@@ -59,6 +63,34 @@ public class ConversasFragment extends Fragment {
         recyclerViewConversas.setLayoutManager(layoutManager);
         recyclerViewConversas.setHasFixedSize(true);
         recyclerViewConversas.setAdapter(adapter);
+
+        //configura evento de click
+        recyclerViewConversas.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        getActivity(),
+                        recyclerViewConversas,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                //recupera o usuario selecionado
+                                Conversas conversaSelecionada = listConversas.get(position);
+                                Intent i = new Intent(getActivity(), ChatAtivity.class);
+                                //repassa informações para a intent startada
+                                i.putExtra("chatContato", conversaSelecionada);
+                                startActivity(i);
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            }
+                        }
+                ));
 
         //Configurações conversasref
         String idUsuario = UsuarioFirebase.getIndentificadorUsuario();
