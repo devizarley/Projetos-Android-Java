@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -16,7 +15,6 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import izarleydev.com.whatsapp.Activitys.model.Conversas;
 import izarleydev.com.whatsapp.Activitys.model.Usuario;
 import izarleydev.com.whatsapp.R;
 
@@ -69,9 +67,9 @@ public class ContatosAdapter extends RecyclerView.Adapter<ContatosAdapter.MyView
 
             super(itemView);
 
-            profile = itemView.findViewById(R.id.imageViewContato);
-            nome = itemView.findViewById(R.id.textNomeContato);
-            email = itemView.findViewById(R.id.textEmailContato);
+            profile = itemView.findViewById(R.id.imagePhoto);
+            nome = itemView.findViewById(R.id.textTitulo);
+            email = itemView.findViewById(R.id.textSubTitulo);
         }
     }
 }

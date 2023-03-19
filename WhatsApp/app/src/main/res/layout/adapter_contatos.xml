@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageViewContato"
+            android:id="@+id/imagePhoto"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/padrao" />
@@ -29,7 +29,7 @@
             android:padding="5dp">
 
             <TextView
-                android:id="@+id/textNomeContato"
+                android:id="@+id/textTitulo"
                 style="@style/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textEmailContato"
+                android:id="@+id/textSubTitulo"
                 style="@style/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

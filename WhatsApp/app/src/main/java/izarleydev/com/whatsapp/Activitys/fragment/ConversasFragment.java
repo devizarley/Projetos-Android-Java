@@ -2,6 +2,8 @@ package izarleydev.com.whatsapp.Activitys.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,11 +12,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import izarleydev.com.whatsapp.Activitys.adapter.ContatosAdapter;
 import izarleydev.com.whatsapp.Activitys.adapter.ConversasAdapter;
+import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
+import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
 import izarleydev.com.whatsapp.Activitys.model.Conversas;
 import izarleydev.com.whatsapp.Activitys.model.Usuario;
 import izarleydev.com.whatsapp.R;
@@ -25,35 +34,15 @@ import izarleydev.com.whatsapp.R;
  * create an instance of this fragment.
  */
 public class ConversasFragment extends Fragment {
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private String mParam1;
-    private String mParam2;
     private List<Conversas> listConversas = new ArrayList<>();
     private ConversasAdapter adapter;
     private RecyclerView recyclerViewConversas;
+    private DatabaseReference database;
+    private DatabaseReference converasref;
+    private ChildEventListener childEventListenerConversas;
 
     public ConversasFragment() {
     }
-
-    public static ConversasFragment newInstance(String param1, String param2) {
-        ConversasFragment fragment = new ConversasFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,6 +60,58 @@ public class ConversasFragment extends Fragment {
         recyclerViewConversas.setHasFixedSize(true);
         recyclerViewConversas.setAdapter(adapter);
 
+        //Configurações conversasref
+        String idUsuario = UsuarioFirebase.getIndentificadorUsuario();
+        database = ConfigFirebase.getFirebaseDatabase();
+        converasref = database.child("Conversas").child(idUsuario);
+
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        recuperarConversas();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        converasref.removeEventListener(childEventListenerConversas);
+    }
+
+    public void recuperarConversas(){
+        childEventListenerConversas = converasref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                //recuperar conversas
+                Conversas conversa = snapshot.getValue(Conversas.class);
+                listConversas.add(conversa);
+                adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }

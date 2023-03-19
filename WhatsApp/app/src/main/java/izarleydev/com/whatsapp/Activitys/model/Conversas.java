@@ -17,7 +17,7 @@ public class Conversas {
     //cria toda construção no firebase
     public void salvar(){
         DatabaseReference database = ConfigFirebase.getFirebaseDatabase();
-        DatabaseReference conversaRef = database.child("Conversas");
+        DatabaseReference conversaRef = database.child("conversas");
 
         conversaRef.child(this.getIdRemetente()).child(this.getIdDestinatario()).setValue( this );
 
