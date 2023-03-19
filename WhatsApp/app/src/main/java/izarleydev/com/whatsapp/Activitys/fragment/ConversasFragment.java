@@ -76,7 +76,7 @@ public class ConversasFragment extends Fragment {
                                 Conversas conversaSelecionada = listConversas.get(position);
                                 Intent i = new Intent(getActivity(), ChatAtivity.class);
                                 //repassa informações para a intent startada
-                                i.putExtra("chatContato", conversaSelecionada);
+                                i.putExtra("chatContato", conversaSelecionada.getUsuarioExibicao());
                                 startActivity(i);
                             }
 
