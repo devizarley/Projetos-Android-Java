@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import izarleydev.com.whatsapp.Activitys.model.Conversas;
 import izarleydev.com.whatsapp.Activitys.model.Usuario;
 import izarleydev.com.whatsapp.R;
 
@@ -31,7 +33,8 @@ public class ContatosAdapter extends RecyclerView.Adapter<ContatosAdapter.MyView
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {        View itemList = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_contatos, parent, false);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemList = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_contatos, parent, false);
         return new MyViewHolder(itemList);
     }
 

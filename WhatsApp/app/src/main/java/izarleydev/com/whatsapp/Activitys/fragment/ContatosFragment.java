@@ -83,7 +83,6 @@ public class ContatosFragment extends Fragment {
         ref = ConfigFirebase.getFirebaseDatabase().child("usuarios");
 
         //Configurar adapter
-
         adapter = new ContatosAdapter( listContatos, getActivity());
 
         //configurar recyclerview
