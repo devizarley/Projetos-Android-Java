@@ -63,7 +63,7 @@ public class ConversasFragment extends Fragment {
         //Configurações conversasref
         String idUsuario = UsuarioFirebase.getIndentificadorUsuario();
         database = ConfigFirebase.getFirebaseDatabase();
-        converasref = database.child("Conversas").child(idUsuario);
+        converasref = database.child("conversas").child(idUsuario);
 
         return view;
     }
