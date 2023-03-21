@@ -14,7 +14,7 @@
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="6dp"
         android:background="@drawable/bg_ballon"
-        android:backgroundTint="@color/ballonRemetente"
+        android:theme="@style/bg_ballon"
         android:orientation="vertical">
 
         <ImageView
@@ -28,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:theme="@style/text"/>
 
     </LinearLayout>
 </RelativeLayout>

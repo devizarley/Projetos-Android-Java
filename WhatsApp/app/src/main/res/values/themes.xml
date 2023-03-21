@@ -46,6 +46,9 @@
     <style name="background">
         <item name="android:background">@color/white</item>
     </style>
+    <style name="bg_ballon">
+        <item name="android:backgroundTint">@color/ballonRemetente</item>]
+    </style>
 
     <style name="Theme.WhatsApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="Theme.WhatsApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

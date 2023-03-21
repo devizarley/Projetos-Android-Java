@@ -35,4 +35,7 @@
     <style name="background">
         <item name="android:background">@color/colorPrimaryDarkMode</item>
     </style>
+    <style name="bg_ballon">
+        <item name="android:backgroundTint">@color/ballonRemetenteDark</item>]
+    </style>
 </resources>
