@@ -7,6 +7,11 @@
         <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 
+    <style name="Theme.WhatsApp.Login">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
     <style name="Toolbar" parent="Theme.AppCompat.NoActionBar">
         <item name="android:background">@color/colorPrimary</item>
     </style>
@@ -16,7 +21,15 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="StyledTilEditTextTheme">
+        <item name="colorControlNormal">@color/white</item> // Cor padrão da linha
+        <item name="colorControlActivated">@color/white</item> // Cor linha e texto quando recebe foco
+    </style>
+
     //tema claro
+    <style name="buttonLogin">
+        <item name="android:backgroundTint">@color/buttonLogin</item>
+    </style>
     <style name="SelectionColor">
         <item name="colorControlActivated">#00ff00</item>
         <item name="android:textColorHighlight">#00ff00</item>

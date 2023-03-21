@@ -7,12 +7,24 @@
         //pingo input
         <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
+    <style name="Theme.WhatsApp.Login">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimaryDarkMode</item>
+    </style>
 
     <style name="Toolbar" parent="Theme.AppCompat.NoActionBar">
         <item name="android:background">@color/colorPrimaryDarkMode</item>
     </style>
 
+    <style name="StyledTilEditTextTheme">
+        <item name="colorControlNormal">@color/white</item> // Cor padrão da linha
+        <item name="colorControlActivated">@color/white</item> // Cor linha e texto quando recebe foco
+    </style>
+
     //tema escuro
+    <style name="buttonLogin">
+        <item name="android:backgroundTint">@color/colorCinzaEscuro</item>
+    </style>
     <style name="text">
         <item name="android:textColor">@color/white</item>
     </style>
