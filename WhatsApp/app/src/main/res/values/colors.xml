@@ -8,10 +8,13 @@
     <color name="cinza_claro">#EEEEEEEE</color>
     <color name="black">#000000</color>
     <color name="ballonRemetente">#dbf9c4</color>
+    <color name="ballonDestinatario">#ffffff</color>
 
     /*cores dark*/
     <color name="colorPrimaryDarkMode">#1f2c34</color>
     <color name="colorIconsDarkMode">#76838b</color>
     <color name="colorBottomViewPage">#121b22</color>
     <color name="ballonRemetenteDark">#005d4b</color>
+    <color name="ballonDestinatarioDark">#1f2c34</color>
+
 </resources>

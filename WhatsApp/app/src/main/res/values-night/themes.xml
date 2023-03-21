@@ -38,4 +38,9 @@
     <style name="bg_ballon">
         <item name="android:backgroundTint">@color/ballonRemetenteDark</item>]
     </style>
+    <style name="bg_ballonDestinatario">
+        <item name="android:backgroundTint">@color/ballonDestinatarioDark</item>]
+    </style>
+
+    bg_ballonDestinatario
 </resources>
