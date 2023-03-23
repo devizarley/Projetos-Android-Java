@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.WhatsApp.Login"
+    android:theme="@style/backgound_login_cadastro"
     tools:context=".Activitys.activitys.Login">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -79,7 +79,7 @@
         android:onClick="validateFildUser"
         android:text="Login"
         android:textColor="#FFFFFF"
-        android:theme="@style/buttonLogin"
+        android:theme="@style/button_login_cadastro"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

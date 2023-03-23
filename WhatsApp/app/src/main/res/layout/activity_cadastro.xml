@@ -4,35 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:theme="@style/backgound_login_cadastro"
     tools:context=".Activitys.activitys.Cadastro">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="183dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginBottom="24dp"
+        android:background="#00AA2828"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/usuario" />
+
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hapticFeedbackEnabled="false">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="hint" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
-        style="@style/Theme.WhatsApp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:textColorHint="@color/white"
-        app:boxBackgroundColor="@color/colorPrimary"
-        app:boxStrokeColor="@color/white"
-        app:counterTextColor="@color/white"
-        app:hintTextColor="@color/white"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
@@ -41,79 +39,71 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Digite seu nome:"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF"
+            android:theme="@style/StyledTilEditTextTheme" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        style="@style/Theme.WhatsApp"
-        android:layout_width="0dp"
+        android:id="@+id/textInputLayout1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:textColorHint="@color/white"
-        app:boxBackgroundColor="@color/colorPrimary"
-        app:boxStrokeColor="@color/white"
-        app:hintTextColor="@color/white"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        tools:ignore="DuplicateIds,MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputLoginEmail"
+            android:id="@+id/inputEmail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:hint="Digite seu email:"
-            android:inputType="textEmailAddress"
-            android:textColorHint="@color/white" />
+            android:inputType="textWebEmailAddress"
+            android:textColor="#FFFFFF"
+            android:theme="@style/StyledTilEditTextTheme" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        android:layout_width="0dp"
+        android:id="@+id/textInputLayout3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        app:boxBackgroundColor="@color/colorPrimary"
+        android:layout_marginBottom="32dp"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/cadastro"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout1">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputLoginSenha"
+            android:id="@+id/inputSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Digite sua senha:"
             android:inputType="textPassword"
-            android:textColorHint="@color/white" />
+            android:textColor="#FFFFFF"
+            android:theme="@style/StyledTilEditTextTheme" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="183dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="172dp"
-        android:background="#00AA2828"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/usuario" />
 
     <Button
         android:id="@+id/cadastro"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="#56096A63"
-        android:backgroundTint="#096A63"
-        android:onClick="validarCadastro"
-        android:text="Cadastrar"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="#8AFFFFFF"
+        android:onClick="validateFildUser"
+        android:text="Cadastro"
+        android:textColor="#FFFFFF"
+        android:theme="@style/button_login_cadastro"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@
         //pingo input
         <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
-    <style name="Theme.WhatsApp.Login">
+    <style name="backgound_login_cadastro">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="android:background">@color/colorPrimaryDarkMode</item>
     </style>
@@ -22,7 +22,7 @@
     </style>
 
     //tema escuro
-    <style name="buttonLogin">
+    <style name="button_login_cadastro">
         <item name="android:backgroundTint">@color/colorCinzaEscuro</item>
     </style>
     <style name="text">
