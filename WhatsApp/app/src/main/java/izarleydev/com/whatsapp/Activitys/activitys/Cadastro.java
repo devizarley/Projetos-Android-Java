@@ -29,6 +29,7 @@ public class Cadastro extends AppCompatActivity {
     TextInputEditText inputEmail, inputName, inputSenha;
     private FirebaseAuth auth = ConfigFirebase.getAuth();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,7 @@ public class Cadastro extends AppCompatActivity {
         inputName = findViewById(R.id.inputName);
         inputEmail = findViewById(R.id.inputEmail);
         inputSenha = findViewById(R.id.inputSenha);
+
 
     }
 
