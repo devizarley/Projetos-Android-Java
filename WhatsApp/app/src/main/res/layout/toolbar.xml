@@ -11,4 +11,9 @@
         android:layout_height="wrap_content"
         android:theme="@style/Toolbar"
         android:elevation="10dp" />
+
+    <com.miguelcatalan.materialsearchview.MaterialSearchView
+        android:id="@+id/searchPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </FrameLayout>
