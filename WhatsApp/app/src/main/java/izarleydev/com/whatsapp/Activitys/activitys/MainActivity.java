@@ -2,19 +2,21 @@ package izarleydev.com.whatsapp.Activitys.activitys;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toolbar;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.SearchView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
@@ -25,18 +27,17 @@ import izarleydev.com.whatsapp.Activitys.fragment.ConversasFragment;
 import izarleydev.com.whatsapp.R;
 
 public class MainActivity extends AppCompatActivity {
-
-    MaterialSearchView searchPrincipal;
-
     FirebaseAuth auth = ConfigFirebase.getAuth();
+    androidx.appcompat.widget.Toolbar toolbar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         //Configurar abas
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
@@ -53,35 +54,19 @@ public class MainActivity extends AppCompatActivity {
         viewPagerTab.setViewPager(viewPager);
 
         //Configuração do search view
-        searchPrincipal = findViewById(R.id.searchPrincipal);
-        searchPrincipal.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                ConversasFragment fragment = (ConversasFragment) adapter.getPage(0);
-
-                if (newText != null && !newText.isEmpty()){
-                    fragment.searchConversas(newText);
-                }
-
-                return true;
-            }
-        });
     }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
 
-        //Configurar botao de pesquisa
-        MenuItem item = menu.findItem(R.id.menuPesquisa);
-        searchPrincipal.setMenuItem(item);
+        SearchView searchView = (SearchView) menu.findItem(R.id.menuPesquisa).getActionView();
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -97,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menuConfiguracoes:
                 openConfig();
                 break;
+            case R.id.menuPesquisa:
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

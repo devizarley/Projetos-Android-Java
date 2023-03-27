@@ -2,11 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/menuPesquisa"
-        android:title="Pesquisar"
-        app:showAsAction="always"
-        android:icon="@drawable/icpesquisa"/>
-
+    <item
+        android:id="@+id/testee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/ic_action_navigation_arrow_back"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menuPesquisa"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always" />
     <item android:id="@+id/menuConfiguracoes"
         android:title="Configurações"
         app:showAsAction="never"/>
