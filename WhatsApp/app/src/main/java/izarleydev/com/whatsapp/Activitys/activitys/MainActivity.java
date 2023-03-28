@@ -5,15 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +27,7 @@ import izarleydev.com.whatsapp.R;
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth auth = ConfigFirebase.getAuth();
     androidx.appcompat.widget.Toolbar toolbar;
-
+    private MenuItem mBackMenuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,22 +51,43 @@ public class MainActivity extends AppCompatActivity {
         SmartTabLayout viewPagerTab = findViewById(R.id.viewPagerTab);
         viewPagerTab.setViewPager(viewPager);
 
-        //Configuração do search view
-
     }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
 
+        //recuperar referencia do item de voltar
+        mBackMenuItem = menu.findItem(R.id.backMenuItem);
+
+        //metodo para evento de click em um SearchView
         SearchView searchView = (SearchView) menu.findItem(R.id.menuPesquisa).getActionView();
         searchView.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mBackMenuItem.setVisible(true);
+            }
+        });
+        //metodo de iniciar um evento ao fechar o searchView
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                mBackMenuItem.setVisible(false);
+                return false;
             }
         });
 
+        //metodo para fechar o searchView utilizando "VARIAVEL.setIconified(true)"
+        mBackMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem menuItem) {
+                searchView.setIconified(true);
+                return false;
+            }
+        });
 
         return super.onCreateOptionsMenu(menu);
+
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -82,10 +101,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menuConfiguracoes:
                 openConfig();
                 break;
-            case R.id.menuPesquisa:
-                break;
-
         }
+
         return super.onOptionsItemSelected(item);
     }
     public void openConfig (){

@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/testee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:icon="@drawable/ic_action_navigation_arrow_back"
+        android:id="@+id/backMenuItem"
+        android:icon="@drawable/ic_action_navigation_arrow_back_inverted"
+        android:title="teste"
         android:visible="false"
         app:showAsAction="always" />
     <item
@@ -14,7 +13,8 @@
         android:icon="@drawable/ic_search_black_24dp"
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        />
     <item android:id="@+id/menuConfiguracoes"
         android:title="Configurações"
         app:showAsAction="never"/>
