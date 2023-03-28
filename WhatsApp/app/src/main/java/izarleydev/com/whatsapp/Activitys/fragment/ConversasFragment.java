@@ -33,11 +33,6 @@ import izarleydev.com.whatsapp.Activitys.model.Conversas;
 import izarleydev.com.whatsapp.Activitys.model.Usuario;
 import izarleydev.com.whatsapp.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ConversasFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ConversasFragment extends Fragment {
     private List<Conversas> listConversas = new ArrayList<>();
     private ConversasAdapter adapter;
@@ -114,7 +109,29 @@ public class ConversasFragment extends Fragment {
     }
 
     public void searchConversas(String texto){
-        Log.d("pesquisa", texto);
+
+        ///Log.d("pesquisa", texto);
+        List<Conversas> listSearchConversas = new ArrayList<>();
+        for (Conversas conversas : listConversas) {
+
+            String nome = conversas.getUsuarioExibicao().getNome().toLowerCase();
+            String ultimaMensagem = conversas.getUltimaMensagem().toLowerCase();
+
+            if ( nome.contains(texto) || ultimaMensagem.contains(texto) ) {
+                listSearchConversas.add(conversas);
+            }
+        }
+
+        adapter = new ConversasAdapter(listSearchConversas, getActivity());
+        recyclerViewConversas.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+    }
+
+    public void recarregarConversas(){
+        adapter = new ConversasAdapter(listConversas, getActivity());
+        recyclerViewConversas.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     public void recuperarConversas(){

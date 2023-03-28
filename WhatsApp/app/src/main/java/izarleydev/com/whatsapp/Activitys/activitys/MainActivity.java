@@ -7,6 +7,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,12 +23,15 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
 import izarleydev.com.whatsapp.Activitys.fragment.ContatosFragment;
 import izarleydev.com.whatsapp.Activitys.fragment.ConversasFragment;
+import izarleydev.com.whatsapp.Activitys.model.Conversas;
 import izarleydev.com.whatsapp.R;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth auth = ConfigFirebase.getAuth();
     androidx.appcompat.widget.Toolbar toolbar;
     private MenuItem mBackMenuItem;
+    private SearchView searchView;
+    private FragmentPagerItemAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //Configurar abas
-        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
+        adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(),
                 FragmentPagerItems.with(this)
                         .add("Conversas", ConversasFragment.class)
@@ -51,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         SmartTabLayout viewPagerTab = findViewById(R.id.viewPagerTab);
         viewPagerTab.setViewPager(viewPager);
 
+
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         mBackMenuItem = menu.findItem(R.id.backMenuItem);
 
         //metodo para evento de click em um SearchView
-        SearchView searchView = (SearchView) menu.findItem(R.id.menuPesquisa).getActionView();
+        searchView = (SearchView) menu.findItem(R.id.menuPesquisa).getActionView();
         searchView.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +78,28 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
+
+                ConversasFragment fragment = (ConversasFragment) adapter.getPage(0);
+                fragment.recarregarConversas();
+
                 mBackMenuItem.setVisible(false);
+
+                return false;
+            }
+        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+                ConversasFragment fragment = (ConversasFragment) adapter.getPage(0);
+                if (s != null & !s.isEmpty()){
+                    fragment.searchConversas( s.toLowerCase() );
+                }
                 return false;
             }
         });
