@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "341592400263",
+    "project_id": "instagram-ceefc",
+    "storage_bucket": "instagram-ceefc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341592400263:android:23a11e8ea9dbdb021ab322",
+        "android_client_info": {
+          "package_name": "izarleydev.com.instagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341592400263-dtl8hetj93feh1tnb2vb24b72rk2jebn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "izarleydev.com.instagram",
+            "certificate_hash": "552e4c389ba0e49cc1a0f04fed642ae780e6fece"
+          }
+        },
+        {
+          "client_id": "341592400263-3fpda1pfao7epku563l12sq8lbjuh291.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo9KxJXjZGtkI4uqZGy3WQlfyi_q_FVqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341592400263-3fpda1pfao7epku563l12sq8lbjuh291.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
