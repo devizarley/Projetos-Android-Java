@@ -13,7 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import androidx.appcompat.widget.SearchView;
+import android.widget.SearchView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
@@ -54,17 +54,24 @@ public class MainActivity extends AppCompatActivity {
 
         SmartTabLayout viewPagerTab = findViewById(R.id.viewPagerTab);
         viewPagerTab.setViewPager(viewPager);
+
+
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
 
+        //recuperar referencia do item de voltar
+        mBackMenuItem = menu.findItem(R.id.backMenuItem);
+
         //metodo para evento de click em um SearchView
         searchView = (SearchView) menu.findItem(R.id.menuPesquisa).getActionView();
         searchView.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mBackMenuItem.setVisible(true);
             }
         });
         //metodo de iniciar um evento ao fechar o searchView
@@ -75,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
                 ConversasFragment fragment = (ConversasFragment) adapter.getPage(0);
                 fragment.recarregarConversas();
 
-                return true;
+                mBackMenuItem.setVisible(false);
+
+                return false;
             }
         });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -91,6 +100,15 @@ public class MainActivity extends AppCompatActivity {
                 if (s != null & !s.isEmpty()){
                     fragment.searchConversas( s.toLowerCase() );
                 }
+                return false;
+            }
+        });
+
+        //metodo para fechar o searchView utilizando "VARIAVEL.setIconified(true)"
+        mBackMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem menuItem) {
+                searchView.setIconified(true);
                 return false;
             }
         });

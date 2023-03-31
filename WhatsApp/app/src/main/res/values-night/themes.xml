@@ -12,9 +12,8 @@
         <item name="android:background">@color/colorPrimaryDarkMode</item>
     </style>
 
-    <style name="Toolbar">
+    <style name="Toolbar" parent="Theme.AppCompat.NoActionBar">
         <item name="android:background">@color/colorPrimaryDarkMode</item>
-        <item name="titleTextColor">@color/white</item>
     </style>
 
     <style name="StyledTilEditTextTheme">
@@ -54,8 +53,4 @@
     <style name="bg_ballonDestinatario">
         <item name="android:backgroundTint">@color/ballonDestinatarioDark</item>]
     </style>
-    <style name="Theme.WhatsApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:background">@color/colorPrimaryDarkMode</item>
-    </style>
-    <style name="Theme.WhatsApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

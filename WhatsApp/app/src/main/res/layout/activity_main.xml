@@ -44,9 +44,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/viewPagerTab"
-        style="@style/viewPager">
-    </androidx.viewpager.widget.ViewPager>
-
-
+        style="@style/viewPager"/>
 
 </LinearLayout>
