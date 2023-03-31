@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item
-        android:id="@+id/backMenuItem"
-        android:icon="@drawable/ic_action_navigation_arrow_back_inverted"
-        android:title="teste"
-        android:visible="false"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/menuPesquisa"
-        android:icon="@drawable/ic_search_black_24dp"
         android:title="Search"
-        app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="always"
-        />
-    <item android:id="@+id/menuConfiguracoes"
-        android:title="Configurações"
-        app:showAsAction="never"/>
+        android:id="@+id/menuPesquisa"
+        android:icon="@drawable/icpesquisa"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+    <group>
+        <item
+            android:id="@+id/menuConfiguracoes"
+            android:title="Configurações" />
 
-    <item android:id="@+id/menuSair"
-        android:title="Sair"
-        app:showAsAction="never"/>
+        <item
+            android:id="@+id/menuSair"
+            android:title="Sair"/>
+    </group>
 </menu>
