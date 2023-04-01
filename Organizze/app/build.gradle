@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'izarleydev.com.organizze'
-    compileSdk 32
+    compileSdk 33
 
     configurations {
         all {
@@ -39,6 +39,8 @@ android {
     buildFeatures {
         viewBinding true
     }
+    buildToolsVersion '30.0.3'
+    ndkVersion '25.2.9519653'
 }
 
 dependencies {
