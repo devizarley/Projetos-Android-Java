@@ -3,5 +3,7 @@
     <color name="colorPrimaryDark">#462759</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="tranparent">#00FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="whiteTransparent">#41FFFFFF</color>
+    <color name="whiteTransparent20">#20FFFFFF</color>
 </resources>
