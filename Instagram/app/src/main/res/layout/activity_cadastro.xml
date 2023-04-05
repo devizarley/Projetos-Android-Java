@@ -4,30 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/themeLoginCadastro"
-    tools:context=".activity.LoginActivity">
+    tools:context=".activity.CadastroActivity"
+    android:theme="@style/themeLoginCadastro">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView2"
         android:layout_width="250dp"
         android:layout_height="150dp"
         android:layout_marginBottom="16dp"
         android:background="@color/transparent"
-        style="@style/themeLogo"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        style="@style/themeLogo"/>
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextTextPersonName4"
         style="@style/themeInput"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -37,19 +37,19 @@
         android:paddingEnd="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editTextTextPersonName3"
         style="@style/themeInput"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="Senha"
         android:inputType="textPassword"
@@ -59,41 +59,63 @@
         android:paddingEnd="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName5"
+        style="@style/themeInput"
+        android:layout_width="363dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:hint="Confirme sua senha"
+        android:inputType="textPassword"
+        android:paddingStart="13dp"
+        android:paddingLeft="13dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button2"
         style="@style/themeButton"
-        android:layout_width="0dp"
+        android:layout_width="363dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
+        android:elevation="30dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:text="Login"
-        app:layout_constraintBottom_toTopOf="@+id/textCadastrar"
+        android:text="Cadastrar"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
 
     <TextView
-        android:id="@+id/textCadastrar"
+        android:id="@+id/textView2"
         style="@style/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/transparent"
-        android:onClick="textCadastrar"
-        android:text="Cadastrar-se"
+        android:onClick="textEntrar"
+        android:text="Entrar"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

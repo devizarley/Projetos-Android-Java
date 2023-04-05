@@ -8,15 +8,15 @@ import android.view.View;
 
 import izarleydev.com.instagram.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class CadastroActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_cadastro);
     }
 
-    public void textCadastrar (View view){
-        startActivity(new Intent(this, CadastroActivity.class));
+    public void textEntrar(View view) {
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }
