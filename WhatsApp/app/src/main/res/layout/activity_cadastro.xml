@@ -97,7 +97,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:background="#8AFFFFFF"
-        android:onClick="validateFildUser"
+        android:onClick="validarCadastro"
         android:text="Cadastro"
         android:textColor="#FFFFFF"
         android:theme="@style/button_login_cadastro"
