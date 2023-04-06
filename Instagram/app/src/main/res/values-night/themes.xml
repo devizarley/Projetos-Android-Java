@@ -5,6 +5,8 @@
         <item name="colorPrimary">@color/purple</item>
         <item name="colorAccent">@color/colorPrimaryDarkMode</item>
 
+        <item name="colorControlActivated">@color/white</item>
+
     </style>
 
     <style name="themeLoginCadastro">
@@ -21,6 +23,10 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="android:elevation">10dp</item>
+    </style>
+
+    <style name="container_inputText">
+        <item name="android:background">@drawable/border_redounded_darkmode</item>
     </style>
 
     <style name="themeButton">

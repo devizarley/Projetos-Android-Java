@@ -14,20 +14,21 @@
         android:layout_marginBottom="16dp"
         android:background="@color/transparent"
         style="@style/themeLogo"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/inputEmailLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/inputEmailLogin"
         style="@style/themeInput"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="#1a1a1a"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -37,13 +38,13 @@
         android:paddingEnd="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
+        app:layout_constraintBottom_toTopOf="@+id/inputSenhaLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/inputSenhaLogin"
         style="@style/themeInput"
         android:layout_width="0dp"
         android:layout_height="48dp"
@@ -62,7 +63,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/inputEmailLogin" />
 
     <Button
         android:id="@+id/button"
@@ -74,13 +75,14 @@
         android:layout_marginBottom="16dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
+        android:onClick="validarLogin"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/textCadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/inputSenhaLogin" />
 
     <TextView
         android:id="@+id/textCadastrar"

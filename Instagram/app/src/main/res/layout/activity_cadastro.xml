@@ -37,13 +37,13 @@
         android:paddingEnd="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/inputSenhaCadastro"
+        app:layout_constraintBottom_toTopOf="@+id/inputNomeCadastro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
-        android:id="@+id/inputSenhaCadastro"
+        android:id="@+id/inputNomeCadastro"
         style="@style/themeInput"
         android:layout_width="0dp"
         android:layout_height="48dp"
@@ -51,21 +51,21 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
-        android:hint="Senha"
-        android:inputType="textPassword"
+        android:hint="Nome"
+        android:inputType="textPersonName"
         android:paddingStart="13dp"
         android:paddingLeft="13dp"
         android:paddingTop="10dp"
         android:paddingEnd="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/inputCSenhaCadastro"
+        app:layout_constraintBottom_toTopOf="@+id/inputSenhaCadastro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputEmailCadastro" />
 
     <EditText
-        android:id="@+id/inputCSenhaCadastro"
+        android:id="@+id/inputSenhaCadastro"
         style="@style/themeInput"
         android:layout_width="363dp"
         android:layout_height="48dp"
@@ -73,7 +73,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="32dp"
         android:ems="10"
-        android:hint="Confirme sua senha"
+        android:hint="Senha"
         android:inputType="textPassword"
         android:paddingStart="13dp"
         android:paddingLeft="13dp"
@@ -84,7 +84,7 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonCadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputSenhaCadastro" />
+        app:layout_constraintTop_toBottomOf="@+id/inputNomeCadastro" />
 
     <Button
         android:id="@+id/buttonCadastrar"
@@ -97,13 +97,14 @@
         android:elevation="30dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
+        android:onClick="validarCadastro"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:text="Cadastrar"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputCSenhaCadastro" />
+        app:layout_constraintTop_toBottomOf="@+id/inputSenhaCadastro" />
 
     <TextView
         android:id="@+id/textView2"
