@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#03a784</color>
     <color name="colorAccent">#25d366</color>
 
+    <color name="transparent">#00FFFFFF</color>
     <color name="white">#ffffff</color>
     <color name="cinza_claro">#EEEEEEEE</color>
     <color name="black">#000000</color>

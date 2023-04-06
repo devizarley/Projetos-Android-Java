@@ -18,6 +18,7 @@
     </style>
 
     <style name="StyledTilEditTextTheme">
+        <item name="android:background">@color/transparent</item>
         <item name="colorControlNormal">@color/white</item> // Cor padrão da linha
         <item name="colorControlActivated">@color/white</item> // Cor linha e texto quando recebe foco
     </style>
