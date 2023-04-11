@@ -2,7 +2,8 @@
 
     <style name="Theme.Instagram" parent="Theme.AppCompat.DayNight.NoActionBar">
 
-        <item name="colorPrimary">@color/purple</item>
+        <item name="colorPrimary">@color/colorPrimaryDarkMode</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkMode</item>
         <item name="colorAccent">@color/colorPrimaryDarkMode</item>
 
         <item name="colorControlActivated">@color/white</item>
