@@ -129,6 +129,7 @@ public class ContatosFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        listContatos.clear();
         recContatos();
     }
 
