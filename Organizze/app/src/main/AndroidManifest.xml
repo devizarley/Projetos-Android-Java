@@ -13,26 +13,18 @@
         android:theme="@style/Theme.Organizze"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.Organizze.NoActionBar" />
-        <activity
-            android:name=".ContentPrincipalActivity"
-            android:exported="false"
-            android:label="@string/title_activity_content_principal"
-            android:theme="@style/Theme.Organizze.NoActionBar" />
-        <activity
             android:name=".activitys.activity.ReceitaActivity"
+            android:theme="@style/temaReceita"
             android:exported="false" />
         <activity
             android:name=".activitys.activity.DespesasActivity"
+            android:theme="@style/temaDespesa"
             android:exported="false" />
         <activity
             android:name=".activitys.activity.PrincipalActivity"
             android:exported="false"
             android:label="@string/title_activity_principal"
-            android:theme="@style/Theme.Organizze.NoActionBar" />
+            android:theme="@style/Theme.Organizze" />
         <activity
             android:name=".activitys.activity.Cadastro_Activity"
             android:exported="false">

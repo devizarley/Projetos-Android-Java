@@ -2,9 +2,16 @@
 <resources>
     <color name="white">#ffffff</color>
     <color name="dark">#000000</color>
+    <color name="cinza">#BDBDBD</color>
+    <color name="cinzaEscuro">#4B191919</color>
+    <color name="transparent">#00BDBDBD</color>
     <color name="colorPrimary">#01c7d2</color>
     <color name="colorPrimaryDark">#00b2bc</color>
     <color name="colorAccent">#ff706a</color>
+
+    //cores darkmode
+    <color name="blackDarkMode">#262626</color>
+
     /*Cores despesas*/
     <color name="colorPrimaryDespesa">#FF076A</color>
     <color name="colorPrimaryDarkDespesa">#E66560</color>
@@ -13,4 +20,7 @@
     <color name="colorPrimaryReceita">#00D39E</color>
     <color name="colorPrimaryDarkReceita">#00BE8B</color>
     <color name="colorAccentReceita">#00D39E</color>
+
+
+
 </resources>

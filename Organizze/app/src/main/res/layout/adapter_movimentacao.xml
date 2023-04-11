@@ -17,9 +17,10 @@
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="16dp">
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="16dp"
+        android:theme="@style/adapterMovimentacao">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,7 +33,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="Titulo"
-                android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
             <TextView
@@ -42,7 +42,6 @@
                 android:layout_weight="1"
                 android:gravity="end"
                 android:text="valor"
-                android:textColor="#00D39E"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -54,7 +53,6 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:text="Categoria"
-            android:textColor="#696969"
             android:textSize="14sp" />
 
 

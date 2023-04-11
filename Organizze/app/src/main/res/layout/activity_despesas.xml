@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".activitys.activity.DespesasActivity">
+    tools:context=".activitys.activity.DespesasActivity"
+    android:theme="@style/darkmodeColor">
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="411dp"
-        android:layout_height="147dp"
-        android:background="#E91E63"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:background="@color/colorAccentDespesa"
         android:gravity="top"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,6 +20,8 @@
 
         <EditText
             android:id="@+id/editValorD"
+            style="@style/text"
+            android:theme="@style/StyledTilEditTextTheme"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -27,9 +29,8 @@
             android:hint="R$ 00,00"
             android:inputType="number"
             android:padding="30dp"
-            android:textAlignment="textEnd"
-            android:textColor="#9E000000"
-            android:textSize="34sp" />
+            android:textAlignment="viewEnd"
+            android:textSize="34sp"/>
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -42,13 +43,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:theme="@style/StyledTilEditTextTheme">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editDataD"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Data" />
+            android:hint="Data"
+            style="@style/text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -61,13 +64,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        android:theme="@style/StyledTilEditTextTheme">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editCategoriaD"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Categoria" />
+            android:hint="Categoria"
+            style="@style/text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -79,13 +84,15 @@
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        android:theme="@style/StyledTilEditTextTheme">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editDescricaoD"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Descrição" />
+            android:hint="Descrição"
+            style="@style/text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

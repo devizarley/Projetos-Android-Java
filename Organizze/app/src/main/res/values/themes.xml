@@ -1,9 +1,52 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style parent="Theme.AppCompat.DayNight.NoActionBar" name="Theme.Organizze"/>
-    <style name="Theme.Organizze.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <style name="Theme.Organizze" parent="Theme.AppCompat.DayNight.NoActionBar">
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
     </style>
-    <style parent="ThemeOverlay.AppCompat.Dark.ActionBar" name="Theme.Organizze.AppBarOverlay"/>
+
+    <style name="temaDespesa" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorAccentDespesa</item>
+    </style>
+
+    <style name="temaReceita" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorAccentReceita</item>
+    </style>
+
+    <style name="darkmodeColor">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="adapterMovimentacao">
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/dark</item>
+    </style>
+
+    <style name="materalCalendar">
+        <item name="mcv_arrowColor">@color/dark</item>
+    </style>
+    <style name="text">
+        <item name="android:textColor">@color/dark</item>
+    </style>
+
+    <style name="backgroundHeader">
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="StyledTilEditTextTheme">
+        <item name="android:textColorHint">@color/dark</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColorHighlight">@color/cinzaEscuro</item>
+        <item name="colorControlNormal">@color/dark</item> // Cor padrão da linha
+        <item name="colorControlActivated">@color/dark</item> // Cor linha e texto quando recebe foco
+    </style>
+
+    <style parent="ThemeOverlay.AppCompat.Dark.ActionBar" name="Theme.Organizze.AppBarOverlay">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
     <style parent="ThemeOverlay.AppCompat.Light" name="Theme.Organizze.PopupOverlay"/>
+
 </resources>

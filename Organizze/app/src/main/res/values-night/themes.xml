@@ -1,9 +1,54 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style parent="Theme.AppCompat.DayNight.NoActionBar" name="Theme.Organizze"/>
-    <style name="Theme.Organizze.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+
+    <style name="Theme.Organizze" parent="Theme.AppCompat.DayNight.NoActionBar">
+        
+        <item name="colorPrimary">@color/blackDarkMode</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
     </style>
-    <style parent="ThemeOverlay.AppCompat.Dark.ActionBar" name="Theme.Organizze.AppBarOverlay"/>
+    
+    //styles
+
+    <style name="temaDespesa" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorAccentDespesa</item>
+    </style>
+
+    <style name="temaReceita" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorAccentReceita</item>
+    </style>
+    
+    <style name="darkmodeColor">
+        <item name="android:background">@color/blackDarkMode</item>
+    </style>
+
+    <style name="adapterMovimentacao">
+        <item name="android:background">@color/blackDarkMode</item>
+        <item name="android:textColor">@color/cinza</item>
+    </style>
+
+    <style name="materalCalendar">
+        <item name="mcv_arrowColor">#BCBCBC</item>
+    </style>
+    <style name="text">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="backgroundHeader">
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="StyledTilEditTextTheme">
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColorHighlight">#60FFFFFF</item>
+        <item name="colorControlNormal">@color/white</item> // Cor padrão da linha
+        <item name="colorControlActivated">@color/white</item> // Cor linha e texto quando recebe foco
+    </style>
+
+    <style parent="ThemeOverlay.AppCompat.Dark.ActionBar" name="Theme.Organizze.AppBarOverlay">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
     <style parent="ThemeOverlay.AppCompat.Light" name="Theme.Organizze.PopupOverlay"/>
 </resources>

@@ -28,6 +28,7 @@ public class MainActivity extends IntroActivity {
         setButtonBackVisible(false);
         setButtonNextVisible(false);
 
+
         addSlide(new FragmentSlide.Builder()
                 .background(R.color.white)
                 .fragment(R.layout.intro_1)
