@@ -79,7 +79,7 @@
         android:onClick="validateFildUser"
         android:text="Login"
         android:textColor="#FFFFFF"
-        android:theme="@style/button_login_cadastro"
+        style="@style/button_login_cadastro"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

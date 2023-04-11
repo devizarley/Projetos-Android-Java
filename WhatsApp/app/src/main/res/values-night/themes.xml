@@ -5,8 +5,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDarkMode</item>
         <item name="colorAccent">@color/colorPrimaryDarkMode</item>
 
-        //pingo input
-        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/white</item> // Cor texto quando recebe foco
     </style>
     <style name="backgound_login_cadastro">
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -19,9 +18,10 @@
     </style>
 
     <style name="StyledTilEditTextTheme">
-        <item name="android:background">@color/transparent</item>
-        <item name="colorControlNormal">@color/white</item> // Cor padrão da linha
         <item name="colorControlActivated">@color/white</item> // Cor linha e texto quando recebe foco
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColorHighlight">#60FFFFFF</item>
+        <item name="colorControlNormal">@color/white</item> // Cor padrão da linha
     </style>
 
     //tema escuro

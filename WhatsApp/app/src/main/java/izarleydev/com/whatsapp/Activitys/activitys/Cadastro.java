@@ -1,6 +1,7 @@
 package izarleydev.com.whatsapp.Activitys.activitys;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -77,6 +78,9 @@ public class Cadastro extends AppCompatActivity {
 
         });
 
+    }
+    public void textLogin (View view) {
+        startActivity(new Intent(this, Login.class));
     }
 
     public void validarCadastro (View view) {
