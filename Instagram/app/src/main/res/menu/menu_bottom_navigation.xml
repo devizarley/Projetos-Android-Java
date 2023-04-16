@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/ic_home"
+        android:icon="@drawable/ic_home_white"
+        android:title="Home"/>
+
+    <item android:id="@+id/ic_pesquisa"
+        android:icon="@drawable/ic_search_white"
+        android:title="Pesquisa"/>
+
+    <item
+        android:id="@+id/placeholder"
+        android:enabled="false"
+        android:title="" />
+
+    <item android:id="@+id/ic_cam"
+        android:icon="@drawable/ic_camera_white"
+        android:title="Camera"/>
+
+    <item android:id="@+id/ic_account"
+        android:icon="@drawable/ic_account_white"
+        android:title="Account"/>
+
+</menu>
