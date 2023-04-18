@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/colorPrimaryDarkMode</item>
 
-        <item name="itemIconTint"/>
+        <item name="itemIconTint" />
 
     </style>
 
@@ -43,6 +43,7 @@
     </style>
 
     <style name="Theme.Instagram.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.WhatsApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
