@@ -10,6 +10,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
+import izarleydev.com.instagram.model.Usuario;
+
 public class UsuarioFirebase {
 
     public static FirebaseUser getUsuarioAtual (){
@@ -17,7 +19,36 @@ public class UsuarioFirebase {
         return usuario.getCurrentUser();
     }
 
-    public static void atualizarNomeUsuario(String name){
+    public static Usuario getDadosUsarioLogado (){
+        FirebaseUser userLogado = getUsuarioAtual();
+
+        Usuario usuario = new Usuario();
+        usuario.setEmail(userLogado.getEmail());
+        usuario.setName(userLogado.getDisplayName());
+        usuario.setId(userLogado.getUid());
+
+        if (userLogado.getPhotoUrl() == null) {
+
+            usuario.setPhoto("");
+
+        }else {
+
+            usuario.setPhoto( userLogado.getPhotoUrl().toString() );
+
+        }
+
+        return usuario;
+    }
+
+    public static String recuperarId () {
+        FirebaseAuth usuario = ConfigFirebase.getAuth();
+        String email = usuario.getCurrentUser().getEmail();
+        String id = Base64.codBase64(email);
+
+        return id;
+    }
+
+    public static boolean atualizarNomeUsuario(String name){
 
         try {
 
@@ -36,12 +67,11 @@ public class UsuarioFirebase {
                     }
                 }
             });
+            return true;
 
         }catch (Exception e ){
             e.printStackTrace();
+            return false;
         }
-
     }
-
-
 }

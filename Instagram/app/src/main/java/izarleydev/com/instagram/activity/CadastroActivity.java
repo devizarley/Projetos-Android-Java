@@ -45,7 +45,6 @@ public class CadastroActivity extends AppCompatActivity {
         //Configurações Firebase
         firebaseAuth = ConfigFirebase.getAuth();
 
-
     }
 
     public void cadastrarUsuario(Usuario usuario){
@@ -55,9 +54,11 @@ public class CadastroActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
 
                     try {
+
                         String idUser = task.getResult().getUser().getUid();
                         usuario.setId(idUser);
                         usuario.Salvar();
+
                         UsuarioFirebase.atualizarNomeUsuario(usuario.getName());
 
                         finish();
@@ -97,7 +98,6 @@ public class CadastroActivity extends AppCompatActivity {
         if (!valueEmailInput.isEmpty()){
             if (!valueNomeInput.isEmpty()){
                 if (!valueSenhaInput.isEmpty()){
-
 
                     Usuario usuario = new Usuario();
                     usuario.setEmail(valueEmailInput);

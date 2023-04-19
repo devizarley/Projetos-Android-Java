@@ -3,6 +3,9 @@ package izarleydev.com.instagram.model;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import izarleydev.com.instagram.helper.ConfigFirebase;
 
 public class Usuario {
@@ -18,9 +21,32 @@ public class Usuario {
 
     public void Salvar(){
         DatabaseReference databaseReference = ConfigFirebase.getFirebaseDatabase();
-        DatabaseReference usuario = databaseReference.child("usuario").child(getId());
+        DatabaseReference usuario = databaseReference.child("usuarios").child(getId());
 
         usuario.setValue(this);
+    }
+
+    public void atualizar(){
+
+        DatabaseReference firebase = ConfigFirebase.getFirebaseDatabase();
+
+        DatabaseReference ref = firebase.child("usuarios").child(getId());
+
+        Map<String, Object> valueUser = converterMap();
+
+        ref.updateChildren(valueUser);
+
+    }
+
+    @Exclude
+    public Map<String, Object> converterMap(){
+        HashMap<String, Object> user = new HashMap<>();
+        user.put("email", getEmail());
+        user.put("name", getName());
+        user.put("id", getId());
+        user.put("photo", getPhoto());
+
+        return  user;
     }
 
     public String getName() {

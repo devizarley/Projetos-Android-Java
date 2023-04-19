@@ -21,6 +21,7 @@ import izarleydev.com.instagram.fragment.AddFragment;
 import izarleydev.com.instagram.fragment.HomeFragment;
 import izarleydev.com.instagram.fragment.SearchFragment;
 import izarleydev.com.instagram.helper.ConfigFirebase;
+import izarleydev.com.instagram.helper.UsuarioFirebase;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth ;
