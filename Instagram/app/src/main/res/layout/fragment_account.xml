@@ -7,7 +7,7 @@
     tools:context=".fragment.AccountFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/circleImageProfile"
         android:layout_width="68dp"
         android:layout_height="69dp"
         android:layout_marginTop="68dp"
