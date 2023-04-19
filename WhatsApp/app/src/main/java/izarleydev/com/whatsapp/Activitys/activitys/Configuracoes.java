@@ -76,7 +76,7 @@ public class Configuracoes extends AppCompatActivity {
         Permissao.validarPermissoes(permissions, this, 1);
 
         //Configurações iniciais
-        userLogado = UsuarioFirebase.getDadosUsuarioLogado();
+                userLogado = UsuarioFirebase.getDadosUsuarioLogado();
 
         imageButtonCamera = findViewById(R.id.imageButtonCamera);
         imageButtonGaleria = findViewById(R.id.imageButtonGallery);
