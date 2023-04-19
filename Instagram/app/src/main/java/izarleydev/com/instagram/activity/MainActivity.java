@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
 
         });
-        auth = ConfigFirebase.getAuth();
+
     }
 
 

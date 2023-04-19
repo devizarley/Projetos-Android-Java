@@ -107,15 +107,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonEditProfile"
         style="@style/themeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        android:text="Editar Perfil"
 
+        android:text="Editar Perfil"
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline10"

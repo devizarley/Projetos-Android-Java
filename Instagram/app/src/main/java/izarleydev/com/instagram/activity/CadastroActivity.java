@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.helper.Base64;
 import izarleydev.com.instagram.helper.ConfigFirebase;
+import izarleydev.com.instagram.helper.UsuarioFirebase;
 import izarleydev.com.instagram.model.Usuario;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -52,11 +53,18 @@ public class CadastroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    String idUser = Base64.codBase64(usuario.getEmail());
-                    usuario.setId(idUser);
-                    usuario.Salvar();
 
-                    finish();
+                    try {
+                        String idUser = task.getResult().getUser().getUid();
+                        usuario.setId(idUser);
+                        usuario.Salvar();
+                        UsuarioFirebase.atualizarNomeUsuario(usuario.getName());
+
+                        finish();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
                 }else {
 
                     //Tratamento para email e senha

@@ -45,7 +45,6 @@ public class Usuario {
         this.senha = senha;
     }
 
-    @Exclude
     public String getId() {
         return id;
     }
