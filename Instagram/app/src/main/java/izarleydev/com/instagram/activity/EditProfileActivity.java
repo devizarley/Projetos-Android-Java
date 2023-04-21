@@ -16,8 +16,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.StorageReference;
@@ -41,6 +44,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private Usuario user;
     private static final int SELECAO_GALERIA = 200;
     private StorageReference storageReference;
+    private String idUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public class EditProfileActivity extends AppCompatActivity {
         //configurações gerais
         user = UsuarioFirebase.getDadosUsarioLogado();
         storageReference = ConfigFirebase.getFirebaseStorage();
+        idUsuario = UsuarioFirebase.getIdUsuario();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white);
@@ -64,6 +69,14 @@ public class EditProfileActivity extends AppCompatActivity {
         FirebaseUser userProfile = UsuarioFirebase.getUsuarioAtual();
         inputEditUser.setText(userProfile.getDisplayName());
         inputEditEmail.setText(userProfile.getEmail());
+        Uri url = userProfile.getPhotoUrl();
+        if (url != null) {
+            Glide.with(EditProfileActivity.this)
+                    .load(url)
+                    .into(profile_image);
+        }else {
+            profile_image.setImageResource(R.drawable.avatar);
+        }
 
     }
 
@@ -90,7 +103,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     byte[] dadosImagem = baos.toByteArray();
 
                     //Salvar imagem no firebase
-                    StorageReference imagemRef = storageReference.child("imagens").child("perfil").child("<id-usuario.jpeg");
+                    StorageReference imagemRef = storageReference.child("imagens").child("perfil").child(idUsuario +  ".jpeg");
                     UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
                     uploadTask.addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -101,8 +114,15 @@ public class EditProfileActivity extends AppCompatActivity {
                     }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Toast.makeText(EditProfileActivity.this,
-                                    "Sucesso ao fazer upload da imagem", Toast.LENGTH_SHORT).show();
+
+
+                            imagemRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    Uri url = task.getResult();
+                                    atualizarFotoUsuario(url);
+                                }
+                            });
                         }
                     });
                 }
@@ -110,6 +130,20 @@ public class EditProfileActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void atualizarFotoUsuario (Uri url){
+        //atualizar foto no perfil
+        UsuarioFirebase.atualizarFotoUsuario(url);
+
+        //atualizar foto no Firebase
+
+        user.setPhoto(url.toString());
+        user.atualizar();
+
+        Toast.makeText(EditProfileActivity.this,
+                "Sucesso ao fazer upload da imagem", Toast.LENGTH_SHORT).show();
+
     }
 
     public void inicializarComponentes() {

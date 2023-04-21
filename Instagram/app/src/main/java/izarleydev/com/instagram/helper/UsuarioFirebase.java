@@ -1,5 +1,6 @@
 package izarleydev.com.instagram.helper;
 
+import android.net.Uri;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,10 @@ public class UsuarioFirebase {
     public static FirebaseUser getUsuarioAtual (){
         FirebaseAuth usuario = ConfigFirebase.getAuth();
         return usuario.getCurrentUser();
+    }
+
+    public static String getIdUsuario (){
+        return getUsuarioAtual().getUid();
     }
 
     public static Usuario getDadosUsarioLogado (){
@@ -40,14 +45,6 @@ public class UsuarioFirebase {
         return usuario;
     }
 
-    public static String recuperarId () {
-        FirebaseAuth usuario = ConfigFirebase.getAuth();
-        String email = usuario.getCurrentUser().getEmail();
-        String id = Base64.codBase64(email);
-
-        return id;
-    }
-
     public static boolean atualizarNomeUsuario(String name){
 
         try {
@@ -64,6 +61,33 @@ public class UsuarioFirebase {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (!task.isSuccessful()){
                         Log.d("Perfil", "Erro ao atualizar nome de perfil");
+                    }
+                }
+            });
+            return true;
+
+        }catch (Exception e ){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean atualizarFotoUsuario(Uri url){
+
+        try {
+
+            FirebaseUser user = getUsuarioAtual();
+
+            UserProfileChangeRequest profile = new UserProfileChangeRequest
+                    .Builder()
+                    .setPhotoUri(url)
+                    .build();
+
+            user.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (!task.isSuccessful()){
+                        Log.d("Perfil", "Erro ao atualizar a foto de perfil");
                     }
                 }
             });
