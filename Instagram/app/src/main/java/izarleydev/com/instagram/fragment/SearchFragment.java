@@ -1,6 +1,7 @@
 package izarleydev.com.instagram.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.SearchView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -24,8 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import izarleydev.com.instagram.R;
+import izarleydev.com.instagram.activity.ProfileUserActivity;
 import izarleydev.com.instagram.adapter.AdapterSearch;
 import izarleydev.com.instagram.helper.ConfigFirebase;
+import izarleydev.com.instagram.helper.RecyclerItemClickListener;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
 import izarleydev.com.instagram.model.Usuario;
 
@@ -57,6 +61,33 @@ public class SearchFragment extends Fragment {
 
         adapterSearch = new AdapterSearch(listUser, getActivity());
         recyclerView.setAdapter(adapterSearch);
+
+        //Configurar evento de clique
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(
+                getActivity(),
+                recyclerView,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                        Usuario usuarioSelecionado = listUser.get(position);
+                        Intent i = new Intent(getActivity(), ProfileUserActivity.class);
+                        i.putExtra("usuarioSelecionado", usuarioSelecionado);
+                        startActivity(i);
+
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+                }
+        ));
 
         searchView.setQueryHint("Buscar Usuários");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -96,9 +127,6 @@ public class SearchFragment extends Fragment {
                         listUser.add( ds.getValue(Usuario.class) );
                     }
                     adapterSearch.notifyDataSetChanged();
-                    
-                    //int total = listUser.size();
-                    //Log.i("totalUsuarios", "onDataChange: " + total);
                 }
 
                 @Override

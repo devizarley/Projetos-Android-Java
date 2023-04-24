@@ -15,16 +15,16 @@ import izarleydev.com.instagram.activity.EditProfileActivity;
 
 public class AccountFragment extends Fragment {
 
-    private Button buttonEditProfile;
+    private Button buttonProfile;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
 
-        buttonEditProfile = view.findViewById(R.id.buttonEditProfile);
+        buttonProfile = view.findViewById(R.id.buttonProfile);
 
-        buttonEditProfile.setOnClickListener(new View.OnClickListener() {
+        buttonProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), EditProfileActivity.class));
