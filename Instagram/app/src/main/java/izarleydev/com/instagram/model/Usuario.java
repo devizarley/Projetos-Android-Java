@@ -53,7 +53,7 @@ public class Usuario {
         return name;
     }
     public void setName(String name) {
-        this.name = name;
+        this.name = name.toUpperCase();
     }
 
     public String getEmail() {

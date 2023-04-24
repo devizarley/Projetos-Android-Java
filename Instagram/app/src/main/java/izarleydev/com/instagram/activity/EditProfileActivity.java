@@ -67,7 +67,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         //recuperar dados do usuario e setar nos inputs
         FirebaseUser userProfile = UsuarioFirebase.getUsuarioAtual();
-        inputEditUser.setText(userProfile.getDisplayName());
+        inputEditUser.setText(userProfile.getDisplayName().toUpperCase());
         inputEditEmail.setText(userProfile.getEmail());
         Uri url = userProfile.getPhotoUrl();
         if (url != null) {
