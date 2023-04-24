@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import izarleydev.com.instagram.R;
+import izarleydev.com.instagram.adapter.AdapterSearch;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
 import izarleydev.com.instagram.model.Usuario;
@@ -33,6 +35,7 @@ public class SearchFragment extends Fragment {
     private SearchView searchView;
     private List<Usuario> listUser;
     private DatabaseReference usuarioRef;
+    private AdapterSearch adapterSearch;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -41,11 +44,19 @@ public class SearchFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_search, container, false);
 
         //configurações gerais
-        recyclerView = view.findViewById(R.id.recyclerSearch);
         searchView = view.findViewById(R.id.searchView);
         listUser = new ArrayList<>();
+
         usuarioRef = ConfigFirebase.getFirebaseDatabase()
                         .child("usuarios");
+
+        //configuração recyclerView
+        recyclerView = view.findViewById(R.id.recyclerSearch);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        adapterSearch = new AdapterSearch(listUser, getActivity());
+        recyclerView.setAdapter(adapterSearch);
 
         searchView.setQueryHint("Buscar Usuários");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -70,20 +81,24 @@ public class SearchFragment extends Fragment {
         listUser.clear();
 
         //pesquisar usuarios caso tenha texto na pesquisa
-        if (texto.length() > 0){
+        if (texto.length() >= 2){
             Query query = usuarioRef.orderByChild("name")
                     .startAfter(texto)
                     .endAt(texto + "\uf8ff");
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    //limpar lista
+                    listUser.clear();
                     for (DataSnapshot ds : snapshot.getChildren()){
                         //recupera o usuario no firebase
                         listUser.add( ds.getValue(Usuario.class) );
                     }
+                    adapterSearch.notifyDataSetChanged();
                     
-                    int total = listUser.size();
-                    Log.i("totalUsuarios", "onDataChange: " + total);
+                    //int total = listUser.size();
+                    //Log.i("totalUsuarios", "onDataChange: " + total);
                 }
 
                 @Override
