@@ -16,6 +16,9 @@ public class Usuario implements Serializable {
     private String senha;
     private String id;
     private String photo;
+    private int seguidores = 0;
+    private int seguindo = 0;
+    private int publicacoes = 0;
 
     public Usuario() {
     }
@@ -41,13 +44,39 @@ public class Usuario implements Serializable {
 
     @Exclude
     public Map<String, Object> converterMap(){
+
         HashMap<String, Object> user = new HashMap<>();
         user.put("email", getEmail());
         user.put("name", getName());
         user.put("id", getId());
         user.put("photo", getPhoto());
+        user.put("seguidores", getSeguidores());
+        user.put("seguindo", getSeguindo());
+        user.put("publicacoes", getPublicacoes());
 
         return  user;
+    }
+
+
+    public int getSeguidores() {
+        return seguidores;
+    }
+    public void setSeguidores(int seguidores) {
+        this.seguidores = seguidores;
+    }
+
+    public int getSeguindo() {
+        return seguindo;
+    }
+    public void setSeguindo(int seguindo) {
+        this.seguindo = seguindo;
+    }
+
+    public int getPublicacoes() {
+        return publicacoes;
+    }
+    public void setPublicacoes(int publicacoes) {
+        this.publicacoes = publicacoes;
     }
 
     public String getName() {
