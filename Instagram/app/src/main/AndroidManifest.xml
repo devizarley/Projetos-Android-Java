@@ -2,11 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-feature android:name="android.hardware.camera2"
-        android:required="true"/>
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +20,9 @@
         android:theme="@style/Theme.Instagram"
         tools:targetApi="31">
         <activity
-            android:name=".activity.ProfileUserActivity"/>
+            android:name=".activity.FiltroActivity"
+            android:exported="false" />
+        <activity android:name=".activity.ProfileUserActivity" />
         <activity
             android:name=".activity.EditProfileActivity"
             android:parentActivityName=".activity.MainActivity" />
