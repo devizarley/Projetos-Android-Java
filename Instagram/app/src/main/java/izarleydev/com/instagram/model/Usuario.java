@@ -46,6 +46,7 @@ public class Usuario implements Serializable {
     public Map<String, Object> converterMap(){
 
         HashMap<String, Object> user = new HashMap<>();
+
         user.put("email", getEmail());
         user.put("name", getName());
         user.put("id", getId());
@@ -61,6 +62,7 @@ public class Usuario implements Serializable {
     public int getSeguidores() {
         return seguidores;
     }
+
     public void setSeguidores(int seguidores) {
         this.seguidores = seguidores;
     }
@@ -68,6 +70,7 @@ public class Usuario implements Serializable {
     public int getSeguindo() {
         return seguindo;
     }
+
     public void setSeguindo(int seguindo) {
         this.seguindo = seguindo;
     }
@@ -75,6 +78,7 @@ public class Usuario implements Serializable {
     public int getPublicacoes() {
         return publicacoes;
     }
+
     public void setPublicacoes(int publicacoes) {
         this.publicacoes = publicacoes;
     }

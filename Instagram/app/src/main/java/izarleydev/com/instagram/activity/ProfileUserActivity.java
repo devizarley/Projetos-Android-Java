@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -30,8 +31,10 @@ public class ProfileUserActivity extends AppCompatActivity {
     private CircleImageView imageProfile;
     private DatabaseReference usuarioRef;
     private DatabaseReference usuarioSelecionadoRef;
+    private DatabaseReference seguidoresRef;
     private TextView textPublicacoes, textSeguidores, textSeguindo;
     private ValueEventListener valueEventListenerProfileUser;
+    private String idUserLogado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,11 @@ public class ProfileUserActivity extends AppCompatActivity {
 
         //Iniciar os componentes
         componentes();
+
+        usuarioRef = ConfigFirebase.getFirebaseDatabase()
+                .child("usuarios");
+        usuarioSelecionadoRef = ConfigFirebase.getFirebaseDatabase();
+        seguidoresRef = ConfigFirebase.getFirebaseDatabase();
 
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Perfil");
@@ -56,31 +64,22 @@ public class ProfileUserActivity extends AppCompatActivity {
             //Configurar nome do usuário na toolbar
             getSupportActionBar().setTitle(usuarioSelecionado.getName());
 
-            Uri uri = Uri.parse(usuarioSelecionado.getPhoto());;
-            if ( uri != null ) {
-                Glide.with(ProfileUserActivity.this).load(uri).into(imageProfile);
-            }else {
-                imageProfile.setImageResource(R.drawable.avatar);
-            }
+            String photoUser = usuarioSelecionado.getPhoto();
+            if ( photoUser != null ) {
 
+                Uri uri = Uri.parse(photoUser);
+                Glide.with(ProfileUserActivity.this).load(uri).into(imageProfile);
+
+            }
         }
+        verificarSeguindoUsuario();
     }
-    private void componentes (){
-        buttonProfileUser = findViewById(R.id.buttonProfile);
-        buttonProfileUser.setText("Seguir");
-        imageProfile = findViewById(R.id.circleImageProfile);
-        usuarioRef = ConfigFirebase.getFirebaseDatabase();
-        usuarioRef.child("usuarios");
-        usuarioSelecionadoRef = ConfigFirebase.getFirebaseDatabase();
-        textPublicacoes = findViewById(R.id.textPublicacoes);
-        textSeguidores = findViewById(R.id.textSeguidores);
-        textSeguindo = findViewById(R.id.textSeguindo);
-    }
+
 
     @Override
     protected void onStart() {
-        super.onStart();
         recuperarDados();
+        super.onStart();
     }
 
     @Override
@@ -91,7 +90,7 @@ public class ProfileUserActivity extends AppCompatActivity {
 
     private void recuperarDados(){
 
-        usuarioSelecionadoRef = usuarioRef.child(usuarioSelecionado.getId());
+        usuarioSelecionadoRef = usuarioRef.child( usuarioSelecionado.getId());
 
         valueEventListenerProfileUser = usuarioSelecionadoRef.addValueEventListener(
                 new ValueEventListener() {
@@ -116,6 +115,52 @@ public class ProfileUserActivity extends AppCompatActivity {
                     }
                 }
         );
+    }
+    private void verificarSeguindoUsuario(){
+
+        DatabaseReference seguidorRef = seguidoresRef.child("seguidores")
+                .child(idUserLogado)
+                .child(usuarioSelecionado.getId());
+
+        seguidorRef.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            Log.d("dadosUsuario", ": Seguindo");
+                            habilitarButton(true);
+                        }else {
+                            Log.d("dadosUsuario", ": seguir");
+                            habilitarButton(false);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                }
+        );
+    }
+
+    private void habilitarButton (boolean segueUsuario){
+        if (segueUsuario){
+            buttonProfileUser.setText("Seguindo");
+        }else {
+            buttonProfileUser.setText("Seguir");
+        }
+    }
+
+    private void componentes (){
+
+        buttonProfileUser = findViewById(R.id.buttonProfile);
+        buttonProfileUser.setText("Seguir");
+        imageProfile = findViewById(R.id.circleImageProfile);
+        textPublicacoes = findViewById(R.id.textPublicacoes);
+        textSeguidores = findViewById(R.id.textSeguidores);
+        textSeguindo = findViewById(R.id.textSeguindo);
+        idUserLogado = UsuarioFirebase.getIdUsuario();
+
     }
 
     @Override
