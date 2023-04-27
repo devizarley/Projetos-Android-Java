@@ -1,6 +1,7 @@
 package izarleydev.com.instagram.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,8 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 
 import izarleydev.com.instagram.R;
+import izarleydev.com.instagram.activity.LoginActivity;
+import izarleydev.com.instagram.activity.MainActivity;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 
 public class HomeFragment extends Fragment {

@@ -157,12 +157,14 @@ public class ProfileUserActivity extends AppCompatActivity {
     private void habilitarButton (boolean segueUsuario){
         if (segueUsuario){
             buttonProfileUser.setText("Seguindo");
+
         }else {
             buttonProfileUser.setText("Seguir");
 
             buttonProfileUser.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     //salvar seguidor
                     salvarSeguidor(usuarioLogado, usuarioSelecionado);
                 }
@@ -183,6 +185,28 @@ public class ProfileUserActivity extends AppCompatActivity {
 
         buttonProfileUser.setText("Seguindo");
         buttonProfileUser.setOnClickListener(null);
+
+        //incrementar seguindo do usuario logado
+
+        int seguindo = uLogado.getSeguindo() + 1;
+
+        HashMap<String, Object> dadosSeguindo = new HashMap<>();
+        dadosSeguindo.put("seguindo", seguindo);
+
+        DatabaseReference usuarioSeguindo = usuariosRef
+                .child(uLogado.getId());
+        usuarioSeguindo.updateChildren(dadosSeguindo);
+
+        //incrementar seguidores do amigo
+
+        int seguidores = uSelecionado.getSeguidores() + 1;
+
+        HashMap<String, Object> dadosSeguidores = new HashMap<>();
+        dadosSeguidores.put("seguidores", seguidores);
+
+        DatabaseReference usuarioSeguidores = usuariosRef
+                .child(uSelecionado.getId());
+        usuarioSeguidores.updateChildren(dadosSeguidores);
 
     }
 

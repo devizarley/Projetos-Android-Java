@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.SearchView;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,6 +41,7 @@ public class SearchFragment extends Fragment {
     private List<Usuario> listUser;
     private DatabaseReference usuarioRef;
     private AdapterSearch adapterSearch;
+    private String idUsuarioLogado;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -53,6 +55,8 @@ public class SearchFragment extends Fragment {
 
         usuarioRef = ConfigFirebase.getFirebaseDatabase()
                         .child("usuarios");
+
+        idUsuarioLogado = UsuarioFirebase.getIdUsuario();
 
         //configuração recyclerView
         recyclerView = view.findViewById(R.id.recyclerSearch);
@@ -124,7 +128,14 @@ public class SearchFragment extends Fragment {
                     listUser.clear();
                     for (DataSnapshot ds : snapshot.getChildren()){
                         //recupera o usuario no firebase
-                        listUser.add( ds.getValue(Usuario.class) );
+                        Usuario usuario = ds.getValue(Usuario.class);
+
+                        //verifica se o usuario logado e remove da lista
+                        if (idUsuarioLogado.equals(usuario.getId()))
+                            continue;
+
+                        //adiciona usuario na lista
+                        listUser.add(usuario);
                     }
                     adapterSearch.notifyDataSetChanged();
                 }
