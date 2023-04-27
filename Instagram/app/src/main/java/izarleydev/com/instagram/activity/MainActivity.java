@@ -11,7 +11,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 import izarleydev.com.instagram.R;
@@ -26,6 +29,7 @@ import izarleydev.com.instagram.helper.UsuarioFirebase;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth ;
     ActivityMainBinding binding;
+    private FloatingActionButton ic_add;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -36,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
 
         replaceFragment(new HomeFragment());
         binding.bottomNavigationView.setBackground(null);
+
+        ic_add = findViewById(R.id.ic_add);
+        ic_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new AddFragment());
+            }
+        });
 
         binding.bottomNavigationView.setOnItemSelectedListener( item -> {
 

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -31,6 +32,7 @@ import java.io.ByteArrayOutputStream;
 import de.hdodenhof.circleimageview.CircleImageView;
 import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.helper.ConfigFirebase;
+import izarleydev.com.instagram.helper.Permissao;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
 import izarleydev.com.instagram.model.Usuario;
 
@@ -45,6 +47,9 @@ public class EditProfileActivity extends AppCompatActivity {
     private static final int SELECAO_GALERIA = 200;
     private StorageReference storageReference;
     private String idUsuario;
+    private String[] permissoesNecessarias = new String[]{
+            Manifest.permission.CAMERA
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +64,7 @@ public class EditProfileActivity extends AppCompatActivity {
         user = UsuarioFirebase.getDadosUsarioLogado();
         storageReference = ConfigFirebase.getFirebaseStorage();
         idUsuario = UsuarioFirebase.getIdUsuario();
+        Permissao.validarPermissoes(permissoesNecessarias, this, 1);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white);

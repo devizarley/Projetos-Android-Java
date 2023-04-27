@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     tools:context=".fragment.AddFragment">
 
-    <TextView
+    <Button
+        android:id="@+id/buttonAbrirGaleria"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Adicionar"
-        android:textColor="#FFFFFF"
-        android:textSize="30dp" />
+        android:layout_height="wrap_content"
+        android:text="ABRIR GALERIA" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/buttonAbrirCamera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ABRIR CAMERA" />
+</LinearLayout>
