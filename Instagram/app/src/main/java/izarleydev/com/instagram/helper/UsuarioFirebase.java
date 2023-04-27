@@ -31,15 +31,10 @@ public class UsuarioFirebase {
         usuario.setEmail(userLogado.getEmail());
         usuario.setName(userLogado.getDisplayName());
         usuario.setId(userLogado.getUid());
-
         if (userLogado.getPhotoUrl() == null) {
-
             usuario.setPhoto("");
-
         }else {
-
             usuario.setPhoto( userLogado.getPhotoUrl().toString() );
-
         }
 
         return usuario;
