@@ -81,5 +81,7 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
 
+    //filters
+    implementation 'info.androidhive:imagefilters:1.0.7'
 
 }
