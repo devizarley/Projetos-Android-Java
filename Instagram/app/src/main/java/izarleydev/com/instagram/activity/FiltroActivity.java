@@ -8,26 +8,43 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.zomato.photofilters.FilterPack;
 import com.zomato.photofilters.imageprocessors.Filter;
 import com.zomato.photofilters.utils.ThumbnailItem;
 import com.zomato.photofilters.utils.ThumbnailsManager;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
 
 import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.adapter.AdapterMiniaturas;
+import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.RecyclerItemClickListener;
+import izarleydev.com.instagram.helper.UsuarioFirebase;
+import izarleydev.com.instagram.model.Postagem;
 
 public class FiltroActivity extends AppCompatActivity {
     static
@@ -41,6 +58,10 @@ public class FiltroActivity extends AppCompatActivity {
     private List<ThumbnailItem> listaFiltros;
     private RecyclerView recyclerFiltros;
     private AdapterMiniaturas adapterMiniaturas;
+    private DatabaseReference usuariosRef, firebaseRef, usuarioLogadoRef;
+    private StorageReference storageReference;
+    private TextInputEditText inputDescricao;
+    private String idUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +69,13 @@ public class FiltroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_filtro);
 
         //configurações iniciais
-        listaFiltros = new ArrayList<>();
+        configuracoesIniciais();
 
         //componentes
-        imagemFotoEscolhida = findViewById(R.id.imagemFotoEscolhida);
-        recyclerFiltros = findViewById(R.id.recyclerFiltros);
+        androidComponentes();
+        firebaseComponentes();
 
-        toolbar = findViewById(R.id.toolbar);
+        //toolbar
         toolbar.setTitle("Filtros");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -62,11 +83,11 @@ public class FiltroActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null){
+
             byte[] dadosImagem = bundle.getByteArray("fotoEscolhida");
             imagem = BitmapFactory.decodeByteArray(dadosImagem, 0, dadosImagem.length);
             imagemFotoEscolhida.setImageBitmap(imagem);
-
-
+            imagemFiltro = imagem.copy(imagem.getConfig(), true);
 
             //configuração recyclerView
 
@@ -107,6 +128,28 @@ public class FiltroActivity extends AppCompatActivity {
         }
     }
 
+
+    private void configuracoesIniciais(){
+        listaFiltros = new ArrayList<>();
+    }
+
+
+    private void androidComponentes(){
+        toolbar = findViewById(R.id.toolbar);
+        imagemFotoEscolhida = findViewById(R.id.imagemFotoEscolhida);
+        recyclerFiltros = findViewById(R.id.recyclerFiltros);
+        inputDescricao = findViewById(R.id.textDesricao);
+    }
+
+    private void firebaseComponentes (){
+        firebaseRef = ConfigFirebase.getFirebaseDatabase();
+        usuariosRef = firebaseRef.child("usuarios");
+        idUser = UsuarioFirebase.getIdUsuario();
+        usuarioLogadoRef = usuariosRef.child(idUser);
+        storageReference = ConfigFirebase.getFirebaseStorage();
+    }
+
+
     private void recuperarFiltros(){
 
         listaFiltros.clear();
@@ -123,6 +166,7 @@ public class FiltroActivity extends AppCompatActivity {
         List<Filter> filters = FilterPack.getFilterPack(getApplicationContext());
 
         for (Filter filter: filters){
+
             ThumbnailItem itemFiltro = new ThumbnailItem();
             itemFiltro.image = imagem;
             itemFiltro.filter = filter;
@@ -134,6 +178,52 @@ public class FiltroActivity extends AppCompatActivity {
 
         listaFiltros.addAll( ThumbnailsManager.processThumbs(getApplicationContext()) );
         adapterMiniaturas.notifyDataSetChanged();
+
+    }
+
+    private void publicarPostagem(){
+
+        String textDescricao = inputDescricao.getText().toString();
+
+        //instanciar o objeto postagem
+        Postagem postagem = new Postagem();
+        postagem.setIdUser(idUser);
+        postagem.setDescricao(textDescricao);
+
+        //Recuperar dados da imagem para o firebase
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        imagemFiltro.compress(Bitmap.CompressFormat.JPEG, 70, baos);
+        byte[] dadosImagem = baos.toByteArray();
+
+        StorageReference imagemRef = storageReference
+                .child("imagens")
+                .child("postagens")
+                .child(postagem.getId()+ ".jpeg");
+
+        UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(FiltroActivity.this,
+                        "Erro ao fazer upload da imagem", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                imagemRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        Uri url = task.getResult();
+                        postagem.setFoto(url.toString());
+
+                        //salvar postagem
+                        if (postagem.salvar()){
+                            finish();
+                        }
+                    }
+                });
+            }
+        });
 
     }
 
@@ -149,8 +239,10 @@ public class FiltroActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.publicar:
+                publicarPostagem();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

@@ -17,12 +17,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
+import izarleydev.com.instagram.model.Postagem;
 import izarleydev.com.instagram.model.Usuario;
 
 public class ProfileUserActivity extends AppCompatActivity {
@@ -30,7 +33,7 @@ public class ProfileUserActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private Button buttonProfileUser;
     private CircleImageView imageProfile;
-    private DatabaseReference usuariosRef, usuarioSelecionadoRef, seguidoresRef, firebaseRef, usuarioLogadoRef;
+    private DatabaseReference usuariosRef, usuarioSelecionadoRef, seguidoresRef, firebaseRef, usuarioLogadoRef, postagensUsuarioRef;
     private TextView textPublicacoes, textSeguidores, textSeguindo;
     private ValueEventListener valueEventListenerProfileUser;
     private String idUserLogado;
@@ -62,6 +65,11 @@ public class ProfileUserActivity extends AppCompatActivity {
         if (bundle != null) {
             usuarioSelecionado = (Usuario) bundle.getSerializable("usuarioSelecionado");
 
+            //referencia postagens usuario selecionado
+            postagensUsuarioRef = ConfigFirebase.getFirebaseDatabase()
+                    .child("postagens")
+                            .child(usuarioSelecionado.getId());
+
             //Configurar nome do usuário na toolbar
             getSupportActionBar().setTitle(usuarioSelecionado.getName());
 
@@ -73,6 +81,30 @@ public class ProfileUserActivity extends AppCompatActivity {
 
             }
         }
+
+        carregarFotosPostagem();
+
+    }
+    public void carregarFotosPostagem(){
+
+        //Recupera as fotos postadas pelo usuario
+        postagensUsuarioRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<String> urlFotos = new ArrayList<>();
+                for (DataSnapshot ds: snapshot.getChildren()){
+                    Postagem postagem = ds.getValue(Postagem.class);
+                    urlFotos.add(postagem.getFoto());
+                }
+                int qtdPostagem = urlFotos.size();
+                textPublicacoes.setText(String.valueOf(qtdPostagem));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
@@ -135,11 +167,11 @@ public class ProfileUserActivity extends AppCompatActivity {
 
                         Usuario usuario = snapshot.getValue(Usuario.class);
 
-                        String publicacoes = String.valueOf(usuario.getPublicacoes());
+                        //String publicacoes = String.valueOf(usuario.getPublicacoes());
                         String seguindo = String.valueOf(usuario.getSeguindo());
                         String seguidores = String.valueOf(usuario.getSeguidores());
 
-                        textPublicacoes.setText(publicacoes);
+                        //textPublicacoes.setText(publicacoes);
                         textSeguindo.setText(seguindo);
                         textSeguidores.setText(seguidores);
 
