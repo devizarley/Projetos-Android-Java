@@ -7,7 +7,7 @@
     tools:context=".fragment.AccountFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageProfile"
+        android:id="@+id/imagemPerfil"
         android:layout_width="111dp"
         android:layout_height="83dp"
         android:layout_marginTop="28dp"
@@ -100,10 +100,10 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/circleImageProfile"
+        app:layout_constraintEnd_toEndOf="@+id/imagemPerfil"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/circleImageProfile"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageProfile" />
+        app:layout_constraintStart_toStartOf="@+id/imagemPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/imagemPerfil" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"

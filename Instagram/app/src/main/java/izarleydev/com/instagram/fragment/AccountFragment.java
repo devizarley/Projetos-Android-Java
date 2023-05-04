@@ -32,7 +32,6 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.activity.EditProfileActivity;
-import izarleydev.com.instagram.activity.ProfileUserActivity;
 import izarleydev.com.instagram.adapter.AdapterGrid;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
@@ -177,7 +176,7 @@ public class AccountFragment extends Fragment {
     private void componentes (View view){
 
         buttonProfile = view.findViewById(R.id.buttonProfile);
-        imageProfile = view.findViewById(R.id.circleImageProfile);
+        imageProfile = view.findViewById(R.id.imagemPerfil);
         textPublicacoes = view.findViewById(R.id.textPublicacoes);
         textSeguidores = view.findViewById(R.id.textSeguidores);
         textSeguindo = view.findViewById(R.id.textSeguindo);

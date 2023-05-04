@@ -2,9 +2,11 @@ package izarleydev.com.instagram.model;
 
 import com.google.firebase.database.DatabaseReference;
 
+import java.io.Serializable;
+
 import izarleydev.com.instagram.helper.ConfigFirebase;
 
-public class Postagem {
+public class Postagem implements Serializable {
 
     private String idUser;
     private String id;

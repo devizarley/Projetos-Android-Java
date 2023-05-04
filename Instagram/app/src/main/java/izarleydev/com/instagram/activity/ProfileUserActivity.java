@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -19,7 +21,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -50,6 +51,7 @@ public class ProfileUserActivity extends AppCompatActivity {
     private ProgressBar progressGrid;
     private ImageView imageGrid;
     private DatabaseReference usuariosRef, usuarioSelecionadoRef, seguidoresRef, firebaseRef, usuarioLogadoRef, postagensUsuarioRef;
+    private List<Postagem> postagens;
 
 
     @Override
@@ -100,6 +102,21 @@ public class ProfileUserActivity extends AppCompatActivity {
 
         carregarFotosPostagem();
 
+        //abrir foto clicada
+        gridViewProfile.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Postagem postagem = postagens.get(position);
+                Intent i = new Intent(getApplicationContext(), PostagemActivity.class);
+                i.putExtra("postagem", postagem);
+                i.putExtra("usuario", usuarioSelecionado);
+
+                startActivity(i);
+
+            }
+        });
+
     }
 
     public void inicializarImageLoader (){
@@ -119,6 +136,7 @@ public class ProfileUserActivity extends AppCompatActivity {
     public void carregarFotosPostagem(){
 
         //Recupera as fotos postadas pelo usuario
+        postagens = new ArrayList<>();
         postagensUsuarioRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -130,6 +148,7 @@ public class ProfileUserActivity extends AppCompatActivity {
                 List<String> urlFotos = new ArrayList<>();
                 for (DataSnapshot ds: snapshot.getChildren()){
                     Postagem postagem = ds.getValue(Postagem.class);
+                    postagens.add(postagem);
                     urlFotos.add(postagem.getFoto());
                 }
                 //Configurar adapter
@@ -283,7 +302,7 @@ public class ProfileUserActivity extends AppCompatActivity {
 
         buttonProfileUser = findViewById(R.id.buttonProfile);
         buttonProfileUser.setText("Carregando");
-        imageProfile = findViewById(R.id.circleImageProfile);
+        imageProfile = findViewById(R.id.imagemPerfil);
         textPublicacoes = findViewById(R.id.textPublicacoes);
         textSeguidores = findViewById(R.id.textSeguidores);
         textSeguindo = findViewById(R.id.textSeguindo);

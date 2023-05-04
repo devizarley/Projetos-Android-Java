@@ -1,6 +1,7 @@
 package izarleydev.com.instagram.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,6 +67,7 @@ public class FiltroActivity extends AppCompatActivity {
     private StorageReference storageReference;
     private TextInputEditText inputDescricao;
     private String idUser;
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,10 +135,22 @@ public class FiltroActivity extends AppCompatActivity {
         }
     }
 
+    private void abrirDialogCarregamento (String titulo){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(titulo);
+        alert.setCancelable(false);
+        alert.setView(R.layout.carregamento);
+
+        dialog = alert.create();
+        dialog.show();
+
+    }
+
 
     private void configuracoesIniciais(){
         listaFiltros = new ArrayList<>();
     }
+
 
 
     private void androidComponentes(){
@@ -188,6 +203,7 @@ public class FiltroActivity extends AppCompatActivity {
 
     private void publicarPostagem(){
 
+        abrirDialogCarregamento ("Salvando postagem!");
         String textDescricao = inputDescricao.getText().toString();
 
         //instanciar o objeto postagem
@@ -233,6 +249,9 @@ public class FiltroActivity extends AppCompatActivity {
                                     .child(idUser);
                             usuarioAtual.updateChildren(dadosPublicacoes);
 
+                            Toast.makeText(FiltroActivity.this, "Postagem publicada com sucesso!", Toast.LENGTH_SHORT).show();
+
+                            dialog.cancel();
                             finish();
                         }
                     }
