@@ -36,6 +36,7 @@ import com.zomato.photofilters.utils.ThumbnailsManager;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.zip.Inflater;
 
@@ -45,6 +46,7 @@ import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.RecyclerItemClickListener;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
 import izarleydev.com.instagram.model.Postagem;
+import izarleydev.com.instagram.model.Usuario;
 
 public class FiltroActivity extends AppCompatActivity {
     static
@@ -59,6 +61,7 @@ public class FiltroActivity extends AppCompatActivity {
     private RecyclerView recyclerFiltros;
     private AdapterMiniaturas adapterMiniaturas;
     private DatabaseReference usuariosRef, firebaseRef, usuarioLogadoRef;
+    private Usuario publicacoesRef;
     private StorageReference storageReference;
     private TextInputEditText inputDescricao;
     private String idUser;
@@ -80,6 +83,7 @@ public class FiltroActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white);
+
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null){
@@ -147,6 +151,7 @@ public class FiltroActivity extends AppCompatActivity {
         idUser = UsuarioFirebase.getIdUsuario();
         usuarioLogadoRef = usuariosRef.child(idUser);
         storageReference = ConfigFirebase.getFirebaseStorage();
+        publicacoesRef = new Usuario();
     }
 
 
@@ -218,6 +223,16 @@ public class FiltroActivity extends AppCompatActivity {
 
                         //salvar postagem
                         if (postagem.salvar()){
+
+                            int qntPublicacoes = publicacoesRef.getPublicacoes() + 1;
+
+                            HashMap<String, Object> dadosPublicacoes = new HashMap<>();
+                            dadosPublicacoes.put("publicacoes", qntPublicacoes);
+
+                            DatabaseReference usuarioAtual = usuariosRef
+                                    .child(idUser);
+                            usuarioAtual.updateChildren(dadosPublicacoes);
+
                             finish();
                         }
                     }

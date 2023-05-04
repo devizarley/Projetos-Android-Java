@@ -115,6 +115,7 @@ public class ProfileUserActivity extends AppCompatActivity {
         ImageLoader.getInstance().init(config);
 
     }
+
     public void carregarFotosPostagem(){
 
         //Recupera as fotos postadas pelo usuario
@@ -131,9 +132,6 @@ public class ProfileUserActivity extends AppCompatActivity {
                     Postagem postagem = ds.getValue(Postagem.class);
                     urlFotos.add(postagem.getFoto());
                 }
-                int qtdPostagem = urlFotos.size();
-                textPublicacoes.setText(String.valueOf(qtdPostagem));
-
                 //Configurar adapter
                 adapterGrid = new AdapterGrid(getApplicationContext(), R.layout.grid_postagem, urlFotos);
                 gridViewProfile.setAdapter(adapterGrid);
@@ -207,11 +205,11 @@ public class ProfileUserActivity extends AppCompatActivity {
 
                         Usuario usuario = snapshot.getValue(Usuario.class);
 
-                        //String publicacoes = String.valueOf(usuario.getPublicacoes());
+                        String publicacoes = String.valueOf(usuario.getPublicacoes());
                         String seguindo = String.valueOf(usuario.getSeguindo());
                         String seguidores = String.valueOf(usuario.getSeguidores());
 
-                        //textPublicacoes.setText(publicacoes);
+                        textPublicacoes.setText(publicacoes);
                         textSeguindo.setText(seguindo);
                         textSeguidores.setText(seguidores);
 
