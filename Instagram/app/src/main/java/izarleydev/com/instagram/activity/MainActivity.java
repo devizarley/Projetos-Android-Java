@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton ic_add;
     private Toolbar toolbar;
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "NonConstantResourceId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
