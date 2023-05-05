@@ -189,8 +189,8 @@ public class ProfileUserActivity extends AppCompatActivity {
     private void verificarSeguindoUsuario(){
 
         DatabaseReference seguidorRef = seguidoresRef.child("seguidores")
-                .child(idUserLogado)
-                .child(usuarioSelecionado.getId());
+                .child(usuarioSelecionado.getId())
+                .child(idUserLogado);
 
         seguidorRef.addListenerForSingleValueEvent(
                 new ValueEventListener() {
@@ -262,25 +262,23 @@ public class ProfileUserActivity extends AppCompatActivity {
 
     private void salvarSeguidor(Usuario uLogado, Usuario uSelecionado){
 
-        HashMap<String, Object> dadosSelecionado = new HashMap<>();
-        dadosSelecionado.put("nome", uSelecionado.getName());
-        dadosSelecionado.put("photo", uSelecionado.getPhoto());
-
+        HashMap<String, Object> dadosUserLogado = new HashMap<>();
+        dadosUserLogado.put("nome", uLogado.getName());
+        dadosUserLogado.put("photo", uLogado.getPhoto());
         DatabaseReference seguidorRef = seguidoresRef
-                .child(uLogado.getId())
-                .child(uSelecionado.getId());
-        seguidorRef.setValue(dadosSelecionado);
+                .child(uSelecionado.getId())
+                .child(uLogado.getId());
+        seguidorRef.setValue(dadosUserLogado);
 
+        //ALTERAÇÃO NO BOTÃO
         buttonProfileUser.setText("Seguindo");
         buttonProfileUser.setOnClickListener(null);
 
         //incrementar seguindo do usuario logado
 
         int seguindo = uLogado.getSeguindo() + 1;
-
         HashMap<String, Object> dadosSeguindo = new HashMap<>();
         dadosSeguindo.put("seguindo", seguindo);
-
         DatabaseReference usuarioSeguindo = usuariosRef
                 .child(uLogado.getId());
         usuarioSeguindo.updateChildren(dadosSeguindo);
@@ -288,10 +286,8 @@ public class ProfileUserActivity extends AppCompatActivity {
         //incrementar seguidores do amigo
 
         int seguidores = uSelecionado.getSeguidores() + 1;
-
         HashMap<String, Object> dadosSeguidores = new HashMap<>();
         dadosSeguidores.put("seguidores", seguidores);
-
         DatabaseReference usuarioSeguidores = usuariosRef
                 .child(uSelecionado.getId());
         usuarioSeguidores.updateChildren(dadosSeguidores);

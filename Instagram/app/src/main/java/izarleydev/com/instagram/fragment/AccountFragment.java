@@ -77,7 +77,7 @@ public class AccountFragment extends Fragment {
 
     public void inicializarImageLoader (){
         ImageLoaderConfiguration config = new ImageLoaderConfiguration
-                .Builder(getActivity())
+                .Builder(getContext())
                 .memoryCache(new LruMemoryCache(2 * 1024 * 1024))
                 .memoryCacheSize(2 * 1024 * 1024)
                 .diskCacheSize(50 * 1024 * 1024)
@@ -145,7 +145,7 @@ public class AccountFragment extends Fragment {
                 }
 
                 //Configurar adapter
-                adapterGrid = new AdapterGrid(getContext(), R.layout.grid_postagem, urlFotos);
+                adapterGrid = new AdapterGrid(getActivity(), R.layout.grid_postagem, urlFotos);
                 gridViewProfile.setAdapter(adapterGrid);
 
             }

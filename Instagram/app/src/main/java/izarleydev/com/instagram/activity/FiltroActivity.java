@@ -28,7 +28,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.zomato.photofilters.FilterPack;
@@ -63,11 +66,12 @@ public class FiltroActivity extends AppCompatActivity {
     private RecyclerView recyclerFiltros;
     private AdapterMiniaturas adapterMiniaturas;
     private DatabaseReference usuariosRef, firebaseRef, usuarioLogadoRef;
-    private Usuario publicacoesRef;
+    private Usuario publicacoesRef, usuarioLogado;
     private StorageReference storageReference;
     private TextInputEditText inputDescricao;
-    private String idUser;
+    private String idUserLogado;
     private AlertDialog dialog;
+    private DataSnapshot seguidoresSnapshot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,11 +85,15 @@ public class FiltroActivity extends AppCompatActivity {
         androidComponentes();
         firebaseComponentes();
 
+        //Recuperar dados para uma nova postagem
+        recuperarDadosPostagem();
+
         //toolbar
         toolbar.setTitle("Filtros");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white);
+
 
 
         Bundle bundle = getIntent().getExtras();
@@ -146,29 +154,42 @@ public class FiltroActivity extends AppCompatActivity {
 
     }
 
+    private void recuperarDadosPostagem(){
+        abrirDialogCarregamento("Carregando dados, aguarde!");
+        usuarioLogadoRef = usuariosRef.child(idUserLogado);
+        usuarioLogadoRef.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-    private void configuracoesIniciais(){
-        listaFiltros = new ArrayList<>();
+                        //Recupera dados de usuario logado
+                        usuarioLogado = snapshot.getValue(Usuario.class);
+
+                        //Recuperar seguidores
+                        DatabaseReference seguidoresRef = firebaseRef.child("seguidores")
+                                .child(idUserLogado);
+                        seguidoresRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                seguidoresSnapshot = snapshot;
+                                dialog.cancel();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                }
+        );
+
     }
-
-
-
-    private void androidComponentes(){
-        toolbar = findViewById(R.id.toolbar);
-        imagemFotoEscolhida = findViewById(R.id.imagemFotoEscolhida);
-        recyclerFiltros = findViewById(R.id.recyclerFiltros);
-        inputDescricao = findViewById(R.id.textDesricao);
-    }
-
-    private void firebaseComponentes (){
-        firebaseRef = ConfigFirebase.getFirebaseDatabase();
-        usuariosRef = firebaseRef.child("usuarios");
-        idUser = UsuarioFirebase.getIdUsuario();
-        usuarioLogadoRef = usuariosRef.child(idUser);
-        storageReference = ConfigFirebase.getFirebaseStorage();
-        publicacoesRef = new Usuario();
-    }
-
 
     private void recuperarFiltros(){
 
@@ -208,7 +229,7 @@ public class FiltroActivity extends AppCompatActivity {
 
         //instanciar o objeto postagem
         Postagem postagem = new Postagem();
-        postagem.setIdUser(idUser);
+        postagem.setIdUser(idUserLogado);
         postagem.setDescricao(textDescricao);
 
         //Recuperar dados da imagem para o firebase
@@ -237,17 +258,17 @@ public class FiltroActivity extends AppCompatActivity {
                         Uri url = task.getResult();
                         postagem.setFoto(url.toString());
 
+                        int qntPublicacoes = publicacoesRef.getPublicacoes() + 1;
+
+                        HashMap<String, Object> dadosPublicacoes = new HashMap<>();
+                        dadosPublicacoes.put("publicacoes", qntPublicacoes);
+
+                        DatabaseReference usuarioAtual = usuariosRef
+                                .child(idUserLogado);
+                        usuarioAtual.updateChildren(dadosPublicacoes);
+
                         //salvar postagem
-                        if (postagem.salvar()){
-
-                            int qntPublicacoes = publicacoesRef.getPublicacoes() + 1;
-
-                            HashMap<String, Object> dadosPublicacoes = new HashMap<>();
-                            dadosPublicacoes.put("publicacoes", qntPublicacoes);
-
-                            DatabaseReference usuarioAtual = usuariosRef
-                                    .child(idUser);
-                            usuarioAtual.updateChildren(dadosPublicacoes);
+                        if (postagem.salvar(seguidoresSnapshot)){
 
                             Toast.makeText(FiltroActivity.this, "Postagem publicada com sucesso!", Toast.LENGTH_SHORT).show();
 
@@ -259,6 +280,25 @@ public class FiltroActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void configuracoesIniciais(){
+        listaFiltros = new ArrayList<>();
+    }
+
+    private void androidComponentes(){
+        toolbar = findViewById(R.id.toolbar);
+        imagemFotoEscolhida = findViewById(R.id.imagemFotoEscolhida);
+        recyclerFiltros = findViewById(R.id.recyclerFiltros);
+        inputDescricao = findViewById(R.id.textDesricao);
+    }
+
+    private void firebaseComponentes (){
+        firebaseRef = ConfigFirebase.getFirebaseDatabase();
+        usuariosRef = firebaseRef.child("usuarios");
+        idUserLogado = UsuarioFirebase.getIdUsuario();
+        storageReference = ConfigFirebase.getFirebaseStorage();
+        publicacoesRef = new Usuario();
     }
 
     @Override

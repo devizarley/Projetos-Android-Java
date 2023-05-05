@@ -16,7 +16,7 @@ import izarleydev.com.instagram.model.Postagem;
 import izarleydev.com.instagram.model.Usuario;
 
 public class PostagemActivity extends AppCompatActivity {
-    private TextView textNameUsuario, textQntLikePostagem, textDescricaoPostagem, textVisualizarComentarios;
+    private TextView textNameUsuario, textQntLikePostagem, textDescricaoPostagem;
     private ImageView imagemPostagem;
     private CircleImageView imagemPerfilUsuario;
     private Toolbar toolbar;
@@ -62,7 +62,6 @@ public class PostagemActivity extends AppCompatActivity {
         textNameUsuario = findViewById(R.id.textNameUsuario);
         textQntLikePostagem = findViewById(R.id.textCurtidas);
         textDescricaoPostagem = findViewById(R.id.textDescricaoPostagem);
-        textVisualizarComentarios = findViewById(R.id.visualizarComentarios);
         imagemPostagem = findViewById(R.id.imagemPostagem);
         imagemPerfilUsuario = findViewById(R.id.imagemPerfil);
 
