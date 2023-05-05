@@ -2,6 +2,7 @@ package izarleydev.com.instagram.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth ;
     ActivityMainBinding binding;
     private FloatingActionButton ic_add;
+    private Toolbar toolbar;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -37,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Instagram");
+        setSupportActionBar(toolbar);
 
         replaceFragment(new HomeFragment());
         binding.bottomNavigationView.setBackground(null);
