@@ -110,13 +110,6 @@ public class AccountFragment extends Fragment {
 
                         //RECUPERAR FOTO
 
-                        String photoUser = usuarioLogado.getPhoto();
-                        if ( photoUser != null ) {
-
-                            Uri uri = Uri.parse(photoUser);
-                            Glide.with(AccountFragment.this).load(uri).into(imageProfile);
-
-                        }
 
                     }
                     @Override
@@ -187,9 +180,20 @@ public class AccountFragment extends Fragment {
 
     }
 
+    private void recuperarFotoUsuario(){
+        String photoUser = usuarioLogado.getPhoto();
+        if ( photoUser != null ) {
+
+            Uri uri = Uri.parse(photoUser);
+            Glide.with(AccountFragment.this).load(uri).into(imageProfile);
+
+        }
+    }
+
     @Override
     public void onStart() {
         super.onStart();
+        recuperarFotoUsuario();
         recuperarDadosUsuarioLogado();
     }
 

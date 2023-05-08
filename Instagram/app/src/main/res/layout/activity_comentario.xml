@@ -10,6 +10,7 @@
     <include layout="@layout/toolbar"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerComentario"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1" />
@@ -36,7 +37,7 @@
             android:paddingRight="16dp">
 
             <EditText
-                android:id="@+id/inputContentMsg"
+                android:id="@+id/inputComentario"
                 style="@style/container_inputText"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -47,12 +48,12 @@
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/buttonSubmitMsg"
+            android:id="@+id/buttonSubmit"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:clickable="true"
-            android:onClick="submitMsg"
+            android:onClick="salvarComentario"
             app:backgroundTint="#1a1a1a"
             app:borderWidth="0dp"
             app:fabCustomSize="46dp"
