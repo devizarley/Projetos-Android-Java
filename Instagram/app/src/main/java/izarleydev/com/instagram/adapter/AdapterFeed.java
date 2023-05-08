@@ -1,6 +1,7 @@
 package izarleydev.com.instagram.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,8 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import izarleydev.com.instagram.R;
+import izarleydev.com.instagram.activity.ComentarioActivity;
+import izarleydev.com.instagram.activity.PostagemActivity;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
 import izarleydev.com.instagram.model.Feed;
@@ -117,6 +120,15 @@ public class AdapterFeed extends RecyclerView.Adapter<AdapterFeed.MyViewHolder> 
                     }
                 });
                 holder.qtdCurtidas.setText(curtida.getQtdCurtidas() + " curtidas");
+
+                holder.visualizarComentario.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(context, ComentarioActivity.class);
+                        i.putExtra("idPostagem", feed.getId());
+                        context.startActivity(i);
+                    }
+                });
             }
 
             @Override

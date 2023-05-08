@@ -3,8 +3,10 @@ package izarleydev.com.instagram.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +19,7 @@ import izarleydev.com.instagram.model.Usuario;
 
 public class PostagemActivity extends AppCompatActivity {
     private TextView textNameUsuario, textQntLikePostagem, textDescricaoPostagem;
-    private ImageView imagemPostagem;
+    private ImageView imagemPostagem, imageComentario;
     private CircleImageView imagemPerfilUsuario;
     private Toolbar toolbar;
 
@@ -64,6 +66,7 @@ public class PostagemActivity extends AppCompatActivity {
         textDescricaoPostagem = findViewById(R.id.textDescricaoPostagem);
         imagemPostagem = findViewById(R.id.imagemPostagem);
         imagemPerfilUsuario = findViewById(R.id.imagemPerfil);
+        imageComentario = findViewById(R.id.imageComentario);
 
     }
 
