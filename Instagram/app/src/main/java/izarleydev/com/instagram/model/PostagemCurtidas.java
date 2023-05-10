@@ -64,7 +64,7 @@ public class PostagemCurtidas {
     public void setIdPostagem(String idPostagem) {
         this.idPostagem = idPostagem;
     }
-    
+
     public int getQtdCurtidas() {
         return qtdCurtidas;
     }
