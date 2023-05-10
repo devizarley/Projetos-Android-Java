@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -32,6 +33,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.activity.EditProfileActivity;
+import izarleydev.com.instagram.activity.PostagemActivity;
 import izarleydev.com.instagram.adapter.AdapterGrid;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
@@ -51,6 +53,7 @@ public class AccountFragment extends Fragment {
     private ImageView imageGrid;
     private CircleImageView imageProfile;
     private String idUserLogado;
+    private List<Postagem> listPostagens = new ArrayList<>();
 
 
     @Override
@@ -71,6 +74,8 @@ public class AccountFragment extends Fragment {
 
         inicializarImageLoader();
         carregarFotosPostagem();
+
+
 
         return view;
     }
@@ -134,8 +139,23 @@ public class AccountFragment extends Fragment {
                 List<String> urlFotos = new ArrayList<>();
                 for (DataSnapshot ds: snapshot.getChildren()){
                     Postagem postagem = ds.getValue(Postagem.class);
+                    listPostagens.add(postagem);
                     urlFotos.add(postagem.getFoto());
                 }
+                //abrir foto clicada
+                gridViewProfile.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        Postagem postagem = listPostagens.get(position);
+                        Intent i = new Intent(getContext(), PostagemActivity.class);
+                        i.putExtra("postagem", postagem);
+                        i.putExtra("usuario", usuarioLogado);
+
+                        startActivity(i);
+
+                    }
+                });
 
                 //Configurar adapter
                 adapterGrid = new AdapterGrid(getActivity(), R.layout.grid_postagem, urlFotos);

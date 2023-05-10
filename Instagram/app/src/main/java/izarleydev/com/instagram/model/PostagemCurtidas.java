@@ -7,8 +7,7 @@ import java.util.HashMap;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 
 public class PostagemCurtidas {
-
-    public Feed feed;
+    public String idPostagem;
     public int qtdCurtidas = 0;
     public Usuario usuario;
 
@@ -25,7 +24,7 @@ public class PostagemCurtidas {
         dadosUsuario.put("nome", usuario.getName());
 
         DatabaseReference pCurtidasRef = firebaseRef.child("postagens-curtidas")
-                .child(feed.getId())
+                .child(getIdPostagem())
                 .child(usuario.getId());
         pCurtidasRef.setValue(dadosUsuario);
 
@@ -37,7 +36,7 @@ public class PostagemCurtidas {
         DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDatabase();
 
         DatabaseReference pCurtidasRef = firebaseRef.child("postagens-curtidas")
-                .child(feed.getId())
+                .child(getIdPostagem())
                 .child("qtdCurtidas");
         setQtdCurtidas(getQtdCurtidas() + valor);
         pCurtidasRef.setValue(getQtdCurtidas());
@@ -49,7 +48,7 @@ public class PostagemCurtidas {
         DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDatabase();
 
         DatabaseReference pCurtidasRef = firebaseRef.child("postagens-curtidas")
-                .child(feed.getId())
+                .child(getIdPostagem())
                 .child(usuario.getId());
         pCurtidasRef.removeValue();
 
@@ -58,14 +57,14 @@ public class PostagemCurtidas {
 
     }
 
-    public Feed getFeed() {
-        return feed;
+    public String getIdPostagem() {
+        return idPostagem;
     }
 
-    public void setFeed(Feed feed) {
-        this.feed = feed;
+    public void setIdPostagem(String idPostagem) {
+        this.idPostagem = idPostagem;
     }
-
+    
     public int getQtdCurtidas() {
         return qtdCurtidas;
     }

@@ -71,6 +71,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void listarFeed() {
+        listFeed.clear();
         valueEventListener = feedRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -102,7 +102,7 @@ public class AdapterFeed extends RecyclerView.Adapter<AdapterFeed.MyViewHolder> 
 
                 //Objeto postagem curtida
                 PostagemCurtidas curtida = new PostagemCurtidas();
-                curtida.setFeed(feed);
+                curtida.setIdPostagem(feed.getId());
                 curtida.setUsuario(usuarioLogado);
                 curtida.setQtdCurtidas(qtdCurtidas);
 
