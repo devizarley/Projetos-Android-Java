@@ -14,6 +14,10 @@
         <item name="android:background">@color/colorPrimaryDarkMode</item>
     </style>
 
+    <style name="themeBackground">
+        <item name="android:background">@color/colorPrimaryDarkMode</item>
+    </style>
+
     <style name="themeLogo">
         <item name="android:src">@drawable/logo</item>
         <item name="android:background">@color/transparent</item>

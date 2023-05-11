@@ -10,7 +10,7 @@
         android:id="@+id/imagemPerfil"
         android:layout_width="111dp"
         android:layout_height="83dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/avatar"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toTopOf="parent" />
@@ -150,7 +150,9 @@
         android:id="@+id/gridViewProfile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:numColumns="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
