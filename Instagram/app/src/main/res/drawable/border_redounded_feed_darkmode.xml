@@ -5,7 +5,7 @@
     android:shape="rectangle"
     tools:ignore="ExtraText">
 
-    <solid android:color="@color/gray"/>
+    <solid android:color="#27242b"/>
     <corners android:radius="30dp"/>
 
 </shape>

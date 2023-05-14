@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group>
-        <item
-            android:id="@+id/sair"
-            android:title="Sair"
-            />
-    </group>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/sair"
+        android:icon="@drawable/ic_logout_white"
+        android:title="Sair"
+        app:showAsAction="always" />
+
 </menu>
