@@ -10,6 +10,35 @@
 
     </style>
 
+    <style name="backgroundFeed">
+        <item name="android:background">@drawable/border_redounded_feed_darkmode</item>
+    </style>
+
+    <style name="background">
+        <item name="android:background">@color/colorPrimaryDarkMode</item>
+    </style>
+
+    <style name="backgroundBottom">
+        <item name="android:backgroundTint">@color/secondColor</item>
+    </style>
+
+    <style name="iconTint">
+        <item name="itemIconTint">@color/white</item>
+    </style>
+
+    <style name="fabStyle">
+        <item name="android:src">@drawable/ic_add_white</item>
+        <item name="android:backgroundTint">@color/secondColor</item>
+    </style>
+
+    <style name="logoStyle">
+        <item name="srcCompat">@drawable/logo</item>
+    </style>
+
+    <style name="iconMenuSair">
+        <item name="srcCompat">@drawable/ic_logout_white</item>
+    </style>
+
     <style name="themeLoginCadastro">
         <item name="android:background">@color/colorPrimaryDarkMode</item>
     </style>

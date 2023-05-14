@@ -20,6 +20,35 @@
         <item name="android:background">@color/white</item>
     </style>
 
+    <style name="backgroundFeed">
+        <item name="android:background">@drawable/border_redounded_feed</item>
+    </style>
+
+    <style name="background">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="backgroundBottom">
+        <item name="android:backgroundTint">@color/gray</item>
+    </style>
+
+    <style name="iconTint">
+        <item name="itemIconTint">@color/black</item>
+    </style>
+
+    <style name="fabStyle">
+        <item name="android:src">@drawable/ic_add_dark</item>
+        <item name="android:backgroundTint">@color/gray</item>
+    </style>
+
+    <style name="logoStyle">
+        <item name="srcCompat">@drawable/logodark</item>
+    </style>
+
+    <style name="iconMenuSair">
+        <item name="srcCompat">@drawable/ic_logout_black</item>
+    </style>
+
     <style name="themeLogo">
         <item name="android:src">@drawable/logodark</item>
         <item name="android:background">@color/transparent</item>
