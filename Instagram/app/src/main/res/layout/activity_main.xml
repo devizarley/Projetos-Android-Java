@@ -19,8 +19,6 @@
             android:id="@+id/toolbar2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:elevation="20dp"
             android:minHeight="?attr/actionBarSize"
             android:paddingTop="10dp"
             android:theme="@style/Theme.Instagram.AppBarOverlay">
@@ -47,7 +45,7 @@
         android:id="@+id/bottomAppBar"
         style="@style/backgroundBottom"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_gravity="bottom"
         app:contentInsetStart="0dp"
         app:fabCradleMargin="10dp"
@@ -73,8 +71,8 @@
         style="@style/fabStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:elevation="0dp"
-        app:fabCustomSize="70dp"
+        app:elevation="8dp"
+        app:fabCustomSize="60dp"
         app:fabSize="auto"
         app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="30dp" />

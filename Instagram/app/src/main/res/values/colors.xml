@@ -8,7 +8,7 @@
     <color name="whiteTransparent">#41FFFFFF</color>
     <color name="whiteTransparent70">#B2FFFFFF</color>
     <color name="purple">#8149aa</color>
-    <color name="gray">#eeeeee</color>
+    <color name="gray">#F4F4F4</color>
     <color name="icon_color">@color/black</color>
     <color name="fabStyle">@color/black</color>
 
