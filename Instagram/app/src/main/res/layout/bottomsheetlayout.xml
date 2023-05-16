@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/dialogbkgStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dialogbkg">
-
-    <ImageView
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_remove_gray"
-        android:layout_gravity="center|top"
-        android:scaleType="centerCrop"/>
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
@@ -23,41 +20,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="5dp"
-            android:padding="8dp"
             android:text="Adicionar"
             android:textAlignment="viewStart"
             android:textSize="25dp" />
 
         <ImageView
             android:id="@+id/cancelButton"
+            style="@style/iconCloseDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="230dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_clear_black" />
+            android:layout_marginLeft="230dp" />
 
     </LinearLayout>
 
 
     <LinearLayout
         android:id="@+id/layoutStories"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:orientation="horizontal"
         android:padding="10dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_remove_gray"/>
+            android:src="@drawable/ic_remove_gray" />
 
         <TextView
             style="@style/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="15dp"
             android:text="Stories"
             android:textSize="16sp" />
 
@@ -65,22 +59,22 @@
 
     <LinearLayout
         android:id="@+id/layoutFeed"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:padding="10dp">
 
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_remove_gray"/>
+            android:src="@drawable/ic_remove_gray" />
 
         <TextView
             style="@style/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="15dp"
             android:text="Feed"
             android:textSize="16sp" />
 
@@ -88,25 +82,25 @@
 
     <LinearLayout
         android:id="@+id/layoutLive"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:paddingTop="10dp"
+        android:paddingRight="10dp"
         android:paddingBottom="30dp">
 
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_remove_gray"/>
+            android:src="@drawable/ic_remove_gray" />
 
         <TextView
             style="@style/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="15dp"
             android:text="Ao vivo"
             android:textSize="16sp" />
 

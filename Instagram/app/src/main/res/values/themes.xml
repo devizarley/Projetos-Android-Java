@@ -16,6 +16,14 @@
         <item name="android:windowExitAnimation">@anim/slide_out</item>
     </style>
 
+    <style name="dialogbkgStyle">
+        <item name="android:background">@drawable/dialogbkg</item>
+    </style>
+    
+    <style name="iconCloseDialog">
+        <item name="srcCompat">@drawable/ic_clear_black</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorSecondary">@android:color/transparent</item>
         <item name="colorOnSecondary">@color/white</item>

@@ -35,6 +35,14 @@
         <item name="srcCompat">@drawable/logo</item>
     </style>
 
+    <style name="dialogbkgStyle">
+        <item name="android:background">@drawable/dialogbkg_darkmode</item>
+    </style>
+
+    <style name="iconCloseDialog">
+        <item name="srcCompat">@drawable/ic_close_white</item>
+    </style>
+
     <style name="textColor">
         <item name="android:textColor">@color/white</item>
     </style>

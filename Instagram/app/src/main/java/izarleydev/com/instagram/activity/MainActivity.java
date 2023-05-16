@@ -41,7 +41,6 @@ import java.io.ByteArrayOutputStream;
 import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.databinding.ActivityMainBinding;
 import izarleydev.com.instagram.fragment.AccountFragment;
-import izarleydev.com.instagram.fragment.AddFragment;
 import izarleydev.com.instagram.fragment.HomeFragment;
 import izarleydev.com.instagram.fragment.SearchFragment;
 import izarleydev.com.instagram.helper.ConfigFirebase;
