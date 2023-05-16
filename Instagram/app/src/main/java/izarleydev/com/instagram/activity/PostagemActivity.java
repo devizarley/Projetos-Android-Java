@@ -49,7 +49,6 @@ public class PostagemActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white);
         
         inicializarComponentes();
 
@@ -91,8 +90,6 @@ public class PostagemActivity extends AppCompatActivity {
                         qtdCurtidas = postagemCurtida.getQtdCurtidas();
 
                     }
-
-
 
                     PostagemCurtidas curtida = new PostagemCurtidas();
                     curtida.setIdPostagem(postagem.getId());
@@ -137,60 +134,6 @@ public class PostagemActivity extends AppCompatActivity {
                     startActivity(i);
                 }
             });
-
-/*
-            curtidas.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                    int qtdCurtidas = 0;
-                    if (snapshot.hasChild("qtdCurtidas")) {
-
-                        PostagemCurtidas postagemCurtida = snapshot.getValue(PostagemCurtidas.class);
-                        qtdCurtidas = postagemCurtida.getQtdCurtidas();
-
-                    }
-
-                    //Verificar se já foi clicado em curtir pelo id do usuario
-                    if (snapshot.hasChild(usuarioSelecionado.getId())) {
-                        likeButton.setLiked(true);
-                    } else {
-                        likeButton.setLiked(false);
-                    }
-
-                    //Objeto postagem curtida
-                    PostagemCurtidas curtida = new PostagemCurtidas();
-                    curtida.setUsuario(usuarioSelecionado);
-                    curtida.setQtdCurtidas(qtdCurtidas);
-
-                    likeButton.setOnLikeListener(new OnLikeListener() {
-                        @Override
-                        public void liked(LikeButton likeButton) {
-                            curtida.salvar();
-                            textQntLikePostagem.setText(curtida.getQtdCurtidas() + " curtidas");
-                        }
-
-                        @Override
-                        public void unLiked(LikeButton likeButton) {
-                            curtida.removerQtdCurtidas();
-                            textQntLikePostagem.setText(curtida.getQtdCurtidas() + " curtidas");
-                        }
-                    });
-                    textQntLikePostagem.setText(curtida.getQtdCurtidas() + " curtidas");
-                    visualizarComentario.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent i = new Intent(getApplicationContext(), ComentarioActivity.class);
-                            i.putExtra("idPostagem", postagem.getId());
-                            getApplication().startActivity(i);
-                        }
-                    });
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });*/
         }
     }
 
@@ -210,6 +153,7 @@ public class PostagemActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         finish();
+
         return false;
     }
 }

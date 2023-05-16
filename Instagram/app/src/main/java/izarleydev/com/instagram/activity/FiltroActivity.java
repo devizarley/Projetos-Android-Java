@@ -92,7 +92,6 @@ public class FiltroActivity extends AppCompatActivity {
         toolbar.setTitle("Filtros");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white);
 
 
 

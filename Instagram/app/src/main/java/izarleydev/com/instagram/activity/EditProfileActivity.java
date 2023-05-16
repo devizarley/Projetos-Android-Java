@@ -67,7 +67,6 @@ public class EditProfileActivity extends AppCompatActivity {
         Permissao.validarPermissoes(permissoesNecessarias, this, 1);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white);
 
         inicializarComponentes();
 

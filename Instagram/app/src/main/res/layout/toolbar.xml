@@ -6,11 +6,12 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
+        style="@style/styleToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
         android:elevation="20dp"
-        android:theme="@style/Theme.Instagram.AppBarOverlay">
+        android:minHeight="?attr/actionBarSize"
+        app:collapseIcon="@null">
 
     </androidx.appcompat.widget.Toolbar>
 

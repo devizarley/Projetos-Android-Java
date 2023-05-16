@@ -39,8 +39,18 @@
         <item name="android:background">@drawable/dialogbkg_darkmode</item>
     </style>
 
+    <style name="titleToolbar">
+        <item name="titleTextColor">@color/white</item>
+    </style>
+
     <style name="iconCloseDialog">
         <item name="srcCompat">@drawable/ic_close_white</item>
+    </style>
+
+    <style name="styleToolbar">
+        <item name="navigationIcon">@drawable/ic_back_white</item>
+
+        <item name="titleTextColor">@color/white</item>
     </style>
 
     <style name="textColor">

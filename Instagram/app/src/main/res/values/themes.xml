@@ -24,6 +24,11 @@
         <item name="srcCompat">@drawable/ic_clear_black</item>
     </style>
 
+    <style name="styleToolbar">
+        <item name="navigationIcon">@drawable/ic_back_black</item>
+        <item name="titleTextColor">@color/black</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorSecondary">@android:color/transparent</item>
         <item name="colorOnSecondary">@color/white</item>

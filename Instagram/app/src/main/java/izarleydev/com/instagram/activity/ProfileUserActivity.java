@@ -74,7 +74,6 @@ public class ProfileUserActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white);
 
         //Recuperar usuario selecionado
         Bundle bundle = getIntent().getExtras();
