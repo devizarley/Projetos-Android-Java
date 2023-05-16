@@ -10,6 +10,7 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
+        style="@style/themeInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -17,7 +18,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/border_button_darkmode">
+        android:filterTouchesWhenObscured="false"
+        android:focusableInTouchMode="false"
+        android:touchscreenBlocksFocus="false">
 
     </androidx.appcompat.widget.SearchView>
 

@@ -92,8 +92,14 @@ public class SearchFragment extends Fragment {
                     }
                 }
         ));
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchView.setIconified(false);
+            }
+        });
 
-        searchView.setQueryHint("Buscar Usuários");
+        searchView.setQueryHint("Buscar usuários");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
