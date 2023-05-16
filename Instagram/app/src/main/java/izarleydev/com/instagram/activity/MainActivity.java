@@ -122,6 +122,11 @@ public class MainActivity extends AppCompatActivity {
         icon.setColorFilter(ContextCompat.getColor(this, R.color.icon_color), PorterDuff.Mode.SRC_IN);
         menuItem.setIcon(icon);
 
+        MenuItem menuItemMessage = menu.findItem(R.id.mensagem);
+        Drawable iconMessage = menuItemMessage.getIcon();
+        iconMessage.setColorFilter(ContextCompat.getColor(this, R.color.icon_color), PorterDuff.Mode.SRC_IN);
+        menuItemMessage.setIcon(iconMessage);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -131,6 +136,9 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.sair:
                 signOut();
+                break;
+            case R.id.mensagem:
+                Toast.makeText(this, "Esta função está em construção!", Toast.LENGTH_SHORT).show();
                 break;
         }
 

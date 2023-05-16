@@ -16,6 +16,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +34,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.activity.EditProfileActivity;
+import izarleydev.com.instagram.activity.MainActivity;
 import izarleydev.com.instagram.activity.PostagemActivity;
 import izarleydev.com.instagram.adapter.AdapterGrid;
 import izarleydev.com.instagram.helper.ConfigFirebase;
@@ -42,7 +44,7 @@ import izarleydev.com.instagram.model.Usuario;
 
 public class AccountFragment extends Fragment {
 
-    private Button buttonProfile;
+    private Button buttonProfile, mensagemButton;
     private DatabaseReference usuariosRef, seguidoresRef, firebaseRef, usuarioLogadoRef, postagensUsuarioRef;
     private ValueEventListener valueEventListenerProfile;
     private Usuario usuarioSelecionado, usuarioLogado, usuarioLogadoDados;
@@ -68,6 +70,12 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), EditProfileActivity.class));
+            }
+        });
+        mensagemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Esta função está em construção!",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -197,6 +205,7 @@ public class AccountFragment extends Fragment {
         progressGrid = view.findViewById(R.id.progressGrid);
         imageGrid = view.findViewById(R.id.imageGridProfile);
         textName = view.findViewById(R.id.textName);
+        mensagemButton = view.findViewById(R.id.mensagemButton);
 
     }
 

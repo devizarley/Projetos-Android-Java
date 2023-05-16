@@ -134,11 +134,12 @@
             android:textSize="12sp" />
 
         <Button
+            android:id="@+id/mensagemButton"
             style="@style/themeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
 
+            android:layout_marginLeft="20dp"
             android:paddingStart="50dp"
             android:paddingEnd="50dp"
             android:text="Mensagem"

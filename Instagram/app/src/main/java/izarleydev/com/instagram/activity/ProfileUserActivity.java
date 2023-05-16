@@ -15,6 +15,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -41,7 +42,7 @@ import izarleydev.com.instagram.model.Usuario;
 public class ProfileUserActivity extends AppCompatActivity {
     private Usuario usuarioSelecionado, usuarioLogado;
     private Toolbar toolbar;
-    private Button buttonProfileUser;
+    private Button buttonProfileUser, mensagemButton;
     private CircleImageView imageProfile;
     private TextView textPublicacoes, textSeguidores, textSeguindo;
     private ValueEventListener valueEventListenerProfileUser;
@@ -74,6 +75,13 @@ public class ProfileUserActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mensagemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Esta função está em construção!",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //Recuperar usuario selecionado
         Bundle bundle = getIntent().getExtras();
@@ -304,6 +312,7 @@ public class ProfileUserActivity extends AppCompatActivity {
         gridViewProfile = findViewById(R.id.gridViewProfile);
         progressGrid = findViewById(R.id.progressGrid);
         imageGrid = findViewById(R.id.imageGridProfile);
+        mensagemButton = findViewById(R.id.mensagemButton);
 
     }
 

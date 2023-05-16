@@ -8,4 +8,10 @@
         android:title="Sair"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/mensagem"
+        android:icon="@drawable/ic_message_black"
+        android:title="Mensagem"
+        app:showAsAction="always" />
+
 </menu>
