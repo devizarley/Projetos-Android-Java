@@ -14,6 +14,10 @@
         <item name="android:background">@drawable/border_redounded_feed_darkmode</item>
     </style>
 
+    <style name="ProgressBarStyle" parent="android:Widget.ProgressBar">
+        <item name="android:colorAccent">#3f80ff</item>
+    </style>
+
     <style name="background">
         <item name="android:background">@color/colorPrimaryDarkMode</item>
     </style>

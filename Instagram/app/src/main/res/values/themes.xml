@@ -38,6 +38,10 @@
         <item name="srcCompat">@drawable/send_black</item>
     </style>
 
+    <style name="ProgressBarStyle" parent="android:Widget.ProgressBar">
+        <item name="android:colorAccent">#3f80ff</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorSecondary">@android:color/transparent</item>
         <item name="colorOnSecondary">@color/white</item>

@@ -29,6 +29,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -121,9 +122,6 @@ public class AccountFragment extends Fragment {
                         textName.setText(usuarioLogado.getName());
                         textPublicacoes.setText(publicacoes);
 
-                        //RECUPERAR FOTO
-
-
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -150,6 +148,9 @@ public class AccountFragment extends Fragment {
                     listPostagens.add(postagem);
                     urlFotos.add(postagem.getFoto());
                 }
+                // Inverter a ordem da lista de postagens
+                Collections.reverse(listPostagens);
+                Collections.reverse(urlFotos);
                 //abrir foto clicada
                 gridViewProfile.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
