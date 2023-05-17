@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ComentarioActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activity.ComentarioActivity">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerComentario"
@@ -23,13 +24,13 @@
         android:layout_marginBottom="6dp">
 
         <LinearLayout
+            style="@style/container_inputText"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginTop="3dp"
-            android:layout_marginRight="6dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="3dp"
             android:layout_weight="1"
-            android:background="@drawable/border_redounded_chat"
             android:elevation="2dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -42,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_weight="1"
+                android:backgroundTint="#00000000"
                 android:ems="10"
                 android:hint="Digite um comentario"
                 android:inputType="textPersonName" />
@@ -49,18 +51,17 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/buttonSubmit"
+            style="@style/fabSubmit"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:clickable="true"
             android:onClick="salvarComentario"
-            app:backgroundTint="#1a1a1a"
             app:borderWidth="0dp"
             app:fabCustomSize="46dp"
             app:fabSize="mini"
             app:maxImageSize="21dp"
-            app:rippleColor="#00FF0000"
-            app:srcCompat="@drawable/send_white" />
+            app:rippleColor="#00FF0000" />
 
     </LinearLayout>
 

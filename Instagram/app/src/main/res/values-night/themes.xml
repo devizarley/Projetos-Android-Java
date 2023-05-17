@@ -49,7 +49,6 @@
 
     <style name="styleToolbar">
         <item name="navigationIcon">@drawable/ic_back_white</item>
-
         <item name="titleTextColor">@color/white</item>
     </style>
 
@@ -82,7 +81,12 @@
     </style>
 
     <style name="container_inputText">
-        <item name="android:background">@drawable/border_redounded_darkmode</item>
+        <item name="android:background">@drawable/border_redounded_chat_darkmode</item>
+    </style>
+
+    <style name="fabSubmit">
+        <item name="android:backgroundTint">@color/secondColor</item>
+        <item name="srcCompat">@drawable/send_white</item>
     </style>
 
     <style name="themeButton">

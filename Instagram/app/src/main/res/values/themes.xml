@@ -29,6 +29,15 @@
         <item name="titleTextColor">@color/black</item>
     </style>
 
+    <style name="container_inputText">
+        <item name="android:background">@drawable/border_redounded_chat</item>
+    </style>
+
+    <style name="fabSubmit">
+        <item name="android:backgroundTint">@color/gray2</item>
+        <item name="srcCompat">@drawable/send_black</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorSecondary">@android:color/transparent</item>
         <item name="colorOnSecondary">@color/white</item>

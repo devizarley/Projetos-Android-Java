@@ -17,8 +17,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageUserComentario"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_weight="0"
             android:src="@drawable/avatar" />
 
@@ -31,18 +31,22 @@
 
             <TextView
                 android:id="@+id/textNameUser"
+                style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:text="Nome e Sobrenome"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textComentario"
+                style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="Gostei muito da foto, ficou realmente muito interessante!!" />
+                android:text="Gostei muito da foto, ficou realmente muito interessante!!"
+                android:textSize="12sp" />
         </LinearLayout>
 
     </LinearLayout>

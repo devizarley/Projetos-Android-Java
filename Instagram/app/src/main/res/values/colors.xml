@@ -11,5 +11,6 @@
     <color name="gray">#F4F4F4</color>
     <color name="icon_color">@color/black</color>
     <color name="fabStyle">@color/black</color>
+    <color name="gray2">#efefef</color>
 
 </resources>
