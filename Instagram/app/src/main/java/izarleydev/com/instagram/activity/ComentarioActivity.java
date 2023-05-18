@@ -121,15 +121,11 @@ public class ComentarioActivity extends AppCompatActivity {
             comentario.setCaminhoFoto(usuarioLogado.getPhoto());
             comentario.setComentario(textoComentario);
 
-            if (comentario.salvar()){
-                Toast.makeText(this,
-                        "Comentario Salvo com sucesso",
-                        Toast.LENGTH_SHORT).show();
-            }
+            comentario.salvar();
 
         }else {
             Toast.makeText(this,
-                    "Insira um comentário antes de salvar!",
+                    "Escreva um comentário antes de enviar!",
                     Toast.LENGTH_SHORT).show();
         }
 
