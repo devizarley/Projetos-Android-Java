@@ -67,6 +67,9 @@ public class AccountFragment extends Fragment {
         firebase();
         componentes(view);
 
+        imageProfile.setImageResource(R.drawable.avatar);
+
+
         buttonProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,7 +125,18 @@ public class AccountFragment extends Fragment {
                         textName.setText(usuarioLogado.getName());
                         textPublicacoes.setText(publicacoes);
 
+                        String photoUser = usuarioLogado.getPhoto();
+                        if ( photoUser != null ) {
+
+                            Uri uri = Uri.parse(photoUser);
+                            Glide.with(AccountFragment.this).load(uri).into(imageProfile);
+
+                        }else {
+                            imageProfile.setImageResource(R.drawable.avatar);
+                        }
+
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
@@ -198,7 +212,7 @@ public class AccountFragment extends Fragment {
     private void componentes (View view){
 
         buttonProfile = view.findViewById(R.id.buttonProfile);
-        imageProfile = view.findViewById(R.id.imagemPerfil);
+        imageProfile = view.findViewById(R.id.imagemPerfilUsuario);
         textPublicacoes = view.findViewById(R.id.textPublicacoes);
         textSeguidores = view.findViewById(R.id.textSeguidores);
         textSeguindo = view.findViewById(R.id.textSeguindo);
@@ -210,20 +224,9 @@ public class AccountFragment extends Fragment {
 
     }
 
-    private void recuperarFotoUsuario(){
-        String photoUser = usuarioLogado.getPhoto();
-        if ( photoUser != null ) {
-
-            Uri uri = Uri.parse(photoUser);
-            Glide.with(AccountFragment.this).load(uri).into(imageProfile);
-
-        }
-    }
-
     @Override
     public void onStart() {
         super.onStart();
-        recuperarFotoUsuario();
         recuperarDadosUsuarioLogado();
     }
 
