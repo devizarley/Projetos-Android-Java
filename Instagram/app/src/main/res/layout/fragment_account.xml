@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF0909"
     tools:context=".fragment.AccountFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -15,14 +14,6 @@
         android:src="@drawable/avatar"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imagemPerfilUsuario3"
-        android:layout_width="111dp"
-        android:layout_height="83dp"
-        android:src="@drawable/avatar"
-        tools:layout_editor_absoluteX="198dp"
-        tools:layout_editor_absoluteY="75dp" />
 
     <TextView
         android:id="@+id/textView4"

@@ -305,7 +305,7 @@ public class ProfileUserActivity extends AppCompatActivity {
 
         buttonProfileUser = findViewById(R.id.buttonProfile);
         buttonProfileUser.setText("Carregando");
-        imageProfile = findViewById(R.id.imagemPerfil);
+        imageProfile = findViewById(R.id.imagemPerfilUsuario);
         textPublicacoes = findViewById(R.id.textPublicacoes);
         textSeguidores = findViewById(R.id.textSeguidores);
         textSeguindo = findViewById(R.id.textSeguindo);

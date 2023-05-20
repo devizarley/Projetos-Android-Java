@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,7 +50,8 @@ public class AccountFragment extends Fragment {
     private Button buttonProfile, mensagemButton;
     private DatabaseReference usuariosRef, seguidoresRef, firebaseRef, usuarioLogadoRef, postagensUsuarioRef;
     private ValueEventListener valueEventListenerProfile;
-    private Usuario usuarioSelecionado, usuarioLogado, usuarioLogadoDados;
+    private Usuario usuarioSelecionado, usuarioLogadoDados;
+    private FirebaseUser usuarioLogado;
     private TextView textPublicacoes, textSeguidores, textSeguindo, textName;
     private GridView gridViewProfile;
     private AdapterGrid adapterGrid;
@@ -66,9 +69,6 @@ public class AccountFragment extends Fragment {
 
         firebase();
         componentes(view);
-
-        imageProfile.setImageResource(R.drawable.avatar);
-
 
         buttonProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,14 +122,15 @@ public class AccountFragment extends Fragment {
                         //textPublicacoes.setText(publicacoes);
                         textSeguindo.setText(seguindo);
                         textSeguidores.setText(seguidores);
-                        textName.setText(usuarioLogado.getName());
+                        textName.setText(usuarioLogado.getDisplayName());
                         textPublicacoes.setText(publicacoes);
 
-                        String photoUser = usuarioLogado.getPhoto();
-                        if ( photoUser != null ) {
+                        FirebaseUser usuarioLogado = UsuarioFirebase.getUsuarioAtual();
 
-                            Uri uri = Uri.parse(photoUser);
-                            Glide.with(AccountFragment.this).load(uri).into(imageProfile);
+                        if ( usuarioLogado.getPhotoUrl() != null ) {
+
+                            Uri uri = Uri.parse(usuarioLogado.getPhotoUrl().toString());
+                            Glide.with(getActivity()).load(uri).into(imageProfile);
 
                         }else {
                             imageProfile.setImageResource(R.drawable.avatar);
@@ -162,9 +163,11 @@ public class AccountFragment extends Fragment {
                     listPostagens.add(postagem);
                     urlFotos.add(postagem.getFoto());
                 }
+
                 // Inverter a ordem da lista de postagens
                 Collections.reverse(listPostagens);
                 Collections.reverse(urlFotos);
+
                 //abrir foto clicada
                 gridViewProfile.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -199,7 +202,7 @@ public class AccountFragment extends Fragment {
         usuariosRef = firebaseRef.child("usuarios");
         seguidoresRef = firebaseRef.child("seguidores");
         idUserLogado = UsuarioFirebase.getIdUsuario();
-        usuarioLogado = UsuarioFirebase.getDadosUsarioLogado();
+        usuarioLogado = UsuarioFirebase.getUsuarioAtual();
         usuarioLogadoRef = usuariosRef.child(idUserLogado);
 
         postagensUsuarioRef = ConfigFirebase.getFirebaseDatabase()
