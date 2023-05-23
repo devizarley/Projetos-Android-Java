@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/imagemFotoEscolhida"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="500dp"
             android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/avatars" />
 

@@ -318,4 +318,11 @@ public class FiltroActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+
+        return false;
+    }
+
 }
