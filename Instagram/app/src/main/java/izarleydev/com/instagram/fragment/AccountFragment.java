@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,11 +24,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
-import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -37,7 +33,6 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.activity.EditProfileActivity;
-import izarleydev.com.instagram.activity.MainActivity;
 import izarleydev.com.instagram.activity.PostagemActivity;
 import izarleydev.com.instagram.adapter.AdapterGrid;
 import izarleydev.com.instagram.helper.ConfigFirebase;
@@ -45,7 +40,7 @@ import izarleydev.com.instagram.helper.UsuarioFirebase;
 import izarleydev.com.instagram.model.Postagem;
 import izarleydev.com.instagram.model.Usuario;
 
-public class AccountFragment extends Fragment {
+public class AccountFragment extends Fragment implements Serializable {
 
     private Button buttonProfile, mensagemButton;
     private DatabaseReference usuariosRef, seguidoresRef, firebaseRef, usuarioLogadoRef, postagensUsuarioRef;
@@ -70,6 +65,7 @@ public class AccountFragment extends Fragment {
         firebase();
         componentes(view);
 
+
         buttonProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,25 +81,11 @@ public class AccountFragment extends Fragment {
 
 
         //inicializarImageLoader();
-        //carregarFotosPostagem();
+        carregarFotosPostagem();
 
 
 
         return view;
-    }
-
-    public void inicializarImageLoader (){
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration
-                .Builder(getContext())
-                .memoryCache(new LruMemoryCache(2 * 1024 * 1024))
-                .memoryCacheSize(2 * 1024 * 1024)
-                .diskCacheSize(50 * 1024 * 1024)
-                .diskCacheFileCount(100)
-                .diskCacheFileNameGenerator(new HashCodeFileNameGenerator())
-                .build();
-
-        ImageLoader.getInstance().init(config);
-
     }
 
     private void recuperarDadosUsuarioLogado(){
@@ -176,7 +158,7 @@ public class AccountFragment extends Fragment {
                         Postagem postagem = listPostagens.get(position);
                         Intent i = new Intent(getContext(), PostagemActivity.class);
                         i.putExtra("postagem", postagem);
-                        i.putExtra("usuario", usuarioLogado);
+                        i.putExtra("usuario", usuarioLogadoDados);
 
                         startActivity(i);
 
@@ -209,7 +191,7 @@ public class AccountFragment extends Fragment {
                 .child("postagens")
                 .child(idUserLogado);
 
-        usuarioLogadoDados = new Usuario();
+        usuarioLogadoDados = UsuarioFirebase.getDadosUsarioLogado();
     }
 
     private void componentes (View view){

@@ -1,5 +1,8 @@
 package izarleydev.com.instagram.model;
 
+import android.content.res.Resources;
+import android.net.Uri;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 
@@ -7,6 +10,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 
 public class Usuario implements Serializable {
@@ -42,27 +46,9 @@ public class Usuario implements Serializable {
 
     }
 
-    @Exclude
-    public Map<String, Object> converterMap(){
-
-        HashMap<String, Object> user = new HashMap<>();
-
-        user.put("email", getEmail());
-        user.put("name", getName());
-        user.put("id", getId());
-        user.put("photo", getPhoto());
-        user.put("seguidores", getSeguidores());
-        user.put("seguindo", getSeguindo());
-        user.put("publicacoes", getPublicacoes());
-
-        return  user;
-    }
-
-
     public int getSeguidores() {
         return seguidores;
     }
-
     public void setSeguidores(int seguidores) {
         this.seguidores = seguidores;
     }

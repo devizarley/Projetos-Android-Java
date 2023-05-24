@@ -85,9 +85,6 @@ dependencies {
     //filters
     implementation 'info.androidhive:imagefilters:1.0.7'
 
-    //Android Universal Image Loader
-    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-
     //Like button
     implementation 'com.github.jd-alexander:LikeButton:0.2.3'
 

@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,18 +20,17 @@ import com.google.firebase.database.ValueEventListener;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.helper.ConfigFirebase;
-import izarleydev.com.instagram.helper.UsuarioFirebase;
 import izarleydev.com.instagram.model.Postagem;
 import izarleydev.com.instagram.model.PostagemCurtidas;
 import izarleydev.com.instagram.model.Usuario;
 
-public class PostagemActivity extends AppCompatActivity {
+public class PostagemActivity extends AppCompatActivity implements Serializable {
     private TextView textNameUsuario, textQntLikePostagem, textDescricaoPostagem;
     private ImageView imagemPostagem, imageComentario;
     private CircleImageView imagemPerfilUsuario;
@@ -57,13 +57,16 @@ public class PostagemActivity extends AppCompatActivity {
         if (bundle != null){
             Postagem postagem = (Postagem) bundle.getSerializable("postagem");
             Usuario usuarioSelecionado = (Usuario) bundle.getSerializable("usuario");
-            String usuarioLogado = UsuarioFirebase.getIdUsuario();
 
             //Exibe dados de usuario
-            Uri uri = Uri.parse(usuarioSelecionado.getPhoto());
-            Glide.with(PostagemActivity.this)
-                    .load(uri)
-                    .into(imagemPerfilUsuario);
+            if (usuarioSelecionado.getPhoto() != null){
+                Uri uri = Uri.parse(usuarioSelecionado.getPhoto());
+                Glide.with(getApplicationContext())
+                        .load(uri)
+                        .into(imagemPerfilUsuario);
+            }else {
+                imagemPerfilUsuario.setImageResource(R.drawable.avatar);
+            }
             textNameUsuario.setText(usuarioSelecionado.getName());
 
             //Exibe dados da postagem
@@ -77,8 +80,8 @@ public class PostagemActivity extends AppCompatActivity {
             DatabaseReference curtidas = ConfigFirebase.getFirebaseDatabase()
                     .child("postagens-curtidas")
                     .child(postagem.getId());
-            //Objeto postagem curtida
 
+            //Objeto postagem curtida
 
             curtidas.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -134,6 +137,8 @@ public class PostagemActivity extends AppCompatActivity {
                     startActivity(i);
                 }
             });
+        }else {
+            Log.d("testeUsuario", "bundle está nulo");
         }
     }
 

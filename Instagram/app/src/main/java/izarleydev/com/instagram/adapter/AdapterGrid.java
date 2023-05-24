@@ -2,6 +2,7 @@ package izarleydev.com.instagram.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 
 import java.util.List;
 
@@ -63,34 +67,28 @@ public class AdapterGrid extends ArrayAdapter<String> {
 
         }
 
-        //recuperar dados da imagem
-        String urlImagem = getItem(position);
+        // Obtenha a URL da imagem do Firebase Realtime Database ou armazene-a em algum lugar
+        String imageUrl = urlFotos.get(position);
 
-        Glide teste = Glide.get(getContext());
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        imageLoader.displayImage(urlImagem, viewHolder.imagem,
-            new ImageLoadingListener() {
-            @Override
-            public void onLoadingStarted(String imageUri, View view) {
-                viewHolder.progressBar.setVisibility(view.VISIBLE);
-            }
+        // Use o Glide para carregar e exibir a imagem
+        Glide.with(context)
+                .load(imageUrl)
+                .apply(new RequestOptions().placeholder(R.drawable.avatar))  // Imagem de placeholder enquanto a imagem é carregada
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        // Tratar falha no carregamento da imagem (se necessário)
+                        viewHolder.progressBar.setVisibility(View.VISIBLE); // Ocultar a ProgressBar em caso de falha
+                        return false;
+                    }
 
-            @Override
-            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                viewHolder.progressBar.setVisibility(view.GONE);
-            }
-
-            @Override
-            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                viewHolder.progressBar.setVisibility(view.GONE);
-            }
-
-            @Override
-            public void onLoadingCancelled(String imageUri, View view) {
-                viewHolder.progressBar.setVisibility(view.GONE);
-            }
-        });
-
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        viewHolder.progressBar.setVisibility(View.GONE); // Ocultar a ProgressBar quando a imagem for carregada com sucesso
+                        return false;
+                    }
+                })
+                .into(viewHolder.imagem);
 
         return convertView;
     }
