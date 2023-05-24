@@ -30,10 +30,10 @@
         <activity
             android:name=".activity.FiltroActivity"
             android:exported="false" />
-        <activity android:name=".activity.ProfileUserActivity" />
+        <activity android:name=".activity.ProfileUserActivity"/>
         <activity
             android:name=".activity.EditProfileActivity"
-            android:parentActivityName=".activity.MainActivity" />
+            android:parentActivityName=".activity.MainActivity"/>
         <activity
             android:name=".activity.CadastroActivity"
             android:exported="false" />

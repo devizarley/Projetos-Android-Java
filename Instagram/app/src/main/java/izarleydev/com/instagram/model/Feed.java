@@ -1,5 +1,13 @@
 package izarleydev.com.instagram.model;
 
+import com.google.firebase.database.DatabaseReference;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import izarleydev.com.instagram.helper.ConfigFirebase;
+import izarleydev.com.instagram.helper.UsuarioFirebase;
+
 public class Feed {
 
     private String id;
@@ -7,8 +15,26 @@ public class Feed {
     private String descricao;
     private String nomeUsuario;
     private String fotoUsuario;
+    private String iduser;
 
     public Feed() {
+    }
+
+    public void atualizar(){
+        DatabaseReference firebase = ConfigFirebase.getFirebaseDatabase();
+
+        Map objeto = new HashMap();
+        objeto.put("/fotoUsuario", getFotoUsuario());
+
+        firebase.updateChildren(objeto);
+    }
+
+    public String getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(String iduser) {
+        this.iduser = iduser;
     }
 
     public String getId() {

@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,6 +25,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -34,6 +37,8 @@ import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.Permissao;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
+import izarleydev.com.instagram.model.Feed;
+import izarleydev.com.instagram.model.Postagem;
 import izarleydev.com.instagram.model.Usuario;
 
 
@@ -44,6 +49,8 @@ public class EditProfileActivity extends AppCompatActivity {
     private TextInputEditText inputEditEmail, inputEditUser;
     private Button buttonSalvar;
     private Usuario user;
+    private DatabaseReference userPubRef;
+
     private static final int SELECAO_GALERIA = 200;
     private StorageReference storageReference;
     private String idUsuario;
@@ -62,6 +69,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         //configurações gerais
         user = UsuarioFirebase.getDadosUsarioLogado();
+        userPubRef = ConfigFirebase.getFirebaseDatabase();
         storageReference = ConfigFirebase.getFirebaseStorage();
         idUsuario = UsuarioFirebase.getIdUsuario();
         Permissao.validarPermissoes(permissoesNecessarias, this, 1);
@@ -69,6 +77,8 @@ public class EditProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         inicializarComponentes();
+
+
 
         //recuperar dados do usuario e setar nos inputs
         FirebaseUser userProfile = UsuarioFirebase.getUsuarioAtual();
@@ -138,6 +148,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void atualizarFotoUsuario (Uri url){
+
         //atualizar foto no perfil
         UsuarioFirebase.atualizarFotoUsuario(url);
 
@@ -145,6 +156,11 @@ public class EditProfileActivity extends AppCompatActivity {
 
         user.setPhoto(url.toString());
         user.atualizar();
+
+        Feed feed = new Feed();
+        feed.setFotoUsuario(url.toString());
+        Postagem postagem = new Postagem();
+        postagem.setFoto(url.toString());
 
         Toast.makeText(EditProfileActivity.this,
                 "Sucesso ao fazer upload da imagem", Toast.LENGTH_SHORT).show();

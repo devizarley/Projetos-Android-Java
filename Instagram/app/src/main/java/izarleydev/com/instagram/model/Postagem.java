@@ -1,12 +1,16 @@
 package izarleydev.com.instagram.model;
 
+import android.util.Log;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
 
@@ -16,13 +20,9 @@ public class Postagem implements Serializable {
     private String id;
     private String descricao;
     private String foto;
+    private String idSeguidor;
 
     public Postagem() {
-
-        DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDatabase();
-        DatabaseReference postagem = firebaseRef.child("postagens");
-        String idPostagem = postagem.push().getKey();
-        setId(idPostagem);
 
     }
 
@@ -31,6 +31,10 @@ public class Postagem implements Serializable {
         Usuario usuarioLogado = UsuarioFirebase.getDadosUsarioLogado();
 
         DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDatabase();
+
+        DatabaseReference postagem = firebaseRef.child("postagens");
+        String idPostagem = postagem.push().getKey();
+        setId(idPostagem);
 
         //Referencia para postagem
         String combinacaoId = "/" + getIdUser() + "/" + getId();
@@ -48,6 +52,10 @@ public class Postagem implements Serializable {
             * */
 
             String idSeguidor = seguidores.getKey();
+            Feed feed = new Feed();
+            feed.setIduser(idSeguidor);
+            setIdSeguidor(idSeguidor);
+
 
             /*Objeto para salvar*/
 
@@ -56,6 +64,7 @@ public class Postagem implements Serializable {
             dadosSeguidor.put("fotoPostagem", getFoto());
             dadosSeguidor.put("descricao", getDescricao());
             dadosSeguidor.put("id", getId());
+
             //dados do usuario
             dadosSeguidor.put("nomeUsuario", usuarioLogado.getName());
             dadosSeguidor.put("fotoUsuario", usuarioLogado.getPhoto());
@@ -67,6 +76,29 @@ public class Postagem implements Serializable {
 
         firebaseRef.updateChildren(objeto);
         return true;
+    }
+
+    /*public void atualizar(){
+        Map objeto = new HashMap();
+
+        DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDatabase();
+        firebaseRef.child("feed").child(getIdSeguidor()).child(getId());
+
+        HashMap<String, Object> dadosSeguidor = new HashMap<>();
+        dadosSeguidor.put("fotoUsuario", getFoto());
+
+        String idsAtualizacao = "/" + getIdSeguidor() + "/" + getId();
+        objeto.put("/feed" + idsAtualizacao, dadosSeguidor);
+
+        firebaseRef.updateChildren(objeto);
+    }*/
+
+    public String getIdSeguidor() {
+        return idSeguidor;
+    }
+
+    public void setIdSeguidor(String idSeguidor) {
+        this.idSeguidor = idSeguidor;
     }
 
     public String getIdUser() {

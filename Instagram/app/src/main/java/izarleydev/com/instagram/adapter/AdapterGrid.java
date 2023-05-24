@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
@@ -19,6 +20,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import java.util.List;
 
 import izarleydev.com.instagram.R;
+import izarleydev.com.instagram.helper.SquareImageView;
 
 public class AdapterGrid extends ArrayAdapter<String> {
 
@@ -63,6 +65,8 @@ public class AdapterGrid extends ArrayAdapter<String> {
 
         //recuperar dados da imagem
         String urlImagem = getItem(position);
+
+        Glide teste = Glide.get(getContext());
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.displayImage(urlImagem, viewHolder.imagem,
             new ImageLoadingListener() {

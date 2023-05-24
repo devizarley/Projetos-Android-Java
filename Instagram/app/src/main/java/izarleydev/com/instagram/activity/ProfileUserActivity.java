@@ -76,6 +76,8 @@ public class ProfileUserActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        inicializarImageLoader();
+
         mensagemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,10 +107,6 @@ public class ProfileUserActivity extends AppCompatActivity {
             }
         }
 
-        inicializarImageLoader();
-
-        carregarFotosPostagem();
-
         //abrir foto clicada
         gridViewProfile.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -123,6 +121,11 @@ public class ProfileUserActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+        carregarFotosPostagem();
+
 
     }
 

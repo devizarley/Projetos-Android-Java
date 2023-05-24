@@ -23,7 +23,6 @@ import java.util.List;
 
 import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.adapter.AdapterComentario;
-import izarleydev.com.instagram.adapter.AdapterFeed;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
 import izarleydev.com.instagram.model.Comentario;

@@ -3,6 +3,7 @@ package izarleydev.com.instagram.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ import izarleydev.com.instagram.activity.PostagemActivity;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
 import izarleydev.com.instagram.model.Feed;
+import izarleydev.com.instagram.model.Postagem;
 import izarleydev.com.instagram.model.PostagemCurtidas;
 import izarleydev.com.instagram.model.Usuario;
 

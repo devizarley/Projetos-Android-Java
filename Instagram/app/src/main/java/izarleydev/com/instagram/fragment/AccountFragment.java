@@ -84,8 +84,8 @@ public class AccountFragment extends Fragment {
         });
 
 
-        inicializarImageLoader();
-        carregarFotosPostagem();
+        //inicializarImageLoader();
+        //carregarFotosPostagem();
 
 
 
