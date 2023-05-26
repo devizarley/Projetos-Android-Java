@@ -3,6 +3,7 @@ package izarleydev.com.instagram.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,10 +58,13 @@ public class AdapterFeed extends RecyclerView.Adapter<AdapterFeed.MyViewHolder> 
         Usuario usuarioLogado = UsuarioFirebase.getDadosUsarioLogado();
 
         //Carrega dados do feed
-        Uri uriFotoUsuario = Uri.parse(postagem.getFotoPerfilAutor());
         Uri uriFotoPostagem = Uri.parse(postagem.getFotoPostagem());
 
-        Glide.with(context).load(uriFotoUsuario).into(holder.fotoPerfil);
+        if (postagem.getFotoPerfilAutor().isEmpty()){
+            Glide.with(context).load(R.drawable.avatar).into(holder.fotoPerfil);
+        }else {
+            Glide.with(context).load(postagem.getFotoPerfilAutor()).into(holder.fotoPerfil);
+        }
         Glide.with(context).load(uriFotoPostagem).into(holder.fotoPostagem);
 
         holder.descricao.setText(postagem.getDescricao());

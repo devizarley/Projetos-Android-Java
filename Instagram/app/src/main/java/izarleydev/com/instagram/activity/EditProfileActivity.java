@@ -39,6 +39,7 @@ import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.Permissao;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
+import izarleydev.com.instagram.model.Postagem;
 import izarleydev.com.instagram.model.Usuario;
 
 
@@ -155,6 +156,9 @@ public class EditProfileActivity extends AppCompatActivity {
         user.setPhoto(url.toString());
         user.atualizar();
 
+        Postagem postagem = new Postagem();
+        postagem.setFotoPerfilAutor(url.toString());
+
         String idUserLogado = UsuarioFirebase.getIdUsuario();
         DatabaseReference postagensRef = ConfigFirebase.getFirebaseDatabase().child("postagens").child(idUserLogado);
 
@@ -164,6 +168,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     String idPostagem = ds.getKey();
+
 
                     // Atualizar o valor da foto de perfil em cada postagem
                     DatabaseReference postagemRef = ConfigFirebase.getFirebaseDatabase().child("postagens").child(idUserLogado).child(idPostagem);

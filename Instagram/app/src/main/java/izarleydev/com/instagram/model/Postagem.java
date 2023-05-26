@@ -29,7 +29,6 @@ public class Postagem implements Serializable {
 
         String idPostagem = postagem.push().getKey();
         setIdPostagem(idPostagem);
-
     }
 
     public boolean salvar (){
