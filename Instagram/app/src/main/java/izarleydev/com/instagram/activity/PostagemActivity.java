@@ -70,7 +70,7 @@ public class PostagemActivity extends AppCompatActivity implements Serializable 
             textNameUsuario.setText(usuarioSelecionado.getName());
 
             //Exibe dados da postagem
-            Uri uriPostagem = Uri.parse(postagem.getFoto());
+            Uri uriPostagem = Uri.parse(postagem.getFotoPostagem());
             Glide.with(PostagemActivity.this)
                     .load(uriPostagem)
                     .into(imagemPostagem);
@@ -79,7 +79,7 @@ public class PostagemActivity extends AppCompatActivity implements Serializable 
             //Recuperar dados da postagem curtida
             DatabaseReference curtidas = ConfigFirebase.getFirebaseDatabase()
                     .child("postagens-curtidas")
-                    .child(postagem.getId());
+                    .child(postagem.getIdPostagem());
 
             //Objeto postagem curtida
 
@@ -95,7 +95,7 @@ public class PostagemActivity extends AppCompatActivity implements Serializable 
                     }
 
                     PostagemCurtidas curtida = new PostagemCurtidas();
-                    curtida.setIdPostagem(postagem.getId());
+                    curtida.setIdPostagem(postagem.getIdPostagem());
                     curtida.setUsuario(usuarioSelecionado);
                     curtida.setQtdCurtidas(qtdCurtidas);
 
@@ -133,7 +133,7 @@ public class PostagemActivity extends AppCompatActivity implements Serializable 
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(getApplicationContext(), ComentarioActivity.class);
-                    i.putExtra("idPostagem", postagem.getId());
+                    i.putExtra("idPostagem", postagem.getIdPostagem());
                     startActivity(i);
                 }
             });
