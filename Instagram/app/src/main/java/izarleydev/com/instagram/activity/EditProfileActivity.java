@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,7 +25,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -125,8 +129,6 @@ public class EditProfileActivity extends AppCompatActivity {
                     }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-
                             imagemRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Uri> task) {
@@ -153,6 +155,29 @@ public class EditProfileActivity extends AppCompatActivity {
         user.setPhoto(url.toString());
         user.atualizar();
 
+        String idUserLogado = UsuarioFirebase.getIdUsuario();
+        DatabaseReference postagensRef = ConfigFirebase.getFirebaseDatabase().child("postagens").child(idUserLogado);
+
+        postagensRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String idPostagem = ds.getKey();
+
+                    // Atualizar o valor da foto de perfil em cada postagem
+                    DatabaseReference postagemRef = ConfigFirebase.getFirebaseDatabase().child("postagens").child(idUserLogado).child(idPostagem);
+                    postagemRef.child("fotoPerfilAutor").setValue(url.toString());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("ERROR", "onCancelled: " + error);
+            }
+        });
+
         Toast.makeText(EditProfileActivity.this,
                 "Sucesso ao fazer upload da imagem", Toast.LENGTH_SHORT).show();
 
@@ -176,6 +201,30 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 user.setName(stringName);
                 user.atualizar();
+
+                //Salvar dentro das postagens o novo nome
+                String idUserLogado = UsuarioFirebase.getIdUsuario();
+                DatabaseReference postagensRef = ConfigFirebase.getFirebaseDatabase().child("postagens").child(idUserLogado);
+
+                postagensRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            String idPostagem = ds.getKey();
+
+                            DatabaseReference postagensRef = ConfigFirebase.getFirebaseDatabase().child("postagens").child(idUserLogado).child(idPostagem);
+                            postagensRef.child("nomeUsuarioAutor").setValue(stringName);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
                 Toast.makeText(EditProfileActivity.this, "Nome atualizado com sucesso!", Toast.LENGTH_SHORT).show();
             }
         });

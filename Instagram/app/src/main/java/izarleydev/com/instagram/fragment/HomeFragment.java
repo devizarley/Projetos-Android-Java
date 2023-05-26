@@ -103,8 +103,6 @@ public class HomeFragment extends Fragment {
 
                                 }
 
-                                Log.d("testee", "onDataChange:" + dataSnapshot);
-
                                 // Aqui você pode atualizar o feed após processar todas as postagens
                                 adapterFeed.notifyDataSetChanged();
                             }
@@ -117,8 +115,6 @@ public class HomeFragment extends Fragment {
                         });
                     }
                 } else {
-                    Log.d("testee", "onDataChange: SEILAAAA" );
-
                 }
 
             }
