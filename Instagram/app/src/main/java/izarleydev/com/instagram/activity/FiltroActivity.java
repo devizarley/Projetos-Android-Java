@@ -228,7 +228,7 @@ public class FiltroActivity extends AppCompatActivity {
 
         //instanciar o objeto postagem
         Postagem postagem = new Postagem();
-        postagem.setIdUser(idUserLogado);
+        //postagem.setIdUsuarioAutor(idUserLogado);
         postagem.setDescricao(textDescricao);
 
         //Recuperar dados da imagem para o firebase
@@ -239,7 +239,7 @@ public class FiltroActivity extends AppCompatActivity {
         StorageReference imagemRef = storageReference
                 .child("imagens")
                 .child("postagens")
-                .child(postagem.getId()+ ".jpeg");
+                .child(postagem.getIdPostagem()+ ".jpeg");
 
         UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
         uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -255,7 +255,7 @@ public class FiltroActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Uri> task) {
                         Uri url = task.getResult();
-                        postagem.setFoto(url.toString());
+                        postagem.setFotoPostagem(url.toString());
 
                         int qntPublicacoes = publicacoesRef.getPublicacoes() + 1;
 
@@ -267,10 +267,7 @@ public class FiltroActivity extends AppCompatActivity {
                         usuarioAtual.updateChildren(dadosPublicacoes);
 
                         //salvar postagem
-                        if (postagem.salvar(seguidoresSnapshot)){
-
-                            Toast.makeText(FiltroActivity.this, "Postagem publicada com sucesso!", Toast.LENGTH_SHORT).show();
-
+                        if (postagem.salvar()){
                             dialog.cancel();
                             finish();
                         }
