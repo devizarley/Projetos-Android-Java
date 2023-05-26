@@ -16,105 +16,79 @@ import izarleydev.com.instagram.helper.UsuarioFirebase;
 
 public class Postagem implements Serializable {
 
-    private String idUser;
-    private String id;
+    private String nomeUsuarioAutor;
+    private String fotoPerfilAutor;
+    private String idUsuarioAutor;
+    private String fotoPostagem;
+    private String idPostagem;
     private String descricao;
-    private String foto;
-    private String idSeguidor;
 
     public Postagem() {
+        DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDatabase();
+        DatabaseReference postagem = firebaseRef.child("postagens");
+
+        String idPostagem = postagem.push().getKey();
+        setIdPostagem(idPostagem);
 
     }
 
-    public boolean salvar (DataSnapshot snapshot){
+    public boolean salvar (){
+
         Map objeto = new HashMap();
         Usuario usuarioLogado = UsuarioFirebase.getDadosUsarioLogado();
-
         DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDatabase();
 
-        DatabaseReference postagem = firebaseRef.child("postagens");
-        String idPostagem = postagem.push().getKey();
-        setId(idPostagem);
+        setFotoPerfilAutor(usuarioLogado.getPhoto());
+        setIdUsuarioAutor(usuarioLogado.getId());
+        setNomeUsuarioAutor(usuarioLogado.getName());
 
         //Referencia para postagem
-        String combinacaoId = "/" + getIdUser() + "/" + getId();
+        String combinacaoId = "/" + getIdUsuarioAutor() + "/" + getIdPostagem();
         objeto.put("/postagens" + combinacaoId, this);
-
-        //Referencia pra postagem
-
-        for (DataSnapshot seguidores: snapshot.getChildren()){
-
-            /*
-            * +feed
-            *   +id_seguidor
-            *       +id_postagem
-            *           postagem
-            * */
-
-            String idSeguidor = seguidores.getKey();
-            Feed feed = new Feed();
-            feed.setIduser(idSeguidor);
-            setIdSeguidor(idSeguidor);
-
-
-            /*Objeto para salvar*/
-
-            HashMap<String, Object> dadosSeguidor = new HashMap<>();
-            //dados da postagem do usuario
-            dadosSeguidor.put("fotoPostagem", getFoto());
-            dadosSeguidor.put("descricao", getDescricao());
-            dadosSeguidor.put("id", getId());
-
-            //dados do usuario
-            dadosSeguidor.put("nomeUsuario", usuarioLogado.getName());
-            dadosSeguidor.put("fotoUsuario", usuarioLogado.getPhoto());
-
-            String idsAtualizacao = "/" + idSeguidor + "/" + getId();
-            objeto.put("/feed" + idsAtualizacao, dadosSeguidor);
-
-        }
 
         firebaseRef.updateChildren(objeto);
         return true;
+
     }
 
-    /*public void atualizar(){
-        Map objeto = new HashMap();
-
-        DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDatabase();
-        firebaseRef.child("feed").child(getIdSeguidor()).child(getId());
-
-        HashMap<String, Object> dadosSeguidor = new HashMap<>();
-        dadosSeguidor.put("fotoUsuario", getFoto());
-
-        String idsAtualizacao = "/" + getIdSeguidor() + "/" + getId();
-        objeto.put("/feed" + idsAtualizacao, dadosSeguidor);
-
-        firebaseRef.updateChildren(objeto);
-    }*/
-
-    public String getIdSeguidor() {
-        return idSeguidor;
+    public String getNomeUsuarioAutor() {
+        return nomeUsuarioAutor;
     }
 
-    public void setIdSeguidor(String idSeguidor) {
-        this.idSeguidor = idSeguidor;
+    public void setNomeUsuarioAutor(String nomeUsuarioAutor) {
+        this.nomeUsuarioAutor = nomeUsuarioAutor;
     }
 
-    public String getIdUser() {
-        return idUser;
+    public String getFotoPerfilAutor() {
+        return fotoPerfilAutor;
     }
 
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
+    public void setFotoPerfilAutor(String fotoPerfilAutor) {
+        this.fotoPerfilAutor = fotoPerfilAutor;
     }
 
-    public String getId() {
-        return id;
+    public String getIdUsuarioAutor() {
+        return idUsuarioAutor;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdUsuarioAutor(String idUsuarioAutor) {
+        this.idUsuarioAutor = idUsuarioAutor;
+    }
+
+    public String getFotoPostagem() {
+        return fotoPostagem;
+    }
+
+    public void setFotoPostagem(String fotoPostagem) {
+        this.fotoPostagem = fotoPostagem;
+    }
+
+    public String getIdPostagem() {
+        return idPostagem;
+    }
+
+    public void setIdPostagem(String idPostagem) {
+        this.idPostagem = idPostagem;
     }
 
     public String getDescricao() {
@@ -123,13 +97,5 @@ public class Postagem implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
     }
 }

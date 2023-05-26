@@ -40,7 +40,7 @@ public class ProfileUserActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private Button buttonProfileUser, mensagemButton;
     private CircleImageView imageProfile;
-    private TextView textPublicacoes, textSeguidores, textSeguindo;
+    private TextView textPublicacoes, textSeguidores, textSeguindo, textName;
     private ValueEventListener valueEventListenerProfileUser;
     private String idUserLogado;
     private GridView gridViewProfile;
@@ -140,7 +140,7 @@ public class ProfileUserActivity extends AppCompatActivity {
                 for (DataSnapshot ds: snapshot.getChildren()){
                     Postagem postagem = ds.getValue(Postagem.class);
                     postagens.add(postagem);
-                    urlFotos.add(postagem.getFoto());
+                    urlFotos.add(postagem.getFotoPostagem());
                 }
                 //Configurar adapter
                 adapterGrid = new AdapterGrid(getApplicationContext(), R.layout.grid_postagem, urlFotos);
@@ -222,6 +222,8 @@ public class ProfileUserActivity extends AppCompatActivity {
                         textPublicacoes.setText(publicacoes);
                         textSeguindo.setText(seguindo);
                         textSeguidores.setText(seguidores);
+                        textName.setText(usuarioSelecionado.getName());
+
 
                     }
                     @Override
@@ -254,12 +256,12 @@ public class ProfileUserActivity extends AppCompatActivity {
     private void salvarSeguidor(Usuario uLogado, Usuario uSelecionado){
 
         HashMap<String, Object> dadosUserLogado = new HashMap<>();
-        dadosUserLogado.put("nome", uLogado.getName());
-        dadosUserLogado.put("photo", uLogado.getPhoto());
-        DatabaseReference seguidorRef = seguidoresRef
-                .child(uSelecionado.getId())
-                .child(uLogado.getId());
-        seguidorRef.setValue(dadosUserLogado);
+        dadosUserLogado.put("idUser", uSelecionado.getId());
+        DatabaseReference seguindoRef = seguidoresRef
+                .child(uLogado.getId())
+                .child(uSelecionado.getId());
+        seguindoRef.setValue(dadosUserLogado);
+
 
         //ALTERAÇÃO NO BOTÃO
         buttonProfileUser.setText("Seguindo");
@@ -297,6 +299,7 @@ public class ProfileUserActivity extends AppCompatActivity {
         progressGrid = findViewById(R.id.progressGrid);
         imageGrid = findViewById(R.id.imageGridProfile);
         mensagemButton = findViewById(R.id.mensagemButton);
+        textName = findViewById(R.id.textName);
 
     }
 

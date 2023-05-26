@@ -3,7 +3,6 @@ package izarleydev.com.instagram.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,20 +25,18 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.activity.ComentarioActivity;
-import izarleydev.com.instagram.activity.PostagemActivity;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
-import izarleydev.com.instagram.model.Feed;
 import izarleydev.com.instagram.model.Postagem;
 import izarleydev.com.instagram.model.PostagemCurtidas;
 import izarleydev.com.instagram.model.Usuario;
 
 public class AdapterFeed extends RecyclerView.Adapter<AdapterFeed.MyViewHolder> {
 
-    private List<Feed> listFeed;
+    private List<Postagem> listFeed;
     private Context context;
 
-    public AdapterFeed(List<Feed> listFeed, Context context) {
+    public AdapterFeed(List<Postagem> listFeed, Context context) {
 
         this.listFeed = listFeed;
         this.context = context;
@@ -56,18 +53,18 @@ public class AdapterFeed extends RecyclerView.Adapter<AdapterFeed.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        Feed feed = listFeed.get(position);
+        Postagem postagem = listFeed.get(position);
         Usuario usuarioLogado = UsuarioFirebase.getDadosUsarioLogado();
 
         //Carrega dados do feed
-        Uri uriFotoUsuario = Uri.parse(feed.getFotoUsuario());
-        Uri uriFotoPostagem = Uri.parse(feed.getFotoPostagem());
+        Uri uriFotoUsuario = Uri.parse(postagem.getFotoPerfilAutor());
+        Uri uriFotoPostagem = Uri.parse(postagem.getFotoPostagem());
 
         Glide.with(context).load(uriFotoUsuario).into(holder.fotoPerfil);
         Glide.with(context).load(uriFotoPostagem).into(holder.fotoPostagem);
 
-        holder.descricao.setText(feed.getDescricao());
-        holder.nome.setText(feed.getNomeUsuario());
+        holder.descricao.setText(postagem.getDescricao());
+        holder.nome.setText(postagem.getNomeUsuarioAutor());
 
         /*
         * postagens-curtidas
@@ -81,7 +78,7 @@ public class AdapterFeed extends RecyclerView.Adapter<AdapterFeed.MyViewHolder> 
         //Recuperar dados da postagem curtida
         DatabaseReference curtidas = ConfigFirebase.getFirebaseDatabase()
                 .child("postagens-curtidas")
-                .child(feed.getId());
+                .child(postagem.getIdPostagem());
 
         curtidas.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -104,7 +101,7 @@ public class AdapterFeed extends RecyclerView.Adapter<AdapterFeed.MyViewHolder> 
 
                 //Objeto postagem curtida
                 PostagemCurtidas curtida = new PostagemCurtidas();
-                curtida.setIdPostagem(feed.getId());
+                curtida.setIdPostagem(postagem.getIdPostagem());
                 curtida.setUsuario(usuarioLogado);
                 curtida.setQtdCurtidas(qtdCurtidas);
 
@@ -127,7 +124,7 @@ public class AdapterFeed extends RecyclerView.Adapter<AdapterFeed.MyViewHolder> 
                     @Override
                     public void onClick(View v) {
                         Intent i = new Intent(context, ComentarioActivity.class);
-                        i.putExtra("idPostagem", feed.getId());
+                        i.putExtra("idPostagem", postagem.getIdPostagem());
                         context.startActivity(i);
                     }
                 });

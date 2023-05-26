@@ -143,7 +143,7 @@ public class AccountFragment extends Fragment implements Serializable {
                 for (DataSnapshot ds: snapshot.getChildren()){
                     Postagem postagem = ds.getValue(Postagem.class);
                     listPostagens.add(postagem);
-                    urlFotos.add(postagem.getFoto());
+                    urlFotos.add(postagem.getFotoPostagem());
                 }
 
                 // Inverter a ordem da lista de postagens
