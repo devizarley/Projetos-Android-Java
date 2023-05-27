@@ -83,6 +83,43 @@ public class Comentario {
         });
     }
 
+    public void atualizarNome(String idUsuario, String nomeUsuario) {
+        DatabaseReference comentariosRef = ConfigFirebase.getFirebaseDatabase()
+                .child("comentarios");
+
+        comentariosRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                //Dentro desse for ele está retornando todo nó de comentarios
+                //Log.d("TESTEEE", "onDataChange: " + snapshot);
+
+                for (DataSnapshot ds : snapshot.getChildren()) {
+
+                    //Dentro desse for ele esta retornando a lista de todo s os comentarios da postagem
+                    //Log.d("TESTEEE", "onDataChange: " + ds);
+
+                    for (DataSnapshot comentarioSnapshot : ds.getChildren()) {
+                        //Dentro desse for ele esta retornando a lista de todo s os comentarios da postagem de forma separada
+                        //Log.d("TESTEEE", "onDataChange: " + comentarioSnapshot);
+
+                        Comentario comentario = comentarioSnapshot.getValue(Comentario.class);
+                        //se nos comentarios percorridos haver um IdUsuario igual ao IdUsuario logado ele faz a atualização do nome
+                        if (comentario != null && comentario.getIdUsuario().equals(idUsuario)) {
+                            comentario.setNomeUsuario(nomeUsuario);
+                            comentarioSnapshot.getRef().setValue(comentario);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("ERROR", "onCancelled: " + error);
+            }
+        });
+    }
+
     public String getIdComentario() {
         return idComentario;
     }

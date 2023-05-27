@@ -231,7 +231,8 @@ public class EditProfileActivity extends AppCompatActivity {
                     }
                 });
 
-
+                Comentario comentario = new Comentario();
+                comentario.atualizarFoto(idUserLogado, stringName);
 
                 Toast.makeText(EditProfileActivity.this, "Nome atualizado com sucesso!", Toast.LENGTH_SHORT).show();
             }
