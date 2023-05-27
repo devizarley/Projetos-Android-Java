@@ -26,6 +26,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.helper.ConfigFirebase;
+import izarleydev.com.instagram.helper.UsuarioFirebase;
 import izarleydev.com.instagram.model.Postagem;
 import izarleydev.com.instagram.model.PostagemCurtidas;
 import izarleydev.com.instagram.model.Usuario;
@@ -94,13 +95,14 @@ public class PostagemActivity extends AppCompatActivity implements Serializable 
 
                     }
 
+                    Usuario usuarioLogado = UsuarioFirebase.getDadosUsarioLogado();
                     PostagemCurtidas curtida = new PostagemCurtidas();
                     curtida.setIdPostagem(postagem.getIdPostagem());
-                    curtida.setUsuario(usuarioSelecionado);
+                    curtida.setUsuario(usuarioLogado);
                     curtida.setQtdCurtidas(qtdCurtidas);
 
                     //Verificar se já foi clicado em curtir pelo id do usuario
-                    if (snapshot.hasChild(usuarioSelecionado.getId())) {
+                    if (snapshot.hasChild(usuarioLogado.getId())) {
                         likeButton.setLiked(true);
                     }else {
                         likeButton.setLiked(false);

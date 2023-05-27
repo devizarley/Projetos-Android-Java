@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -39,6 +40,7 @@ import izarleydev.com.instagram.R;
 import izarleydev.com.instagram.helper.ConfigFirebase;
 import izarleydev.com.instagram.helper.Permissao;
 import izarleydev.com.instagram.helper.UsuarioFirebase;
+import izarleydev.com.instagram.model.Comentario;
 import izarleydev.com.instagram.model.Postagem;
 import izarleydev.com.instagram.model.Usuario;
 
@@ -156,12 +158,9 @@ public class EditProfileActivity extends AppCompatActivity {
         user.setPhoto(url.toString());
         user.atualizar();
 
-        Postagem postagem = new Postagem();
-        postagem.setFotoPerfilAutor(url.toString());
-
+        //atualizar foto nas publicações
         String idUserLogado = UsuarioFirebase.getIdUsuario();
         DatabaseReference postagensRef = ConfigFirebase.getFirebaseDatabase().child("postagens").child(idUserLogado);
-
         postagensRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -174,7 +173,6 @@ public class EditProfileActivity extends AppCompatActivity {
                     DatabaseReference postagemRef = ConfigFirebase.getFirebaseDatabase().child("postagens").child(idUserLogado).child(idPostagem);
                     postagemRef.child("fotoPerfilAutor").setValue(url.toString());
                 }
-
             }
 
             @Override
@@ -182,6 +180,9 @@ public class EditProfileActivity extends AppCompatActivity {
                 Log.d("ERROR", "onCancelled: " + error);
             }
         });
+
+        Comentario comentario = new Comentario();
+        comentario.atualizarFoto(idUserLogado, url.toString());
 
         Toast.makeText(EditProfileActivity.this,
                 "Sucesso ao fazer upload da imagem", Toast.LENGTH_SHORT).show();
@@ -229,6 +230,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
                     }
                 });
+
+
 
                 Toast.makeText(EditProfileActivity.this, "Nome atualizado com sucesso!", Toast.LENGTH_SHORT).show();
             }
