@@ -179,9 +179,9 @@ public class ProfileUserActivity extends AppCompatActivity {
 
     private void verificarSeguindoUsuario(){
 
-        DatabaseReference seguidorRef = seguidoresRef.child("seguidores")
-                .child(usuarioSelecionado.getId())
-                .child(idUserLogado);
+        DatabaseReference seguidorRef = seguidoresRef
+                .child(idUserLogado)
+                .child(usuarioSelecionado.getId());
 
         seguidorRef.addListenerForSingleValueEvent(
                 new ValueEventListener() {

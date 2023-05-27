@@ -41,7 +41,6 @@ public class HomeFragment extends Fragment {
     private DatabaseReference seguidoresRef;
     private String usuarioLogado;
 
-
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,9 +63,12 @@ public class HomeFragment extends Fragment {
         recyclerFeed.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerFeed.setAdapter(adapterFeed);
 
+        FirebaseUser usuariOO = UsuarioFirebase.getUsuarioAtual();
+
+        Log.d("Teste", "onCreateView: " + usuariOO);
+
         return view;
     }
-
 
     private void listarFeed() {
         listFeed.clear();
@@ -84,6 +86,7 @@ public class HomeFragment extends Fragment {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
                                     String idUsuarioAutor = snapshot.child("idUsuarioAutor").getValue(String.class);
                                     String fotoPerfilAutor = snapshot.child("fotoPerfilAutor").getValue(String.class);
                                     String nomeUsuarioAutor = snapshot.child("nomeUsuarioAutor").getValue(String.class);

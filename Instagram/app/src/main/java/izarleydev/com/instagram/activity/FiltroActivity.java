@@ -66,7 +66,7 @@ public class FiltroActivity extends AppCompatActivity {
     private RecyclerView recyclerFiltros;
     private AdapterMiniaturas adapterMiniaturas;
     private DatabaseReference usuariosRef, firebaseRef, usuarioLogadoRef;
-    private Usuario publicacoesRef, usuarioLogado;
+    private Usuario usuarioLogado;
     private StorageReference storageReference;
     private TextInputEditText inputDescricao;
     private String idUserLogado;
@@ -257,13 +257,14 @@ public class FiltroActivity extends AppCompatActivity {
                         Uri url = task.getResult();
                         postagem.setFotoPostagem(url.toString());
 
-                        int qntPublicacoes = publicacoesRef.getPublicacoes() + 1;
+                        int qntPublicacoes = usuarioLogado.getPublicacoes() + 1;
 
-                        HashMap<String, Object> dadosPublicacoes = new HashMap<>();
+                        HashMap dadosPublicacoes = new HashMap<>();
                         dadosPublicacoes.put("publicacoes", qntPublicacoes);
 
                         DatabaseReference usuarioAtual = usuariosRef
                                 .child(idUserLogado);
+
                         usuarioAtual.updateChildren(dadosPublicacoes);
 
                         //salvar postagem
@@ -294,7 +295,7 @@ public class FiltroActivity extends AppCompatActivity {
         usuariosRef = firebaseRef.child("usuarios");
         idUserLogado = UsuarioFirebase.getIdUsuario();
         storageReference = ConfigFirebase.getFirebaseStorage();
-        publicacoesRef = new Usuario();
+        usuarioLogado = UsuarioFirebase.getDadosUsarioLogado();
     }
 
     @Override
