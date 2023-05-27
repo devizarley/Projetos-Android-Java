@@ -44,7 +44,12 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.My
 
         Comentario comentario = listComentario.get(position);
 
-        Glide.with(context).load(comentario.getCaminhoFoto()).into(holder.fotoPerfil);
+        if(comentario.getCaminhoFoto().isEmpty()){
+            Glide.with(context).load(R.drawable.avatar).into(holder.fotoPerfil);
+
+        } else {
+            Glide.with(context).load(comentario.getCaminhoFoto()).into(holder.fotoPerfil);
+        }
 
         holder.nome.setText(comentario.getNomeUsuario());
         holder.comentario.setText(comentario.getComentario());
