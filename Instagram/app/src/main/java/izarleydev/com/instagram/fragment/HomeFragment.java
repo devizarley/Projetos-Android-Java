@@ -63,10 +63,6 @@ public class HomeFragment extends Fragment {
         recyclerFeed.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerFeed.setAdapter(adapterFeed);
 
-        FirebaseUser usuariOO = UsuarioFirebase.getUsuarioAtual();
-
-        Log.d("Teste", "onCreateView: " + usuariOO);
-
         return view;
     }
 
