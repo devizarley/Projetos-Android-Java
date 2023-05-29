@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
     private ValueEventListener valueEventListener;
     private DatabaseReference seguidoresRef;
     private String usuarioLogado;
-
+    List<Postagem> tempList = new ArrayList<>();
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,7 +52,6 @@ public class HomeFragment extends Fragment {
         seguidoresRef = ConfigFirebase.getFirebaseDatabase()
                 .child("seguidores")
                 .child(usuarioLogado);
-
 
         //Inicializar componentes
         recyclerFeed = view.findViewById(R.id.recyclerFeed);
@@ -81,6 +80,7 @@ public class HomeFragment extends Fragment {
                         query.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                tempList.clear();
                                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
                                     String idUsuarioAutor = snapshot.child("idUsuarioAutor").getValue(String.class);
@@ -98,11 +98,11 @@ public class HomeFragment extends Fragment {
                                     postagem.setIdPostagem(idPostagem);
                                     postagem.setDescricao(descricao);
 
-                                    listFeed.add(postagem);
+                                    tempList.add(postagem);
 
                                 }
-
-                                // Aqui você pode atualizar o feed após processar todas as postagens
+                                Collections.shuffle(tempList);
+                                listFeed.addAll(tempList);
                                 adapterFeed.notifyDataSetChanged();
                             }
 
