@@ -1,4 +1,4 @@
-# WhatsApp Clone 📱
+# WhatsApp
 
 <br>
 <img align="center" height="500" width="250" src="https://github.com/devizarley/Projects-Mobile/assets/96016937/f5def5f9-4381-410e-8610-b72e71d4b105" />
@@ -38,16 +38,18 @@ Desde que tive o primeiro contato com a tecnologia, sempre tive curiosidade em c
     Com o Android Studio aberto, você verá a tela inicial. Clique em "Open an existing project" (Abrir um projeto existente) ou selecione "Open" (Abrir) no menu "File" (Arquivo) para abrir um projeto existente. Navegue até a localização do projeto em seu sistema e selecione o arquivo do projeto. Execute o projeto selecionando "Run" logo após "Run 'app'". Certifique-se de que o Dispositivo virtual Android (AVD) esteja instalado corretamente e sem nenhum problema. Em caso de dúvidas ou problemas, não hesite em me contatar!
     
   ### Modo de uso! ⚠
-   * Com o Aplicativo aberto em sua maquina você pode usufruir e testar da maneira que quiser criando uma conta de forma padrão ou utilizando este logins disponibilizado
+   * Com o aplicativo aberto no seu emulador/celular, você pode aproveitar e testar da maneira que preferir, criando uma conta de forma padrão ou utilizando o login disponibilizado abaixo:
 
           Email: usuario.teste03@gmail.com
           senha: usuario03
           
-      Utilizando o login desse usuario você poderá enviar mensagens para os outros usuarios para testes e caso queira enviar uma mensagem de volta faça o login na conta escolhida
+   * Utilizando o login acima você poderá enviar mensagens para os outros usuarios para testes e caso queira enviar uma mensagem de volta faça o login na conta escolhida
           
           Email: usuario.teste02@gmail.com    Email: usuario.teste01@gmail.com
           senha: usuario02                    senha: usuario01
           
+   * Certifique-se de digitar corretamente o usuário e a senha ao fazer login. Caso tenha algum problema ou dúvida, não hesite em entrar em contato. Estou disponível para ajudar a qualquer momento!
+
 ## Contato 💭
 
 Se você tiver alguma dúvida, sugestão ou precisar de ajuda relacionada a este projeto, você pode entrar em contato nesta seção.
