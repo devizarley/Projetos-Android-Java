@@ -1,8 +1,10 @@
 # INSTAGRAM CLONE
 
-## Apresentação Inicial
+## Apresentação Inicial 📱
 
-EM BREVE
+<img align="center" height="500" width="250" src="https://github.com/devizarley/Projects-Mobile/assets/96016937/d89f81fd-9100-497e-abbb-68ea61aa069e" />
+<img align="center" height="500" width="250" src="https://github.com/devizarley/Projects-Mobile/assets/96016937/09177c33-768b-4294-9984-9b3f58c17e46" />
+<img align="center" height="500" width="250" src="https://github.com/devizarley/Projects-Mobile/assets/96016937/54b44ce1-17ee-4a70-9b1d-ebefb5d751d2" />
 
 ## Iniciativa do Projeto
 
@@ -14,10 +16,10 @@ EM BREVE
    * Caso queira utilizar/testar em seu dispositivo android utilize o download do APK de instalação:<br>
       [Download APK](https://drive.google.com/file/d/1cNxIxviqqaeyX5Q_6vGwbEiloXX1Lu8x/view?usp=sharing)
    * Caso queira utilizar um emulador virtual utilize o download a seguir e logo após siga a instrução de instação do emulador.<br>
-      Download PROJETO
+      [Download Instagram.rar](https://drive.google.com/file/d/11xiHrvs7Mqe0NLgkOfFIuJtSY8nK944B/view?usp=sharing)
 
-   ### Instalando e Abrindo o Projeto no Android Studio com Emulador
-   Ao baixar o projeto siga as instruções de instação do emulador para a abertura do projeto.
+   ### Instalando e Abrindo o Projeto no Android Studio com Emulador:
+   Ao baixar o projeto e extraí-lo siga as instruções de instação do emulador para a abertura do projeto.
 
   * Passo 1: Verifique os requisitos do sistema e baixe o Android Studio
 
