@@ -1,4 +1,4 @@
-# INSTAGRAM CLONE
+# PROJETO INSTAGRAM CLONE
 
 ## Apresentação Inicial 📱
 
