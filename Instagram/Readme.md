@@ -6,7 +6,7 @@
 <img align="center" height="500" width="250" src="https://github.com/devizarley/Projects-Mobile/assets/96016937/09177c33-768b-4294-9984-9b3f58c17e46" />
 <img align="center" height="500" width="250" src="https://github.com/devizarley/Projects-Mobile/assets/96016937/54b44ce1-17ee-4a70-9b1d-ebefb5d751d2" />
 
-## Iniciativa do Projeto
+## Iniciativa do Projeto 💡
 
 Desde que tive o primeiro contato com a Tecnologia, sempre imaginava como funionava tudo por trás dessa ferramenta poderosa e o objetivo principal deste projeto foi mergulhar no universo da tecnologia e compreender o funcionamento dos aplicativos que utilizamos cotidianamente. Além disso, pretendo explorar os processos de criação, desenvolvimento e implementação dessas poderosas ferramentas, desvendando os conceitos fundamentais e os mecanismos por trás de sua operação. Quero entender como ocorre a interação entre o usuário e o aplicativo, desde a interface até os complexos sistemas que garantem seu funcionamento eficiente.
 
@@ -39,7 +39,7 @@ Desde que tive o primeiro contato com a Tecnologia, sempre imaginava como funion
 
     Com o Android Studio aberto, você verá a tela inicial. Clique em "Open an existing project" (Abrir um projeto existente) ou selecione "Open" (Abrir) no menu "File" (Arquivo) para abrir um projeto existente. Navegue até a localização do projeto no seu sistema e selecione o arquivo do projeto. Execute o projeto selecionando em "Run" logo após "Run 'app'". Certifique-se que o Dispositivo virtual Android (AVD) esteja instalada correta e sem nenhum problema, em caso de duvidas ou problemas não hesite em me contatar!
 
-## Contato
+## Contato 💭
 
 Se você tiver alguma dúvida, sugestão ou precisar de ajuda relacionada a este projeto, você pode entrar em contato nesta seção.
 
