@@ -9,7 +9,7 @@
 
 ## Iniciativa do Projeto 💡
 
-Desde que tive o primeiro contato com a Tecnologia, sempre imaginava como funionava tudo por trás dessa ferramenta poderosa e o objetivo principal deste projeto foi mergulhar no universo da tecnologia e compreender o funcionamento dos aplicativos que utilizamos cotidianamente. Além disso, pretendo explorar os processos de criação, desenvolvimento e implementação dessas poderosas ferramentas, desvendando os conceitos fundamentais e os mecanismos por trás de sua operação. Quero entender como ocorre a interação entre o usuário e o aplicativo, desde a interface até os complexos sistemas que garantem seu funcionamento eficiente.
+Desde que tive o primeiro contato com a tecnologia, sempre imaginava como funionava tudo por trás dessa ferramenta poderosa e o objetivo principal deste projeto foi mergulhar no universo da tecnologia e compreender o funcionamento dos aplicativos que utilizamos cotidianamente. Além disso, pretendo explorar os processos de criação, desenvolvimento e implementação dessas poderosas ferramentas, desvendando os conceitos fundamentais e os mecanismos por trás de sua operação. Quero entender como ocorre a interação entre o usuário e o aplicativo, desde a interface até os complexos sistemas que garantem seu funcionamento eficiente.
 
 ## Como utilizar e testa-lo? 🤔
 
