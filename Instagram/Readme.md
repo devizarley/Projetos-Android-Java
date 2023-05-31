@@ -1,10 +1,11 @@
 # PROJETO INSTAGRAM CLONE
 
 ## Apresentação Inicial 📱
-
+<br>
 <img align="center" height="500" width="250" src="https://github.com/devizarley/Projects-Mobile/assets/96016937/d89f81fd-9100-497e-abbb-68ea61aa069e" />
 <img align="center" height="500" width="250" src="https://github.com/devizarley/Projects-Mobile/assets/96016937/09177c33-768b-4294-9984-9b3f58c17e46" />
 <img align="center" height="500" width="250" src="https://github.com/devizarley/Projects-Mobile/assets/96016937/54b44ce1-17ee-4a70-9b1d-ebefb5d751d2" />
+<br><br>
 
 ## Iniciativa do Projeto 💡
 
