@@ -14,9 +14,9 @@ Desde que tive o primeiro contato com a tecnologia, sempre tive curiosidade em c
 
    ### Baixe o projeto:
    * Caso queira utilizar/testar em seu dispositivo android utilize o download do APK de instalação:<br>
-      [Download APK](https://drive.google.com/file/d/1cNxIxviqqaeyX5Q_6vGwbEiloXX1Lu8x/view?usp=sharing)
+      [Download APK](https://drive.google.com/file/d/1M-VhCwCL9CD-JqrnMqaJwVdWj4m_veiu/view?usp=sharing)
    * Caso queira utilizar um emulador virtual utilize o download a seguir e logo após siga a instrução de instação do emulador.<br>
-      [Download Instagram.rar](https://drive.google.com/file/d/11xiHrvs7Mqe0NLgkOfFIuJtSY8nK944B/view?usp=sharing)
+      [Download Instagram.rar](https://drive.google.com/file/d/1sAs3sYmd6R5SZV5W3qN5TYXbTfT7ysP-/view?usp=sharing)
 
    ### Instalando e Abrindo o Projeto no Android Studio com Emulador:
    Ao baixar o projeto e extraí-lo, siga as instruções de instalação do emulador para a abertura do projeto.
