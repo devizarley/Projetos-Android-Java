@@ -1,6 +1,4 @@
 # PROJETO INSTAGRAM CLONE
-
-## Apresentação inicial 📱
 <br>
 <img align="center" height="500" width="250" src="https://github.com/devizarley/Projects-Mobile/assets/96016937/d89f81fd-9100-497e-abbb-68ea61aa069e" />
 <img align="center" height="500" width="250" src="https://github.com/devizarley/Projects-Mobile/assets/96016937/09177c33-768b-4294-9984-9b3f58c17e46" />
@@ -37,6 +35,25 @@ Desde que tive o primeiro contato com a tecnologia, sempre tive curiosidade em c
   * Passo 4: Abra o projeto e execute-o no Dispositivo virtual Android (AVD).
 
     Com o Android Studio aberto, você verá a tela inicial. Clique em "Open an existing project" (Abrir um projeto existente) ou selecione "Open" (Abrir) no menu "File" (Arquivo) para abrir um projeto existente. Navegue até a localização do projeto em seu sistema e selecione o arquivo do projeto. Execute o projeto selecionando "Run" logo após "Run 'app'". Certifique-se de que o Dispositivo virtual Android (AVD) esteja instalado corretamente e sem nenhum problema. Em caso de dúvidas ou problemas, não hesite em me contatar!
+    
+   ### Modo de uso! ⚠
+   * Com o aplicativo aberto em seu emulador/celular, você pode aproveitar e testar da maneira que preferir, criando uma conta de forma padrão ou utilizando os logins disponibilizados abaixo:
+
+          Email: usuario.teste@gmail.com
+          Senha: usuario123      
+          
+          Email: usuario.teste02@gmail.com
+          Senha: usuario123
+          
+      * Ao fazer o login no aplicativo, você pode seguir outros usuários por meio da pesquisa e segui-los, além de fazer postagens (não recomendo utilizar fotos pessoais, pois este é um aplicativo para estudo e uso de login público).
+      Você pode seguir os usuários que já existem pesquisando por:
+            
+           Usuario: LEONARDO RODRIGUES
+           Usuario: GUSTAVO CARVALHO
+           Usuario: IZARLEY RODRIGUES
+           Usuario: JOSÉ ALBERTO
+  
+      * Certifique-se de digitar corretamente o usuário e a senha ao fazer login. Caso tenha algum problema ou dúvida, não hesite em entrar em contato. Estou à disposição para ajudar à qualquer momento!
 
 ## Contato 💭
 
