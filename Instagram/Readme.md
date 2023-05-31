@@ -1,0 +1,49 @@
+# INSTAGRAM CLONE
+
+## Apresentação Inicial
+
+EM BREVE
+
+## Iniciativa do Projeto
+
+EM BREVE
+
+## Como utilizar e testa-lo? 🤔
+
+   ### Baixe o projeto:
+   * Caso queira utilizar/testar em seu dispositivo android utilize o download do APK de instalação:<br>
+      [Download APK](https://drive.google.com/file/d/1cNxIxviqqaeyX5Q_6vGwbEiloXX1Lu8x/view?usp=sharing)
+   * Caso queira utilizar um emulador virtual utilize o download a seguir e logo após siga a instrução de instação do emulador.<br>
+      Download PROJETO
+
+   ### Instalando e Abrindo o Projeto no Android Studio com Emulador
+   Ao baixar o projeto siga as instruções de instação do emulador para a abertura do projeto.
+
+  * Passo 1: Verifique os requisitos do sistema e baixe o Android Studio
+
+    Certifique-se de que seu computador atenda aos requisitos mínimos do sistema para executar o Android Studio. Você pode encontrar essas informações no site oficial do Android Studio.
+    Acesse o site oficial do Android Studio (https://developer.android.com/studio) e clique no botão "Download" para baixar o instalador.
+
+  * Passo 2: Instale o programa
+
+    Após o download, execute o instalador do Android Studio. Siga o processo de instalação instruidos no site oficial do Android Studio.
+    Acesse o site oficial do Android Studio (https://developer.android.com/studio/install).
+
+  * Passo 3: Configure seu Android Studio e o Dispositivo virtual Android (AVD) da forma recomendada pelo site oficial do Android Studio.
+
+    Acesse o site oficial do Android Studio para ler as instruções (https://developer.android.com/studio/intro/studio-config).
+
+  * Passo 4: Abra o projeto e execute-o no Dispositivo virtual Android (AVD).
+
+    Com o Android Studio aberto, você verá a tela inicial. Clique em "Open an existing project" (Abrir um projeto existente) ou selecione "Open" (Abrir) no menu "File" (Arquivo) para abrir um projeto existente. Navegue até a localização do projeto no seu sistema e selecione o arquivo do projeto. Execute o projeto selecionando em "Run" logo após "Run 'app'". Certifique-se que o Dispositivo virtual Android (AVD) esteja instalada correta e sem nenhum problema, em caso de duvidas ou problemas não hesite em me contatar!
+
+## Contato
+
+Se você tiver alguma dúvida, sugestão ou precisar de ajuda relacionada a este projeto, você pode entrar em contato nesta seção.
+
+* Microsoft Teams: [izarley.oliveira@hotmail.com](https://teams.live.com/l/invite/FAA-mtkaaMnD6zXiAI)
+* Discord: Izarley#2073
+* WhatsApp: https://api.whatsapp.com/send?phone=5588981163853
+* Linkedin: https://www.linkedin.com/in/izarley-rodrigues-958312228/
+
+---
