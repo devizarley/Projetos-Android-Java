@@ -9,7 +9,7 @@
 
 ## Iniciativa do projeto 💡
 
-Desde que tive o primeiro contato com a tecnologia sempre tive a curiosidade como funionava tudo por trás dessa ferramenta poderosa e o objetivo principal deste projeto foi mergulhar no universo dessa tecnologia e compreender o funcionamento dos aplicativos que utilizamos cotidianamente. Além disso, pretendo explorar os processos de criação, desenvolvimento e implementação dessas poderosas ferramentas, desvendando os conceitos fundamentais e os mecanismos por trás de sua operação. Quero entender como ocorre a interação entre o usuário e o aplicativo, desde a interface até os complexos sistemas que garantem seu funcionamento eficiente.
+Desde que tive o primeiro contato com a tecnologia, sempre tive curiosidade em como funcionava tudo por trás dessa ferramenta poderosa. O objetivo principal deste projeto foi mergulhar no universo dessa tecnologia e compreender o funcionamento dos aplicativos que utilizamos cotidianamente. Além disso, pretendo explorar os processos de criação, desenvolvimento e implementação dessas poderosas ferramentas, desvendando os conceitos fundamentais e os mecanismos por trás de sua operação. Quero entender como ocorre a interação entre o usuário e o aplicativo, desde a interface até os complexos sistemas que garantem seu funcionamento eficiente.
 
 ## Como utilizar e testa-lo? 🤔
 
@@ -20,17 +20,15 @@ Desde que tive o primeiro contato com a tecnologia sempre tive a curiosidade com
       [Download Instagram.rar](https://drive.google.com/file/d/11xiHrvs7Mqe0NLgkOfFIuJtSY8nK944B/view?usp=sharing)
 
    ### Instalando e Abrindo o Projeto no Android Studio com Emulador:
-   Ao baixar o projeto e extraí-lo siga as instruções de instação do emulador para a abertura do projeto.
+   Ao baixar o projeto e extraí-lo, siga as instruções de instalação do emulador para a abertura do projeto.
 
   * Passo 1: Verifique os requisitos do sistema e baixe o Android Studio
 
-    Certifique-se de que seu computador atenda aos requisitos mínimos do sistema para executar o Android Studio. Você pode encontrar essas informações no site oficial do Android Studio.
-    Acesse o site oficial do Android Studio (https://developer.android.com/studio) e clique no botão "Download" para baixar o instalador.
+    Certifique-se de que seu computador atenda aos requisitos mínimos do sistema para executar o Android Studio. Você pode encontrar essas informações no site oficial do Android Studio. Acesse o site oficial do Android Studio (https://developer.android.com/studio) e clique no botão "Download" para baixar o instalador.
 
   * Passo 2: Instale o programa
 
-    Após o download, execute o instalador do Android Studio. Siga o processo de instalação instruídos no site oficial do Android Studio.
-    Acesse o site oficial do Android Studio (https://developer.android.com/studio/install).
+    Após o download, execute o instalador do Android Studio. Siga o processo de instalação instruído no site oficial do Android Studio. Acesse o site oficial do Android Studio (https://developer.android.com/studio/install).
 
   * Passo 3: Configure seu Android Studio e o Dispositivo virtual Android (AVD) da forma recomendada pelo site oficial do Android Studio.
 
@@ -38,11 +36,11 @@ Desde que tive o primeiro contato com a tecnologia sempre tive a curiosidade com
 
   * Passo 4: Abra o projeto e execute-o no Dispositivo virtual Android (AVD).
 
-    Com o Android Studio aberto, você verá a tela inicial. Clique em "Open an existing project" (Abrir um projeto existente) ou selecione "Open" (Abrir) no menu "File" (Arquivo) para abrir um projeto existente. Navegue até a localização do projeto no seu sistema e selecione o arquivo do projeto. Execute o projeto selecionando em "Run" logo após "Run 'app'". Certifique-se que o Dispositivo virtual Android (AVD) esteja instalada correta e sem nenhum problema, em caso de duvidas ou problemas não hesite em me contatar!
+    Com o Android Studio aberto, você verá a tela inicial. Clique em "Open an existing project" (Abrir um projeto existente) ou selecione "Open" (Abrir) no menu "File" (Arquivo) para abrir um projeto existente. Navegue até a localização do projeto em seu sistema e selecione o arquivo do projeto. Execute o projeto selecionando "Run" logo após "Run 'app'". Certifique-se de que o Dispositivo virtual Android (AVD) esteja instalado corretamente e sem nenhum problema. Em caso de dúvidas ou problemas, não hesite em me contatar!
 
 ## Contato 💭
 
-Se você tiver alguma dúvida, sugestão ou precisar de ajuda relacionada a este projeto você pode entrar em contato nesta seção.
+Se você tiver alguma dúvida, sugestão ou precisar de ajuda relacionada a este projeto, você pode entrar em contato nesta seção.
 
 * Microsoft Teams: [izarley.oliveira@hotmail.com](https://teams.live.com/l/invite/FAA-mtkaaMnD6zXiAI)
 * Discord: Izarley#2073
