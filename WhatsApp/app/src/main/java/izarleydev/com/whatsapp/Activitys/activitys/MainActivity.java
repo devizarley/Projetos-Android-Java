@@ -1,19 +1,19 @@
 package izarleydev.com.whatsapp.Activitys.activitys;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
-import android.annotation.SuppressLint;
+import static izarleydev.com.whatsapp.R.id.menuPesquisa;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import androidx.appcompat.widget.SearchView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
@@ -23,7 +23,6 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
 import izarleydev.com.whatsapp.Activitys.fragment.ContatosFragment;
 import izarleydev.com.whatsapp.Activitys.fragment.ConversasFragment;
-import izarleydev.com.whatsapp.Activitys.model.Conversas;
 import izarleydev.com.whatsapp.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onClose() {
 
                 ConversasFragment fragment = (ConversasFragment) adapter.getPage(0);
-                fragment.recarregarConversas();
+                //fragment.recarregarConversas();
 
                 return true;
             }
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
                 ConversasFragment fragment = (ConversasFragment) adapter.getPage(0);
                 if (s != null & !s.isEmpty()){
-                    fragment.searchConversas( s.toLowerCase() );
+                    //fragment.searchConversas( s.toLowerCase() );
                 }
                 return false;
             }
@@ -98,7 +97,8 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
 
     }
-    @SuppressLint("NonConstantResourceId")
+
+    /*
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     public void openConfig (){
         startActivity(new Intent(this, Configuracoes.class));

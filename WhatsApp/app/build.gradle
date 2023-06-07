@@ -51,6 +51,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-storage'
     implementation 'com.firebaseui:firebase-ui-storage:7.2.0'
+    implementation platform('com.google.firebase:firebase-bom:31.5.0')
+    implementation 'com.google.firebase:firebase-firestore'
 
     //implementation 'com.ogaclejapan.smarttablayout:library:1.7.0@aar'
     //implementation 'com.ogaclejapan.smarttablayout:utils-v4:1.7.0@aar'

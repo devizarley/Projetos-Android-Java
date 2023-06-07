@@ -21,6 +21,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -33,46 +36,16 @@ import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
 import izarleydev.com.whatsapp.Activitys.model.Usuario;
 import izarleydev.com.whatsapp.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ContatosFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ContatosFragment extends Fragment {
 
     private RecyclerView recyclerViewListContatos;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private String mParam1;
-    private String mParam2;
     private ContatosAdapter adapter;
     private ArrayList<Usuario> listContatos = new ArrayList<>();
     private DatabaseReference ref;
     private ValueEventListener valueEventListenerContatos;
     private FirebaseUser currentUser = UsuarioFirebase.getUsuarioAtual();
-
-
-    public ContatosFragment() {
-        // Required empty public constructor
-    }
-
-    public static ContatosFragment newInstance(String param1, String param2) {
-        ContatosFragment fragment = new ContatosFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference usuariosRef = db.collection("usuario");;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,7 +55,6 @@ public class ContatosFragment extends Fragment {
 
         //Configurações iniciais
         recyclerViewListContatos = view.findViewById(R.id.listContatos);
-        ref = ConfigFirebase.getFirebaseDatabase().child("usuarios");
 
         //Configurar adapter
         adapter = new ContatosAdapter( listContatos, getActivity());
@@ -125,7 +97,29 @@ public class ContatosFragment extends Fragment {
 
         return view;
     }
+    public void recContatos (){
+        usuariosRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                listContatos.clear();
+                for (DocumentSnapshot document : task.getResult()) {
+                    // Recupera os dados do documento como um objeto Usuario
+                    Usuario usuario = document.toObject(Usuario.class);
 
+                    // Recupera o email do usuário logado
+                    String emailCurrentUser = currentUser.getEmail();
+
+                    // Verifica se o email do usuário logado é diferente do email do documento atual
+                    if (!emailCurrentUser.equals(usuario.getEmail())) {
+                        listContatos.add(usuario);
+                    }
+                }
+
+                adapter.notifyDataSetChanged();
+            } else {
+                // Tratar falha na recuperação dos dados
+            }
+        });
+    }
     @Override
     public void onStart() {
         super.onStart();
@@ -136,36 +130,5 @@ public class ContatosFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        ref.removeEventListener(valueEventListenerContatos);
-    }
-
-    public void recContatos (){
-        valueEventListenerContatos = ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                for ( DataSnapshot dados: snapshot.getChildren() ){
-                    //Lista todos os usuarios do banco de dados
-                    Usuario usuario = dados.getValue(Usuario.class);
-
-                    //recupera usuario logado
-                    String emailCurrentUser = currentUser.getEmail();
-
-                    //verificação se o email do usuario logado é igual à algum do banco de dados
-                    if (!emailCurrentUser.equals(usuario.getEmail())){
-                        listContatos.add(usuario);
-                    }
-
-                }
-
-                adapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 }

@@ -1,10 +1,14 @@
 package izarleydev.com.whatsapp.Activitys.activitys;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,12 +33,16 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -52,6 +62,7 @@ public class ChatAtivity extends AppCompatActivity {
     private TextView textNameChat;
     private CircleImageView circleImageView;
     private Usuario usuarioDestinatario;
+    private Usuario usuarioLogado;
     private EditText inputContentMsg;
     private ChildEventListener childEventListenerMensagens;
     private ImageView camInputChat;
@@ -88,6 +99,8 @@ public class ChatAtivity extends AppCompatActivity {
         circleImageView = findViewById(R.id.circleImageChat);
         inputContentMsg = findViewById(R.id.inputContentMsg);
         camInputChat = findViewById(R.id.iconInputCamera);
+        usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
+
 
         //Configurações RecyclerView
         recyclerMensage = findViewById(R.id.recyclerMensage);
@@ -133,14 +146,34 @@ public class ChatAtivity extends AppCompatActivity {
         camInputChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(intent, SELECAO_CAMERA);
+                // Verificar se a permissão da câmera está concedida
+                if (ContextCompat.checkSelfPermission(ChatAtivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                    // A permissão já está concedida, prosseguir com a abertura da câmera
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivityForResult(intent, SELECAO_CAMERA);
+                    }
+                } else {
+                    // A permissão da câmera não está concedida, solicitar permissão
+                    ActivityCompat.requestPermissions(ChatAtivity.this, new String[]{Manifest.permission.CAMERA}, 101);
                 }
             }
         });
 
+    }
+    @SuppressLint("MissingSuperCall")
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 101) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // A permissão da câmera foi concedida, prosseguir com a abertura da câmera
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(intent, SELECAO_CAMERA);
+                }
+            } else {
+                // A permissão da câmera foi negada, tratar esse cenário de acordo com a sua necessidade
+            }
+        }
     }
 
     //resultado camera
@@ -194,14 +227,10 @@ public class ChatAtivity extends AppCompatActivity {
 
                                     Mensagem mensagem = new Mensagem();
                                     mensagem.setIdUser(idUsuarioRemetente);
-                                    mensagem.setMensage("imagem.jpeg");
                                     mensagem.setImage(url);
 
-                                    //Salvar imagem Remetente
-                                    sendMsg(idUsuarioRemetente, idUsuarioDestinatario, mensagem);
+                                    saveChat(mensagem);
 
-                                    //Salvar imagem Destinatario
-                                    sendMsg(idUsuarioDestinatario, idUsuarioRemetente, mensagem);
                                 }
 
                             });
@@ -216,21 +245,16 @@ public class ChatAtivity extends AppCompatActivity {
         }
     }
 
-    //objeto para salvar a mensagem no firebase
+    //objeto para salvar a mensagem no firestore
     public void submitMsg(View view) {
         //recupera conteudo dentro do input
         String textMsg = inputContentMsg.getText().toString();
 
         if (!textMsg.isEmpty()) {
+
             Mensagem mensagem = new Mensagem();
             mensagem.setIdUser(idUsuarioRemetente);
             mensagem.setMensage(textMsg);
-
-            //Salvar mensagem para o remetente
-            sendMsg(idUsuarioRemetente, idUsuarioDestinatario, mensagem);
-
-            //Salvar mensagem para o destinatario
-            sendMsg(idUsuarioDestinatario, idUsuarioRemetente, mensagem);
 
             //limpar texto
             inputContentMsg.setText("");
@@ -245,15 +269,17 @@ public class ChatAtivity extends AppCompatActivity {
 
     private void saveChat(Mensagem mensagem) {
 
-        Conversas conversaRemetente = new Conversas();
+        Conversas conversas = new Conversas();
 
         //seta valores nos contrutures
-        conversaRemetente.setIdRemetente(idUsuarioRemetente);
-        conversaRemetente.setIdDestinatario(idUsuarioDestinatario);
-        conversaRemetente.setUltimaMensagem(mensagem.getMensage());
-        conversaRemetente.setUsuarioExibicao( usuarioDestinatario );
+        conversas.setIdRemetente(idUsuarioRemetente);
+        conversas.setIdDestinatario(idUsuarioDestinatario);
+        conversas.setUltimaMensagem(mensagem.getMensage());
+        conversas.setMensagem(mensagem);
+        conversas.setUsuarioExibicao( usuarioDestinatario );
+        conversas.setUsuarioExibicaoLogado(usuarioLogado);
 
-        conversaRemetente.salvar();
+        conversas.salvar();
     }
 
     private void sendMsg(String idRemetente, String idDestinatario, Mensagem mensagem){

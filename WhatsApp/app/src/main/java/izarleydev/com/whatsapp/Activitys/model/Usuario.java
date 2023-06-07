@@ -1,12 +1,22 @@
 package izarleydev.com.whatsapp.Activitys.model;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import izarleydev.com.whatsapp.Activitys.activitys.Cadastro;
 import izarleydev.com.whatsapp.Activitys.config.ConfigFirebase;
 import izarleydev.com.whatsapp.Activitys.helper.UsuarioFirebase;
 
@@ -22,10 +32,19 @@ public class Usuario implements Serializable {
 
     public void Salvar(){
 
-        DatabaseReference databaseReference = ConfigFirebase.getFirebaseDatabase();
-        DatabaseReference usuario = databaseReference.child("usuarios").child(getId());
+        FirebaseFirestore usuario = FirebaseFirestore.getInstance();
+        usuario.collection("usuario").document(getId()).set(this).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
 
-        usuario.setValue(this);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
     }
 
     public void atualizar(){
