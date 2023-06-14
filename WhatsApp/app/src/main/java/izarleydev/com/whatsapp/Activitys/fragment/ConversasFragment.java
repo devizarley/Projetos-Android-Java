@@ -126,12 +126,9 @@ public class ConversasFragment extends Fragment {
         Query queryRemetente = db.collection("conversas")
                 .whereEqualTo("idRemetente", idLogado);
 
-        Log.d("teste", "recuperarConversas: " + queryRemetente);
-
         // Consulta para obter as conversas em que o idDestinatario seja igual ao idLogado
         Query queryDestinatario = db.collection("conversas")
                 .whereEqualTo("idDestinatario", idLogado);
-
 
         // Executar a consulta do idRemetente
         queryRemetente.get().addOnSuccessListener(queryRemetenteSnapshot -> {
@@ -144,7 +141,6 @@ public class ConversasFragment extends Fragment {
 
                 // Lista de conversas encontradas para o idDestinatario
                 List<DocumentSnapshot> destinatarioDocs = queryDestinatarioSnapshot.getDocuments();
-
 
                 // Combinar as duas listas de documentos
                 List<DocumentSnapshot> allDocs = new ArrayList<>();
